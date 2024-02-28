@@ -1436,7 +1436,7 @@ class _BusRoutePage extends State<BusRoutePage> {
         });
       },
       style: ElevatedButton.styleFrom(
-        primary: getButtonColor(route),
+        backgroundColor: getButtonColor(route),
         minimumSize: Size(400, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),

@@ -531,7 +531,7 @@ class _DutyPageRoute5State extends State<DutyPageRoute5> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: selectedButton == 'Low' ? Colors.green : Colors.green.withOpacity(0.3),
+                        backgroundColor: selectedButton == 'Low' ? Colors.green : Colors.green.withOpacity(0.3),
                         minimumSize: Size(120, 190),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5), // Reduced border radius
@@ -551,7 +551,7 @@ class _DutyPageRoute5State extends State<DutyPageRoute5> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: selectedButton == 'Medium' ? Colors.yellow : Colors.yellow.withOpacity(0.3),
+                        backgroundColor: selectedButton == 'Medium' ? Colors.yellow : Colors.yellow.withOpacity(0.3),
                         minimumSize: Size(120, 190),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5), // Reduced border radius
@@ -571,7 +571,7 @@ class _DutyPageRoute5State extends State<DutyPageRoute5> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: selectedButton == 'High' ? Colors.red : Colors.red.withOpacity(0.3),
+                        backgroundColor: selectedButton == 'High' ? Colors.red : Colors.red.withOpacity(0.3),
                         minimumSize: Size(120, 190),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8), // Reduced border radius

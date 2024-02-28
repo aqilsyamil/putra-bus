@@ -227,8 +227,7 @@ class _MessagesPage extends State<MessagesPage> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF00D161),
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white, backgroundColor: Color(0xFF00D161),
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Adjusted padding
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
@@ -252,8 +251,7 @@ class _MessagesPage extends State<MessagesPage> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF00D161),
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white, backgroundColor: Color.fromARGB(255, 11, 12, 12),
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Adjusted padding
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
@@ -276,8 +274,7 @@ class _MessagesPage extends State<MessagesPage> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF00D161),
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white, backgroundColor: Color(0xFF00D161),
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Adjusted padding
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),

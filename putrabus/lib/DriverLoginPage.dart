@@ -278,7 +278,7 @@ class _DriverLoginPageState extends State<DriverLoginPage> {
             ElevatedButton(
               onPressed: isButtonEnabled ? () => login(context) : null,
               style: ElevatedButton.styleFrom(
-                primary: isButtonEnabled ? Color(0xFF00D161) : null,
+                backgroundColor: isButtonEnabled ? Color(0xFF00D161) : null,
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
