@@ -6,13 +6,13 @@ import 'StarredPage.dart';
 import 'MessagesPage.dart';
 import 'SidebarPage.dart';
 
-
 // Hello Duniaa
 
 // PutraBus comment
 
 // Tambah lagi satu
 
+// Hello world
 void main() {
   runApp(MyApp());
 }
@@ -32,9 +32,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   String mainStatus;
 
-  MyHomePage({
-    this.mainStatus = 'user'
-  });
+  MyHomePage({this.mainStatus = 'user'});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -74,8 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'Academy': 'assets/images/academy.jpg',
   };
 
-
-
   void addToStarredBusStops(String busStop) {
     setState(() {
       _starredBusStops.add(busStop);
@@ -113,32 +109,25 @@ class _MyHomePageState extends State<MyHomePage> {
         index: _currentIndex,
         children: <Widget>[
           BusStopPage(
-            starredBusStops: _starredBusStops,
-            addToStarred: addToStarredBusStops,
-            removeFromStarred: removeFromStarredBusStops,
-            onBusStopSelected: onBusStopSelected,
-            updateEndLocation: updateEndLocation,
-            mainStatus: mainStatus
-          ),
-          BusRoutePage(
-            mainStatus: mainStatus
-          ),
+              starredBusStops: _starredBusStops,
+              addToStarred: addToStarredBusStops,
+              removeFromStarred: removeFromStarredBusStops,
+              onBusStopSelected: onBusStopSelected,
+              updateEndLocation: updateEndLocation,
+              mainStatus: mainStatus),
+          BusRoutePage(mainStatus: mainStatus),
           NavigationPage(
-            key: navigationPageKey,
-            endLocation: endLocation,
-            mainStatus: mainStatus
-          ),
+              key: navigationPageKey,
+              endLocation: endLocation,
+              mainStatus: mainStatus),
           StarredPage(
-            starredBusStops: _starredBusStops,
-            removeFromStarred: removeFromStarredBusStops,
-            scaffoldKey: _scaffoldKey,
-            busStopImages: busStopImages,
-            updateEndLocation: updateEndLocation,
-            mainStatus: mainStatus
-          ),
-          MessagesPage(
-            mainStatus: mainStatus
-          ),
+              starredBusStops: _starredBusStops,
+              removeFromStarred: removeFromStarredBusStops,
+              scaffoldKey: _scaffoldKey,
+              busStopImages: busStopImages,
+              updateEndLocation: updateEndLocation,
+              mainStatus: mainStatus),
+          MessagesPage(mainStatus: mainStatus),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -188,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: Colors.black, // Color when selected
         unselectedItemColor: Colors.grey,
         showSelectedLabels: true,
-        showUnselectedLabels: true,// Color when not selected
+        showUnselectedLabels: true, // Color when not selected
       ),
     );
   }
