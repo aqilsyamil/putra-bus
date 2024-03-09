@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_URL")
+}
+
+model bus {
+  id         String       @id @db.VarChar(255)
+  plate_no   String?      @db.VarChar(255)
+  driver_bus driver_bus[]
+}
+
+model bus_route {
+  id              String  @id @db.VarChar(255)
+  route_name      String? @db.VarChar(255)
+  routepointpaths String? @db.Text
+}
+
+model bus_stop {
+  id                                                  String           @id @db.VarChar(255)
+  full_name                                           String?          @db.VarChar(255)
+  short_name                                          String?          @db.VarChar(255)
+  latitude                                            Float?           @db.Float
+  longitude                                           Float?           @db.Float
+  image_path                                          String?          @db.VarChar(255)
+  routepointpath_routepointpath_start_pointTobus_stop routepointpath[] @relation("routepointpath_start_pointTobus_stop")
+  routepointpath_routepointpath_end_pointTobus_stop   routepointpath[] @relation("routepointpath_end_pointTobus_stop")
+}
+
+model driver {
+  id         String       @id @db.VarChar(50)
+  full_name  String       @db.VarChar(255)
+  phone_no   String       @db.VarChar(15)
+  password   String       @db.VarChar(255)
+  photo_path String       @db.VarChar(255)
+  driver_bus driver_bus[]
+}
+
+model driver_bus {
+  id               String                       @id @db.VarChar(255)
+  driver_id        String?                      @db.VarChar(255)
+  bus_id           String?                      @db.VarChar(255)
+  occupancy_status driver_bus_occupancy_status?
+  bus_lat          Float?                       @db.Float
+  bus_lng          Float?                       @db.Float
+  driver           driver?                      @relation(fields: [driver_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_1")
+  bus              bus?                         @relation(fields: [bus_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_2")
+
+  @@index([bus_id], map: "bus_id")
+  @@index([driver_id], map: "driver_id")
+}
+
+model routepointpath {
+  id                                            String   @id @db.VarChar(255)
+  name                                          String   @db.VarChar(255)
+  start_point                                   String   @db.VarChar(255)
+  end_point                                     String   @db.VarChar(255)
+  waypoints                                     Json
+  bus_stop_routepointpath_start_pointTobus_stop bus_stop @relation("routepointpath_start_pointTobus_stop", fields: [start_point], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "routepointpath_ibfk_1")
+  bus_stop_routepointpath_end_pointTobus_stop   bus_stop @relation("routepointpath_end_pointTobus_stop", fields: [end_point], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "routepointpath_ibfk_2")
+
+  @@index([end_point], map: "end_point")
+  @@index([start_point], map: "start_point")
+}
+
+enum driver_bus_occupancy_status {
+  low
+  medium
+  high
+}

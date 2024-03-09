@@ -1,0 +1,16 @@
+version: "3" # optional since v1.27.0
+services:
+  app:
+    image: putra-t-api:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: deploy
+    volumes:
+      - ./:/app/putra-t-api
+      - /app/putra-t-api/node_modules
+      - /app/putra-t-api/prisma
+    ports:
+      - 3000:3000
+    environment:
+      - MYSQL_URL=mysql://root:3G2FAdgE2344a6eDCBHH-dGbdB3hFgBb@monorail.proxy.rlwy.net:51601/railway
