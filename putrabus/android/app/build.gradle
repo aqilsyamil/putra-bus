@@ -23,8 +23,8 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.putra_tee"
-    compileSdkVersion flutter.compileSdkVersion
+    namespace "com.example.putrabus"
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -42,11 +42,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.putra_tee"
+        applicationId "com.example.putrabus"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        // minSdkVersion flutter.minSdkVersion
         minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
+        // targetSdkVersion 20
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
