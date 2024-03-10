@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "start:app": "cd apps/app && flutter run",
     "start:docker": "npm run build && npx nx docker-build && docker run -p 3000:3000 -t putra-t-api",
     "build": "sh build.sh",
     "test": "nx test",
