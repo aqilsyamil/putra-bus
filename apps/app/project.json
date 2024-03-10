@@ -1,0 +1,156 @@
+{
+  "name": "putrabus",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "putrabus/src",
+  "projectType": "application",
+  "targets": {
+    "analyze": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter analyze",
+        "cwd": "putrabus"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter clean",
+        "cwd": "putrabus"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm dart format putrabus/*",
+        "cwd": "putrabus"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter test",
+        "cwd": "putrabus"
+      }
+    },
+    "doctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter doctor",
+        "cwd": "putrabus"
+      }
+    },
+    "assemble": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter assemble",
+        "cwd": "putrabus"
+      }
+    },
+    "attach": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter attach",
+        "cwd": "putrabus"
+      }
+    },
+    "drive": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter drive",
+        "cwd": "putrabus"
+      }
+    },
+    "gen-l10n": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter gen-l10n",
+        "cwd": "putrabus"
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter install",
+        "cwd": "putrabus"
+      }
+    },
+    "run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter run",
+        "cwd": "putrabus"
+      }
+    },
+    "build-aar": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build aar",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-apk": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build apk",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-appbundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build appbundle",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-bundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build bundle",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build ios",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-ios-framework": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build ios-framework",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    },
+    "build-ipa": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "fvm flutter build ipa",
+        "cwd": "putrabus"
+      },
+      "outputs": [
+        "{workspaceRoot}/putrabus/build"
+      ]
+    }
+  },
+  "tags": []
+}
