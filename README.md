@@ -1,6 +1,6 @@
 # PutraBus
 
-For every update done in feature branch, done in dev, please do this:
+For every update done in dev branch, please do this:
 
 ## API
 
