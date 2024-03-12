@@ -1,0 +1,25 @@
+id,full_name,short_name,latitude,longitude,image_path
+PFC,Putra Foodcourt,PFC,2.99172096236647,101.707556203837,assets/images/pfc.JPG
+KTAG,Tan Sri Aishah Ghani College,KTAG,2.99060659222784,101.710726720725,assets/images/ktag.JPG
+SFC,Serumpun Foodcourt,SFC,2.99211728801768,101.715414146293,assets/images/sfc.JPG
+Central,Central (Great Hall & Experimental Theatre),Central,3.00129171674405,101.709695643943,assets/images/central.JPG
+FBMK,Faculty of Modern Languages & Communication,FBMK,2.99998434289094,101.714848879988,assets/images/fbmk.JPG
+FBSB,Faculty of Biotechnology and Biomolecular Sciences,FBSB,3.0044083821432923,101.7061613301557,assets/images/fbsb.JPG
+FP,Faculty of Agriculture,FP,2.98316104957432,101.733957167371,assets/images/fp.JPG
+FPC,Faculty of Agriculture Cafeteria,FPC,2.9836469496929,101.735921875691,assets/images/fpc.JPG
+FRSB,Faculty of Design & Architecture,FRSB,3.00339937683708,101.720398348035,assets/images/frsb.JPG
+FS,Faculty of Science,FS,3.00070850107423,101.70686276312,assets/images/fs.JPG
+FSKTM,Faculty of Computer Science & Information Technology,FSKTM,2.99996914546811,101.711060296026,assets/images/fsktm.JPG
+FSTM,Faculty of Food Science & Technology,FSTM,3.00426666582663,101.708629081731,assets/images/fstm.JPG
+IBS,Institute of Bioscience,IBS,2.99976082723334,101.721588704488,assets/images/ibs.JPG
+INSPEM,Institute of Mathematical Research,INSPEM,3.000413207950068, 101.70425607989095,assets/images/inspem.JPG
+K10,Tenth College,K10,3.00980038829502,101.719726240646,assets/images/k10.JPG
+K14,Fourteenth College,K14,2.9928782265949,101.718255156187,assets/images/k14.jpg
+KMB,Tan Sri Mustaffa Babjee,KMB,2.97830266111028,101.71456541612,assets/images/kmb.JPG
+PSAS,Sultan Abdul Samad Library,PSAS,3.00268035065137,101.706952942235,assets/images/psas.JPG
+SGS,School of Graduate Studies,SGS,2.99254633251792,101.724306950388,assets/images/sgs.JPG
+Banquet,Banquet Hall,Banquet,2.98783756957815,101.725037954114,assets/images/banquet.JPG
+ASPer,Centre of Foundation Studies for Agricultural Science,ASPer,3.0039703946768648,101.70438748702767,assets/images/asper.jpg
+KAA,Academic Complex A (Opp FBMK),KAA,3.00020871605195,101.715239328557,assets/images/kaa.JPG
+Academy,Sports Academy,Academy,2.98743793171321,101.725928392454,assets/images/academy.jpg
+INSPEM,Opp Institute for Mathematical Research,Opp INSPEM,3.000411615089939,101.70425857833969,assets/images/inspem.JPG
