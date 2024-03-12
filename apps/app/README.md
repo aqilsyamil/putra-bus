@@ -1,6 +1,6 @@
-# putrabus
+# app
 
-A near real-time UPM bus tracking app
+A new Flutter project.
 
 ## Getting Started
 
