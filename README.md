@@ -14,8 +14,10 @@ In cli, make sure you currently on putra-bus folder
 `npm start api`
 
 ## Flutter App
+### Run API
+npm start api
 
-### Update Flutter App
+# Update Flutter App
 In cli, make sure you currently on putra-bus folder
 
 `cd apps/app`
