@@ -1,6 +1,9 @@
 # PutraBus
 
-For every update done in dev branch, please do this:
+For every update in dev branch, please do this in your feature branch:
+
+git merge dev
+
 
 ## API
 
@@ -17,7 +20,8 @@ npm start api
 ### Update Flutter App
 In cli, make sure you currently on putra-bus folder
 
-cd apps/app
+cd apps/app 
+
 flutter pub get
 
 ### Run Flutter
@@ -26,4 +30,5 @@ If you're using Android make sure that you have Android Studio and Virtual Devic
 In cli, make sure you currently on putra-bus folder
 
 cd apps/app
+
 flutter run
