@@ -19,6 +19,7 @@ In cli, make sure you currently on putra-bus folder
 In cli, make sure you currently on putra-bus folder
 
 `cd apps/app`
+
 `flutter pub get`
 
 ### Run Flutter
@@ -27,4 +28,5 @@ If you're using Android make sure that you have Android Studio and Virtual Devic
 In cli, make sure you currently on putra-bus folder
 
 `cd apps/app`
+
 `flutter run`
