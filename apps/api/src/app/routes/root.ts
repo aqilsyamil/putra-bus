@@ -5,6 +5,8 @@ import { PrismaClient, driver_bus } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+
+// i am fixing the code....
 export default async function routes(fastify: FastifyInstance, options) {
     /**
    * GET all bus_route
