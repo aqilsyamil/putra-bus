@@ -1,17 +1,7 @@
 class BusStop {
-  final String name;
+  final int id;
+  final String longName;
   final String shortName;
-  final bool isStarred;
-  final Function() onStarPressed;
-  final Function() onSelect;
-  final String imagePath;
 
-  BusStop({
-    required this.name,
-    required this.shortName,
-    required this.isStarred,
-    required this.onStarPressed,
-    required this.onSelect,
-    required this.imagePath,
-  });
+  BusStop({required this.id, required this.longName, required this.shortName});
 }

@@ -1,7 +1,7 @@
-name: app_v1
-description: "PutraBus - A Near Real-time Bus Tracking App"
-publish_to: 'none' 
+name: app
+description: "A new Flutter project."
 
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -10,31 +10,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_native_splash: ^2.3.3
-  url_launcher: ^6.0.12
-  cupertino_icons: ^1.0.2
-  dio: ^5.3.3
-  flutter_polyline_points: ^2.0.0
-  google_maps_flutter: ^2.5.0
-  geolocator: ^11.0.0
-  geocoding: ^3.0.0
+
+  cupertino_icons: ^1.0.6
   csv: ^6.0.0
-  path_provider: ^2.1.1
-  file_picker: ^6.1.1
-  random_string: ^2.3.1
-  location: ^5.0.3
-  flutter_svg: ^2.0.10+1
-  sqflite: ^2.0.0+4 
-  mysql1: ^0.20.0
-  mysql_client: ^0.0.27
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+
+  flutter_lints: ^3.0.0
 
 flutter:
-  uses-material-design: true
-  assets:
-    - assets/images/
 
+  uses-material-design: true
+
+
+
+ 

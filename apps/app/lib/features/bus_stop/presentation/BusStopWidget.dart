@@ -1,73 +1,38 @@
 import 'package:flutter/material.dart';
-import '../domain/BusStop.dart'; // Import the BusStop class
+import 'package:app/features/bus_stop/domain/BusStop.dart';
+import 'package:app/features/bus_stop/presentation/BusStopController.dart';
 
 class BusStopWidget extends StatelessWidget {
-  final BusStop busStop;
-
-  BusStopWidget({required this.busStop});
+  final BusStopController _busStopController = BusStopController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          onTap: busStop.onSelect,
-          leading: Padding(
-            padding: EdgeInsets.only(right: 0.0),
-            child: IconButton(
-              icon: Icon(Icons.info_outline),
-              iconSize: 24,
-              onPressed: () => _showFullScreenImage(context),
-            ),
-          ),
-          title: Text(
-            busStop.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          subtitle: Text(
-            busStop.shortName,
-            style: TextStyle(fontSize: 14),
-          ),
-          trailing: IconButton(
-            icon: Icon(
-              busStop.isStarred ? Icons.star : Icons.star_border,
-              color: busStop.isStarred ? Colors.orange : null,
-            ),
-            onPressed: busStop.onStarPressed,
-          ),
-        ),
-        Divider(color: Colors.grey, thickness: 0),
-      ],
-    );
-  }
+    final List<BusStop> busStops = _busStopController.getBusStops();
 
-  void _showFullScreenImage(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierColor: Colors.black.withOpacity(0.9),
-      builder: (BuildContext context) {
-        return Scaffold(
-          backgroundColor: Colors.black,
-          body: Stack(
-            children: <Widget>[
-              Center(
-                child: Image.asset(
-                  busStop.imagePath,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Positioned(
-                right: 10,
-                top: 10,
-                child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+    return MaterialApp(
+      title: 'Bus Stops App',
+      debugShowCheckedModeBanner: false, 
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Bus Stops'),
+        ),
+        body: ListView.builder(
+          itemCount: busStops.length,
+          itemBuilder: (context, index) {
+            final busStop = busStops[index];
+            return ListTile(
+              title: Text(busStop.longName),
+              subtitle: Text(busStop.shortName),
+              onTap: () {
+                // You can perform actions when a bus stop is tapped
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 }
