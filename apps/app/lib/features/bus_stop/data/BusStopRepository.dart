@@ -2,11 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:app/features/bus_stop/domain/BusStop.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class BusStopRepository {
   static List<BusStop> getBusStops() {
     List<BusStop> busStops = [];
+
+    listFilesInCurrentDirectory();
 
     // To read the CSV file
     String csvString = File('bus_stop.csv').readAsStringSync();
@@ -24,4 +28,32 @@ class BusStopRepository {
 
     return busStops;
   }
+
+  static Future<void> listFilesInCurrentDirectory() async {
+    if (Platform.isAndroid) {
+      final status = await Permission.storage.status;
+      if (!status.isGranted) {
+        await Permission.storage.request();
+      }
+    }
+
+    final currentDirectory = Directory.current;
+    final files = await currentDirectory.list().toList();
+
+    for (var file in files) {
+      print(file.path);
+    }
+  }
+
+  static Future<void> readCSVFile() async {
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String filePath = '${appDocDir.path}/bus_stop.csv';
+
+    File file = File(filePath);
+    List<List<dynamic>> csvData = const CsvToListConverter().convert(await file.readAsString());
+    
+    print(csvData);
+    // Now you can use the csvData for further processing
+  }
+  
 }

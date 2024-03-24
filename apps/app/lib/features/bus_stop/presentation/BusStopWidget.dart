@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../domain/BusStop.dart'; // Import the BusStop class
+import 'package:app/features/bus_stop/domain/BusStop.dart';
+import 'package:app/features/bus_stop/presentation/BusStopController.dart';
 
 class BusStopWidget extends StatelessWidget {
-  final BusStop busStop;
-
-  BusStopWidget({required this.busStop});
+  final BusStopController _busStopController = BusStopController();
 
   @override
   Widget build(BuildContext context) {
