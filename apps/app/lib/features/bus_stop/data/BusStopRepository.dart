@@ -9,7 +9,7 @@ class BusStopRepository {
     List<BusStop> busStops = [];
 
     // To read the CSV file
-    String csvString = File('bus_stop.csv').readAsStringSync();
+    String csvString = File('bus_stop_unused_2.csv').readAsStringSync();
 
     // To parse the CSV data
     List<List<dynamic>> csvTable = CsvToListConverter().convert(csvString);
@@ -19,7 +19,7 @@ class BusStopRepository {
       int id = row[0] as int;
       String longName = row[1] as String;
       String shortName = row[2] as String;
-      busStops.add(BusStop(id: id, longName: longName, shortName: shortName));
+      busStops.add(BusStop(id: id, long_name: longName, short_name: shortName));
     }
 
     return busStops;

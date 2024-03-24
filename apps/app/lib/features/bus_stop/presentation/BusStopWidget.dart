@@ -8,6 +8,7 @@ class BusStopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<BusStop> busStops = _busStopController.getBusStops();
+     print('Number of bus stops: ${busStops.length}'); 
 
     return MaterialApp(
       title: 'Bus Stops App',
@@ -24,8 +25,8 @@ class BusStopWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             final busStop = busStops[index];
             return ListTile(
-              title: Text(busStop.longName),
-              subtitle: Text(busStop.shortName),
+              title: Text(busStop.long_name),
+              subtitle: Text(busStop.short_name),
               onTap: () {
                 // You can perform actions when a bus stop is tapped
               },
