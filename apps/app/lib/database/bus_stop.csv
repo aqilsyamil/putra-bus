@@ -1,24 +1,24 @@
-id,bus_stop_id,long_name,short_name,latitude,longitude,image_path
-1,SJ169,Academic Complex A,KAA,3.0002087160519513,101.71523932855689,database/images/bus_stop_img/kaa.JPG
-2,SJ827,Banquet Hall,Banquet,2.9878375695781485,101.72503795411446,database/images/bus_stop_img/banquet.JPG
-3,unknown,Centre of Foundation Studies for Agricultural Science,ASPer,3.003930337178423,101.70437264576792,database/images/bus_stop_img/asper.jpg
-4,SJ830,Faculty of Agriculture,FP,2.9831610495743246,101.73395716737106,database/images/bus_stop_img/fp.JPG
-5,SJ882,Faculty of Agriculture Cafeteria,FPC,2.9836469496928983,101.73592187569136,database/images/bus_stop_img/fpc.JPG
-6,unknown,Faculty of Biotechnology and Biomolecular Sciences,FBSB,3.004402451497019,101.70616609014186,database/images/bus_stop_img/fbsb.JPG
-7,SJ155,Faculty of Computer Science & Information Technology,FSKTM,2.9999691454681097,101.71106029602586,database/images/bus_stop_img/fsktm.JPG
-8,unknown,Faculty of Design & Architecture,FRSB,3.0033795230978964,101.7204584859927,database/images/bus_stop_img/frsb.JPG
-9,SJ151,Faculty of Environmental Studies,FPAS,3.004266665826632,101.70862908173052,database/images/bus_stop_img/fpas.JPG
-10,SJ144,Faculty of Modern Languages & Communication,FBMK,2.9999843428909356,101.71484887998834,database/images/bus_stop_img/fbmk.JPG
-11,SJ159,Faculty of Science,FS,3.0007085010742323,101.7068627631204,database/images/bus_stop_img/fs.JPG
-12,SJ164,Fourteenth College,K14,2.9928782265949017,101.71825515618721,database/images/bus_stop_img/k14.jpg
-13,unknown,Institute for Mathematical Research,INSPEM,3.0004122967726388,101.70425721055133,database/images/bus_stop_img/inspem.JPG
-14,SJ832,Institute of Bioscience,IBS,2.9997608272333394,101.72158870448789,database/images/bus_stop_img/ibs.JPG
-15,SJ100,Putra Foodcourt,PFC,2.991720962366472,101.707556203837,database/images/bus_stop_img/pfc.JPG
-16,unknown,School of Graduate Studies,SGS,2.9927591821725525,101.72439981272626,database/images/bus_stop_img/sgs.JPG
-17,SJ163,Serumpun Foodcourt,SFC,2.9921172880176776,101.71541414629283,database/images/bus_stop_img/sfc.JPG
-18,SJ831,Sports Academy,Academy,2.9874351307810523,101.72593009676206,database/images/bus_stop_img/academy.jpg
-19,SJ160,Sultan Abdul Samad Library,PSAS,3.0026803506513735,101.70695294223508,database/images/bus_stop_img/psas.JPG
-20,unknown,Tenth College,K10,3.0098003882950177,101.71972624064571,database/images/bus_stop_img/k10.JPG
-21,unknown,Tan Sri Aishah Ghani College,KTAG,2.9906065922278406,101.71072672072536,database/images/bus_stop_img/ktag.JPG
-22,SJ800,Tan Sri Mustaffa Babjee,KMB,2.9783026611102827,101.71456541612027,database/images/bus_stop_img/kmb.JPG
-23,SJ153,Central (Great Hall & Experimental Theatre),Central,3.0012917167440483,101.70969564394254,database/images/bus_stop_img/central.JPG
+id,longName,shortName
+1,Academic Complex A (Opp FBMK),KAA
+2,Banquet Hall,Banquet
+3,Centre of Foundation Studies for Agricultural Science,ASPer
+4,Faculty of Agriculture,FP
+5,Faculty of Agriculture Cafeteria,FPC
+6,Faculty of Biotechnology and Biomolecular Sciences,FBSB
+7,Faculty of Computer Science & Information Technology,FSKTM
+8,Faculty of Design & Architecture,FRSB
+9,Faculty of Food Science & Technology,FSTM
+10,Faculty of Modern Languages & Communication,FBMK
+11,Faculty of Science,FS
+12,Fourteenth College,K14
+13,Institute for Mathematical Research,INSPEM
+14,Institute of Bioscience,IBS
+15,Putra Foodcourt,PFC
+16,School of Graduate Studies,SGS
+17,Serumpun Foodcourt,SFC
+18,Sports Academy,Academy
+19,Sultan Abdul Samad Library,PSAS
+20,Tenth College,K10
+21,Tan Sri Aishah Ghani College,KTAG
+22,Tan Sri Mustaffa Babjee,KMB
+23,Central (Great Hall & Experimental Theatre),Central

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:app/features/bus_stop/domain/BusStop.dart';
-import 'package:app/features/bus_stop/presentation/BusStopController.dart';
+import '../domain/BusStop.dart'; // Import the BusStop class
 
 class BusStopWidget extends StatelessWidget {
-  final BusStopController _busStopController = BusStopController();
+  final BusStop busStop;
+
+  BusStopWidget({required this.busStop});
 
   @override
   Widget build(BuildContext context) {
     final List<BusStop> busStops = _busStopController.getBusStops();
-     print('Number of bus stops: ${busStops.length}'); 
 
     return MaterialApp(
       title: 'Bus Stops App',
@@ -25,8 +25,8 @@ class BusStopWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             final busStop = busStops[index];
             return ListTile(
-              title: Text(busStop.long_name),
-              subtitle: Text(busStop.short_name),
+              title: Text(busStop.longName),
+              subtitle: Text(busStop.shortName),
               onTap: () {
                 // You can perform actions when a bus stop is tapped
               },

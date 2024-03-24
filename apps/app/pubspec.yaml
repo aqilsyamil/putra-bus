@@ -1,7 +1,7 @@
-name: app
-description: "A new Flutter project."
+name: app_v1
+description: "PutraBus - A Near Real-time Bus Tracking App"
+publish_to: 'none' 
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -10,23 +10,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.6
+  flutter_native_splash: ^2.3.3
+  url_launcher: ^6.0.12
+  cupertino_icons: ^1.0.2
+  dio: ^5.3.3
+  flutter_polyline_points: ^2.0.0
+  google_maps_flutter: ^2.5.0
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
   csv: ^6.0.0
-  google_maps_flutter: ^2.6.0
-  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^3.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true
-  assets:
-    - lib/database/images/bus_stop_img/
 
 
 
- 
