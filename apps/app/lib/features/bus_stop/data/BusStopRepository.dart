@@ -9,7 +9,7 @@ class BusStopRepository {
 
     await rootBundle.loadString("assets/bus_stop.csv").then((rawData) {
       List<List<dynamic>> listData =
-          const CsvToListConverter().convert(rawData).toList();
+          const CsvToListConverter(eol: '\n', fieldDelimiter: ',').convert(rawData).toList();
       for (var row in listData.sublist(1)) {
         int id = row[0] as int;
         String longName = row[1] as String;
