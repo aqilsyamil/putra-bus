@@ -1,4 +1,3 @@
-
 class BusStop {
   final int id;
   final String longName;
