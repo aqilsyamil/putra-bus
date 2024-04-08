@@ -35,4 +35,6 @@ jobs:
             ~/.cache/Cypress # needed for the Cypress binary
           key: npm-dependencies-${{ hashFiles('bun.lockb') }}
 
-      - run: bunx nx build site
+      - uses: nrwl/nx-set-shas@v3
+      - run: git branch --track main origin/main
+        if: ${{ github.event_name == 'pull_request' }}
