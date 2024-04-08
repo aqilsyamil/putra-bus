@@ -23,7 +23,7 @@ jobs:
           path: |
             node_modules
             ~/.cache/Cypress # needed for the Cypress binary
-          key: npm-dependencies-${{ hashFiles('package-lock.json') }}
+          key: npm-dependencies-${{ hashFiles('bun.lockb') }}
 
       - run: bun install --frozen-lockfile
 
@@ -33,7 +33,7 @@ jobs:
           path: |
             node_modules
             ~/.cache/Cypress # needed for the Cypress binary
-          key: npm-dependencies-${{ hashFiles('package-lock.json') }}
+          key: npm-dependencies-${{ hashFiles('bun.lockb') }}
 
       - uses: nrwl/nx-set-shas@v3
       - run: git branch --track main origin/main
