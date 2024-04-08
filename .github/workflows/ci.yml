@@ -34,3 +34,5 @@ jobs:
             node_modules
             ~/.cache/Cypress # needed for the Cypress binary
           key: npm-dependencies-${{ hashFiles('bun.lockb') }}
+
+      - run: bunx nx build api

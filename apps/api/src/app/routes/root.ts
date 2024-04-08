@@ -71,7 +71,7 @@ export default async function routes(fastify: FastifyInstance, options) {
           const bus_route = await prisma.bus_route.findUnique({
               where: { id: id},
             })
-          
+
           return bus_route
 
         } catch (error) {
@@ -112,7 +112,7 @@ export default async function routes(fastify: FastifyInstance, options) {
             }
         }
     );
-    
+
     /**
      * GET one bus_stop by id
      */
@@ -145,7 +145,7 @@ export default async function routes(fastify: FastifyInstance, options) {
         const bus_stop = await prisma.bus_stop.findUnique({
             where: { id: id},
             })
-        
+
         return bus_stop
 
         } catch (error) {
@@ -176,11 +176,11 @@ export default async function routes(fastify: FastifyInstance, options) {
           }
         },
         async function (request: FastifyRequest, reply: FastifyReply) {
-    
+
           try {
             const buses = await prisma.bus.findMany()
             return buses
-    
+
           } catch (error) {
             console.error(error);
           }
@@ -212,16 +212,16 @@ export default async function routes(fastify: FastifyInstance, options) {
         request: FastifyRequest<{ Params: IParams }>,
         reply: FastifyReply
       ) {
-  
+
         const { id } = request.params;
-  
+
         try {
           const bus = await prisma.bus.findUnique({
               where: { id: id},
             })
-          
+
           return bus
-  
+
         } catch (error) {
           console.error(error);
         }
@@ -293,7 +293,7 @@ export default async function routes(fastify: FastifyInstance, options) {
             const driver = await prisma.driver.findUnique({
                 where: { id: id},
             })
-            
+
             return driver
 
         } catch (error) {
@@ -324,11 +324,11 @@ export default async function routes(fastify: FastifyInstance, options) {
           }
         },
         async function (request: FastifyRequest, reply: FastifyReply) {
-    
+
             try {
             const routepointpaths = await prisma.routepointpath.findMany()
             return routepointpaths
-    
+
             } catch (error) {
             console.error(error);
             }
@@ -367,7 +367,7 @@ export default async function routes(fastify: FastifyInstance, options) {
             const routepointpath = await prisma.routepointpath.findUnique({
                 where: { id: id},
             })
-            
+
             return routepointpath
 
         } catch (error) {
@@ -441,7 +441,7 @@ export default async function routes(fastify: FastifyInstance, options) {
         const driver_bus = await prisma.driver_bus.findUnique({
             where: { id: id },
             })
-        
+
         return driver_bus
 
         } catch (error) {
@@ -584,7 +584,7 @@ export default async function routes(fastify: FastifyInstance, options) {
         })
 
         return updated_driver_bus
-    
+
     } catch (error) {
         console.error(error);
     }
