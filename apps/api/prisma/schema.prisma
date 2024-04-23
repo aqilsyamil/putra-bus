@@ -13,57 +13,89 @@ model bus {
   driver_bus driver_bus[]
 }
 
-model bus_route {
-  id              String  @id @db.VarChar(255)
-  route_name      String? @db.VarChar(255)
-  routepointpaths String? @db.Text
-}
-
 model bus_stop {
-  id                                                  String           @id @db.VarChar(255)
-  full_name                                           String?          @db.VarChar(255)
-  short_name                                          String?          @db.VarChar(255)
-  latitude                                            Float?           @db.Float
-  longitude                                           Float?           @db.Float
-  image_path                                          String?          @db.VarChar(255)
-  routepointpath_routepointpath_start_pointTobus_stop routepointpath[] @relation("routepointpath_start_pointTobus_stop")
-  routepointpath_routepointpath_end_pointTobus_stop   routepointpath[] @relation("routepointpath_end_pointTobus_stop")
+  id                                    String  @id @db.VarChar(255)
+  full_name                             String? @db.VarChar(255)
+  short_name                            String? @db.VarChar(255)
+  latitude                              Float?  @db.Float
+  longitude                             Float?  @db.Float
+  image_path                            String? @db.VarChar(255)
+  link_link_end_bus_stop_idTobus_stop   link[]  @relation("link_end_bus_stop_idTobus_stop")
+  link_link_start_bus_stop_idTobus_stop link[]  @relation("link_start_bus_stop_idTobus_stop")
 }
 
 model driver {
-  id         String       @id @db.VarChar(50)
   full_name  String       @db.VarChar(255)
   phone_no   String       @db.VarChar(15)
   password   String       @db.VarChar(255)
   photo_path String       @db.VarChar(255)
+  id         String       @id @db.VarChar(255)
   driver_bus driver_bus[]
 }
 
 model driver_bus {
   id               String                       @id @db.VarChar(255)
-  driver_id        String?                      @db.VarChar(255)
-  bus_id           String?                      @db.VarChar(255)
+  bus_id           String                       @db.VarChar(255)
   occupancy_status driver_bus_occupancy_status?
-  bus_lat          Float?                       @db.Float
-  bus_lng          Float?                       @db.Float
-  driver           driver?                      @relation(fields: [driver_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_1")
-  bus              bus?                         @relation(fields: [bus_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_2")
+  bus_latitude     Float?
+  bus_longitude    Float?
+  driver_id        String                       @db.VarChar(255)
+  bus              bus                          @relation(fields: [bus_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_2")
+  driver           driver                       @relation(fields: [driver_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "driver_bus_ibfk_1")
 
   @@index([bus_id], map: "bus_id")
-  @@index([driver_id], map: "driver_id")
+  @@index([driver_id], map: "driver_bus_driver_FK")
 }
 
-model routepointpath {
-  id                                            String   @id @db.VarChar(255)
-  name                                          String   @db.VarChar(255)
-  start_point                                   String   @db.VarChar(255)
-  end_point                                     String   @db.VarChar(255)
-  waypoints                                     Json
-  bus_stop_routepointpath_start_pointTobus_stop bus_stop @relation("routepointpath_start_pointTobus_stop", fields: [start_point], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "routepointpath_ibfk_1")
-  bus_stop_routepointpath_end_pointTobus_stop   bus_stop @relation("routepointpath_end_pointTobus_stop", fields: [end_point], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "routepointpath_ibfk_2")
+model link {
+  id                                        String         @id @db.VarChar(255)
+  name                                      String         @db.VarChar(255)
+  start_bus_stop_id                         String         @db.VarChar(255)
+  end_bus_stop_id                           String         @db.VarChar(255)
+  bus_stop_link_end_bus_stop_idTobus_stop   bus_stop       @relation("link_end_bus_stop_idTobus_stop", fields: [end_bus_stop_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_end_bus_stop_FK")
+  bus_stop_link_start_bus_stop_idTobus_stop bus_stop       @relation("link_start_bus_stop_idTobus_stop", fields: [start_bus_stop_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_start_bus_stop_FK")
+  link_waylink                              link_waylink[]
+  route_link                                route_link[]
 
-  @@index([end_point], map: "end_point")
-  @@index([start_point], map: "start_point")
+  @@index([end_bus_stop_id], map: "link_end_bus_stop_FK")
+  @@index([start_bus_stop_id], map: "link_start_bus_stop_FK")
+}
+
+model link_waylink {
+  id         String  @id @db.VarChar(255)
+  link_id    String  @db.VarChar(255)
+  waylink_id String  @db.VarChar(255)
+  link       link    @relation(fields: [link_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_waylink_link_FK")
+  waylink    waylink @relation(fields: [waylink_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_waylink_waylink_FK")
+
+  @@index([link_id], map: "link_waylink_link_FK")
+  @@index([waylink_id], map: "link_waylink_waylink_FK")
+}
+
+model route {
+  id         String       @id @db.VarChar(255)
+  route_name String?      @db.VarChar(255)
+  route_link route_link[]
+}
+
+model route_link {
+  id       String @id @db.VarChar(255)
+  route_id String @db.VarChar(255)
+  link_id  String @db.VarChar(255)
+  link     link   @relation(fields: [link_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "route_link_link_FK")
+  route    route  @relation(fields: [route_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "route_link_route_FK")
+
+  @@index([link_id], map: "route_link_link_FK")
+  @@index([route_id], map: "route_link_route_FK")
+}
+
+model waylink {
+  start_waypoint_latitude  Float?
+  start_waypoint_longitude Float?
+  end_waypoint_latitude    Float?
+  end_waypoint_longitude   Float?
+  id                       String         @id @db.VarChar(255)
+  link_waylink             link_waylink[]
 }
 
 enum driver_bus_occupancy_status {
