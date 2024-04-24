@@ -12,9 +12,10 @@ class BusStopRepository {
           const CsvToListConverter(eol: '\n', fieldDelimiter: ',').convert(rawData).toList();
       for (var row in listData.sublist(1)) {
         int id = row[0] as int;
-        String longName = row[1] as String;
-        String shortName = row[2] as String;
-        busStops.add(BusStop(id: id, longName: longName, shortName: shortName));
+        String long_name = row[1] as String;
+        String short_name = row[2] as String;
+        String image_path = row[3] as String;
+        busStops.add(BusStop(id: id, long_name: long_name, short_name: short_name, image_path: image_path));
       }
       return busStops;
     });
