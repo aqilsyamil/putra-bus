@@ -1,393 +1,518 @@
-// import type { FastifyRequest, FastifyInstance } from "fastify";
-// import { IParams } from "../interfaces/interface";
-// import { PrismaClient, bus_stop } from "@prisma/client";
+import type { FastifyRequest, FastifyInstance } from "fastify";
+import { IParams } from "../interfaces/interface";
+import { PrismaClient, driver_bus } from "@prisma/client";
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
-// export default async function routes(fastify: FastifyInstance) {
+export default async function routes(fastify: FastifyInstance) {
 
-//   /**
-//    * GET all available bus stops
-//    */
-//   fastify.get(
-//   '/bus-stops',
-//   {
-//     schema: {
-//       description: "This endpoint provides information on all university campus bus stops, including unique IDs, full and short names, latitude and longitude coordinates, and image URLs for visual identification.",
-//       tags: ['Bus Stop'],
-//       summary: 'Get all available bus stops',
-//       response: {
-//         200: {
-//           description: 'Succesful response',
-//           type: 'array',
-//           items: {
-//             type: 'object',
-//             properties: {
-//               id: {
-//                 type: 'string' ,
-//                 description: 'A unique identifier for the bus stop.'
-//               },
-//               full_name: {
-//                 type: 'string',
-//                 description: 'The full name of the bus stop, providing descriptive information about its location or nearby landmarks.'
-//               },
-//               short_name: {
-//                 type: 'string',
-//                 description: 'A shorter, commonly used name for the bus stop, often used for quick reference or announcements.'
-//               },
-//               latitude: {
-//                 type: 'number',
-//                 description: 'The latitude coordinate of the bus stop\'s location, facilitating precise mapping and navigation.'
-//               },
-//               longitude: {
-//                 type: 'number',
-//                 description: 'The longitude coordinate of the bus stop\'s location, essential for accurate geolocation and routing.'
-//               },
-//               image_path: {
-//                 type: 'string',
-//                 description: 'A URL pointing to the image or picture of the actual bus stop, allowing users to visually identify the stop and its surroundings.'
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   },
-//   async function () {
-//       try {
+  /**
+   * GET all available active bus
+   */
+  fastify.get(
+  '/active-buses',
+  {
+    schema: {
+      description: "This endpoint provides information on all of the available active buses, including unique IDs, driver IDs, bus IDs, latitude and longitude coordinates, and occupancy status.",
+      tags: ["Active Bus"],
+      summary: "Get all available active buses",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              id: {
+                type: "string",
+                description: "A unique identifier for the active bus."
+              },
+              driver_id: {
+                type: "string",
+                description: "The unique identifier of the driver who's on duty assign with the active bus."
+              },
+              bus_id: {
+                type: "string",
+                description: "The unique identifier of the active bus"
+              },
+              bus_latitude: {
+                type: "number",
+                description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+              },
+              bus_longitude: {
+                type: "number",
+                description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+              },
+              occupancy_status: {
+                type: "string",
+                description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  async function () {
+      try {
 
-//         const busStops = await prisma.bus_stop.findMany()
+        const activeBuses = await prisma.driver_bus.findMany()
 
-//         return busStops;
+        return activeBuses;
 
-//       } catch (error) {
+      } catch (error) {
 
-//         console.error(error);
+        console.error(error);
 
-//       }
-//   }
-//   );
+      }
+  }
+  );
 
-//   /**
-//    * GET specific bus stop by id
-//    */
-//   fastify.get(
-//   '/bus-stop/:id',
-//   {
-//       schema: {
-//       description: 'Root endpoint',
-//       tags: ['Bus Stop'],
-//       // response: {
-//       //   200: {
-//       //     description: 'Succesful response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       message: { type: 'string' },
-//       //       result: { type: 'object', nullable: true }
-//       //     }
-//       //   }
-//       // }
-//       }
-//   },
-//   async function (
-//       request: FastifyRequest<{ Params: IParams }>,
-//   ) {
+  /**
+   * GET specific active bus by id
+   */
+  fastify.get(
+  '/active-bus/:id',
+  {
+    schema: {
+      description: "This endpoint provides information on specific active bus, including unique IDs, driver IDs, bus IDs, latitude and longitude coordinates, and occupancy status. This endpoint requires the active bus ID as a parameter.",
+      tags: ["Active Bus"],
+      summary: "Get specific active bus by id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the active bus."
+            },
+            driver_id: {
+              type: "string",
+              description: "The unique identifier of the driver who's on duty assign with the active bus."
+            },
+            bus_id: {
+              type: "string",
+              description: "The unique identifier of the active bus"
+            },
+            bus_latitude: {
+              type: "number",
+              description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+            },
+            bus_longitude: {
+              type: "number",
+              description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+            },
+            occupancy_status: {
+              type: "string",
+              description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+      request: FastifyRequest<{ Params: IParams }>,
+  ) {
 
-//         const { id } = request.params;
+        const { id } = request.params;
 
-//         try {
+        try {
 
-//           const busStop = await prisma.bus_stop.findUnique({
-//             where: {
-//               id: id,
-//             },
-//           })
+          const activeBus = await prisma.driver_bus.findUnique({
+            where: {
+              id: id,
+            },
+          })
 
-//           return busStop;
+          return activeBus;
 
-//         } catch (error) {
+        } catch (error) {
 
-//           console.error(error);
+          console.error(error);
 
-//         }
-//     }
-//   );
+        }
+    }
+  );
 
-//   /**
-//    * ADD new bus stop
-//    */
-//   fastify.post(
-//   '/bus-stop',
-//   {
-//       schema: {
-//       description: 'post some data',
-//       tags: ['Bus Stop'],
-//       summary: 'qwerty',
-//       body: {
-//           type: 'object',
-//           properties: {
-//           id: { type: 'string' },
-//           driver_id: { type: 'string' },
-//           bus_id: { type: 'string' },
-//           occupancy_status: { type: 'string' },
-//           bus_lat: { type: 'number' },
-//           bus_lng: { type: 'number' },
-//           }
-//       },
-//       // response: {
-//       //   201: {
-//       //     description: 'Successful response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       hello: { type: 'string' }
-//       //     }
-//       //   },
-//       //   default: {
-//       //     description: 'Default response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       foo: { type: 'string' }
-//       //     }
-//       //   }
-//       // }
-//       }
-//   },
-//   async function (
-//       request: FastifyRequest<{
-//           Body: bus_stop;
-//       }>,
-//   ) {
+  /**
+   * ADD a new active bus
+   */
+  fastify.post(
+  '/active-bus',
+  {
+    schema: {
+      description: "This endpoint allows you to add a new active bus. This endpoint requires request body of active bus information with the following properties in order to add a new active bus: id, driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status.",
+      tags: ["Active Bus"],
+      summary: "Add a new active bus",
+      body: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+            description: "A unique identifier for the active bus."
+          },
+          driver_id: {
+            type: "string",
+            description: "The unique identifier of the driver who's on duty assign with the active bus."
+          },
+          bus_id: {
+            type: "string",
+            description: "The unique identifier of the active bus"
+          },
+          bus_latitude: {
+            type: "number",
+            description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+          },
+          bus_longitude: {
+            type: "number",
+            description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+          },
+          occupancy_status: {
+            type: "string",
+            description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+          }
+        }
+      },
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the active bus."
+            },
+            driver_id: {
+              type: "string",
+              description: "The unique identifier of the driver who's on duty assign with the active bus."
+            },
+            bus_id: {
+              type: "string",
+              description: "The unique identifier of the active bus"
+            },
+            bus_latitude: {
+              type: "number",
+              description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+            },
+            bus_longitude: {
+              type: "number",
+              description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+            },
+            occupancy_status: {
+              type: "string",
+              description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+      request: FastifyRequest<{
+          Body: driver_bus;
+      }>,
+  ) {
 
-//       const { id, full_name, short_name, latitude, longitude, image_path } = request.body;
+      const { id, driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status } = request.body;
 
-//       try {
+      try {
 
-//         const addedBusStop = await prisma.bus_stop.create({
-//           data: {
-//             id: id,
-//             full_name: full_name,
-//             short_name: short_name,
-//             latitude: latitude,
-//             longitude: longitude,
-//             image_path: image_path
-//           },
-//         })
+        const addedActiveBus = await prisma.driver_bus.create({
+          data: {
+            id: id,
+            driver_id: driver_id,
+            bus_id: bus_id,
+            bus_latitude: bus_latitude,
+            bus_longitude: bus_longitude,
+            occupancy_status: occupancy_status
+          }
+        })
 
-//         return addedBusStop;
+        return addedActiveBus;
 
-//       } catch (error) {
+      } catch (error) {
 
-//         console.error(error);
+        console.error(error);
 
-//       }
-//   }
-//   );
+      }
+  }
+  );
 
-//   /**
-//    * UPDATE ALL bus stop by id
-//    */
-//   fastify.put(
-//   '/bus-stop/:id',
-//   {
-//   schema: {
-//       description: 'post some data',
-//       tags: ['Bus Stop'],
-//       summary: 'qwerty',
-//       params: {
-//       type: 'object',
-//       properties: {
-//           id: {
-//           type: 'string',
-//           description: 'id'
-//           }
-//       }
-//       },
-//       body: {
-//       type: 'object',
-//       properties: {
-//           driver_id: { type: 'string' },
-//           bus_id: { type: 'string' },
-//           occupancy_status: { type: 'string' },
-//           bus_lat: { type: 'number' },
-//           bus_lng: { type: 'number' },
-//       }
-//       },
-//       // response: {
-//       //   201: {
-//       //     description: 'Successful response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       hello: { type: 'string' }
-//       //     }
-//       //   },
-//       //   default: {
-//       //     description: 'Default response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       foo: { type: 'string' }
-//       //     }
-//       //   }
-//       // }
-//   }
-//   },
-//   async function (
-//     request: FastifyRequest<{
-//         Params: IParams;
-//         Body: bus_stop;
-//     }>
-//   ) {
+  /**
+   * UPDATE / REPLACE / CREATE an active bus information by id
+   */
+  fastify.put(
+  '/active bus/:id',
+  {
+    schema: {
+      description: "This endpoint allows you to replace, update or create an active bus by id. This endpoint requires request body of active bus information with the following properties in order to update the specific active bus: driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the active bus ID as a parameter.",
+      tags: ["Active Bus"],
+      summary: "Replace, update or create active bus by id",
+      body: {
+        type: "object",
+        properties: {
+          driver_id: {
+            type: "string",
+            description: "The unique identifier of the driver who's on duty assign with the active bus."
+          },
+          bus_id: {
+            type: "string",
+            description: "The unique identifier of the active bus"
+          },
+          bus_latitude: {
+            type: "number",
+            description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+          },
+          bus_longitude: {
+            type: "number",
+            description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+          },
+          occupancy_status: {
+            type: "string",
+            description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+          }
+        }
+      },
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the active bus."
+            },
+            driver_id: {
+              type: "string",
+              description: "The unique identifier of the driver who's on duty assign with the active bus."
+            },
+            bus_id: {
+              type: "string",
+              description: "The unique identifier of the active bus"
+            },
+            bus_latitude: {
+              type: "number",
+              description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+            },
+            bus_longitude: {
+              type: "number",
+              description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+            },
+            occupancy_status: {
+              type: "string",
+              description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+    request: FastifyRequest<{
+        Params: IParams;
+        Body: driver_bus;
+    }>
+  ) {
 
-//     const { id } = request.params;
-//     const { full_name, short_name, latitude, longitude, image_path } = request.body;
+    const { id } = request.params;
+    const { driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status } = request.body;
 
-//     try {
 
-//         const updatedBusStop = await prisma.bus_stop.update({
-//           where: { id: id },
-//           data: {
-//             full_name: full_name,
-//             short_name: short_name,
-//             latitude: latitude,
-//             longitude: longitude,
-//             image_path: image_path
-//           },
-//         })
+    try {
 
-//         return updatedBusStop;
+      const updatedActiveBus = await prisma.driver_bus.update({
+        where: { id: id },
+        data: {
+          driver_id: driver_id,
+          bus_id: bus_id,
+          bus_latitude: bus_latitude,
+          bus_longitude: bus_longitude,
+          occupancy_status: occupancy_status
+        },
+      })
 
-//     } catch (error) {
+        return updatedActiveBus;
 
-//       console.error(error);
+    } catch (error) {
 
-//     }
-//   }
-//   );
+      console.error(error);
 
-//   /**
-//    * UPDATE PARTIAL bus stop by id
-//    */
-//   fastify.patch(
-//     '/bus-stop/:id',
-//     {
-//     schema: {
-//         description: 'post some data',
-//         tags: ['Bus Stop'],
-//         summary: 'qwerty',
-//         params: {
-//         type: 'object',
-//         properties: {
-//             id: {
-//             type: 'string',
-//             description: 'id'
-//             }
-//         }
-//         },
-//         body: {
-//         type: 'object',
-//         properties: {
-//             driver_id: { type: 'string' },
-//             bus_id: { type: 'string' },
-//             occupancy_status: { type: 'string' },
-//             bus_lat: { type: 'number' },
-//             bus_lng: { type: 'number' },
-//         }
-//         },
-//         // response: {
-//         //   201: {
-//         //     description: 'Successful response',
-//         //     type: 'object',
-//         //     properties: {
-//         //       hello: { type: 'string' }
-//         //     }
-//         //   },
-//         //   default: {
-//         //     description: 'Default response',
-//         //     type: 'object',
-//         //     properties: {
-//         //       foo: { type: 'string' }
-//         //     }
-//         //   }
-//         // }
-//     }
-//     },
-//     async function (
-//       request: FastifyRequest<{
-//           Params: IParams;
-//           Body: bus_stop;
-//       }>
-//     ) {
+    }
+  }
+  );
 
-//       const { id } = request.params;
-//       const { full_name, short_name, latitude, longitude, image_path } = request.body;
+  /**
+   * UPDATE active bus information partially by id
+   */
+  fastify.patch(
+    '/active bus/:id',
+    {
+      schema: {
+        description: "This endpoint allows you to replace or update an active bus information partially by id. This endpoint requires request body of active bus information with the following properties in order to update the specific active bus: full name, phone number, password and photo URL path. Essentially, this endpoints allows you to update or replace only parts of the existing active bus information. This endpoint requires the active bus ID as a parameter.",
+        tags: ["Active Bus"],
+        summary: "Replace or update active bus partially by id",
+        body: {
+          type: "object",
+          properties: {
+            driver_id: {
+              type: "string",
+              description: "The unique identifier of the driver who's on duty assign with the active bus."
+            },
+            bus_id: {
+              type: "string",
+              description: "The unique identifier of the active bus"
+            },
+            bus_latitude: {
+              type: "number",
+              description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+            },
+            bus_longitude: {
+              type: "number",
+              description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+            },
+            occupancy_status: {
+              type: "string",
+              description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+            }
+          }
+        },
+        response: {
+          200: {
+            description: "Successful response",
+            type: "object",
+            properties: {
+              id: {
+                type: "string",
+                description: "A unique identifier for the active bus."
+              },
+              driver_id: {
+                type: "string",
+                description: "The unique identifier of the driver who's on duty assign with the active bus."
+              },
+              bus_id: {
+                type: "string",
+                description: "The unique identifier of the active bus"
+              },
+              bus_latitude: {
+                type: "number",
+                description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+              },
+              bus_longitude: {
+                type: "number",
+                description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+              },
+              occupancy_status: {
+                type: "string",
+                description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+              }
+            }
+          }
+        }
+      }
+    },
+    async function (
+      request: FastifyRequest<{
+          Params: IParams;
+          Body: driver_bus;
+      }>
+    ) {
 
-//       try {
+      const { id } = request.params;
+      const { driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status } = request.body;
 
-//           const updatedBusStop = await prisma.bus_stop.update({
-//             where: { id: id },
-//             data: {
-//               full_name: full_name,
-//               short_name: short_name,
-//               latitude: latitude,
-//               longitude: longitude,
-//               image_path: image_path
-//             },
-//           })
+      try {
 
-//           return updatedBusStop;
+        const updatedActiveBus = await prisma.driver_bus.update({
+          where: { id: id },
+          data: {
+            driver_id: driver_id,
+            bus_id: bus_id,
+            bus_latitude: bus_latitude,
+            bus_longitude: bus_longitude,
+            occupancy_status: occupancy_status
+          },
+        })
 
-//       } catch (error) {
+        return updatedActiveBus;
 
-//         console.error(error);
+      } catch (error) {
 
-//       }
-//     }
-//   );
+        console.error(error);
 
-//   /**
-//    * DELETE bus stop by id
-//    */
-//   fastify.delete(
-//   '/bus-stop/:id',
-//   {
-//   schema: {
-//       description: 'Root endpoint',
-//       tags: ['Bus Stop'],
-//       // response: {
-//       //   200: {
-//       //     description: 'Succesful response',
-//       //     type: 'object',
-//       //     properties: {
-//       //       message: { type: 'string' },
-//       //       result: { type: 'object', nullable: true }
-//       //     }
-//       //   }
-//       // }
-//   }
-//   },
-//   async function (
-//   request: FastifyRequest<{
-//       Params: IParams;
-//     }>
-//   ) {
+      }
+    }
+  );
 
-//     const { id } = request.params;
+  /**
+   * DELETE active bus by id
+   */
+  fastify.delete(
+  '/active bus/:id',
+  {
+    schema: {
+      description: "This endpoint delete existing active bus by id. This endpoint requires the active bus ID as a parameter.",
+      tags: ["Active Bus"],
+      summary: "Delete active bus by id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the active bus."
+            },
+            driver_id: {
+              type: "string",
+              description: "The unique identifier of the driver who's on duty assign with the active bus."
+            },
+            bus_id: {
+              type: "string",
+              description: "The unique identifier of the active bus"
+            },
+            bus_latitude: {
+              type: "number",
+              description: "The latitude coordinate of the active bus's location, facilitating precise mapping and navigation."
+            },
+            bus_longitude: {
+              type: "number",
+              description: "The longitude coordinate of the active bus's location, essential for accurate geolocation and routing."
+            },
+            occupancy_status: {
+              type: "string",
+              description: "The occupancy status of the active bus, indicating whether it is fully occupied (high), partially occupied (m) or low on seats."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+  request: FastifyRequest<{
+      Params: IParams;
+    }>
+  ) {
 
-//     try {
+    const { id } = request.params;
 
-//         const deletedBusStop = await prisma.bus_stop.delete({
-//           where: {
-//               id: id,
-//           },
-//         })
+    try {
 
-//         return deletedBusStop;
+      const deletedActiveBus = await prisma.driver_bus.delete({
+        where: {
+            id: id,
+        },
+      })
 
-//     } catch (error) {
+      return deletedActiveBus;
 
-//         console.error(error);
+    } catch (error) {
 
-//     }
+        console.error(error);
 
-//   }
-//   )
-// }
+    }
+
+  }
+  )
+}
