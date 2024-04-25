@@ -25,22 +25,22 @@ server.register(fastifySwagger, {
       version: '1.0.0'
     },
     servers: [
-      {
-        url: `http://${host}:${port}`,
-        description: "Development server"
-      },
+      // {
+      //   url: `http://${host}:${port}`,
+      //   description: "Development server"
+      // },
       {
         url: `http://127.0.0.1:3000`,
         description: "PreProd server"
       },
-      {
-        url: `http://localhost:3000`,
-        description: "Docker server"
-      },
-      {
-        url: `https://putratapi-production.up.railway.app`,
-        description: "Production server"
-      }
+      // {
+      //   url: `http://localhost:3000`,
+      //   description: "Docker server"
+      // },
+      // {
+      //   url: `https://putratapi-production.up.railway.app`,
+      //   description: "Production server"
+      // }
     ],
     components: {
       securitySchemes: {

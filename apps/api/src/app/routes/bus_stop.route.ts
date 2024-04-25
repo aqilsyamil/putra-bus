@@ -12,46 +12,46 @@ export default async function routes(fastify: FastifyInstance) {
   fastify.get(
   '/bus-stops',
   {
-      schema: {
-        description: "This endpoint provides information on all university campus bus stops, including unique IDs, full and short names, latitude and longitude coordinates, and image URLs for visual identification.",
-        tags: ['Bus Stop'],
-        summary: 'Get all available bus stops',
-        response: {
-          200: {
-            description: 'Succesful response',
-            type: 'array',
-            items: {
-              type: 'object',
-              properties: {
-                id: {
-                  type: 'string' ,
-                  description: 'A unique identifier for the bus stop.'
-                },
-                full_name: {
-                  type: 'string',
-                  description: 'The full name of the bus stop, providing descriptive information about its location or nearby landmarks.'
-                },
-                short_name: {
-                  type: 'string',
-                  description: 'A shorter, commonly used name for the bus stop, often used for quick reference or announcements.'
-                },
-                latitude: {
-                  type: 'number',
-                  description: 'The latitude coordinate of the bus stop\'s location, facilitating precise mapping and navigation.'
-                },
-                longitude: {
-                  type: 'number',
-                  description: 'The longitude coordinate of the bus stop\'s location, essential for accurate geolocation and routing.'
-                },
-                image_path: {
-                  type: 'string',
-                  description: 'A URL pointing to the image or picture of the actual bus stop, allowing users to visually identify the stop and its surroundings.'
-                }
+    schema: {
+      description: "This endpoint provides information on all university campus bus stops, including unique IDs, full and short names, latitude and longitude coordinates, and image URLs for visual identification.",
+      tags: ['Bus Stop'],
+      summary: 'Get all available bus stops',
+      response: {
+        200: {
+          description: 'Succesful response',
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string' ,
+                description: 'A unique identifier for the bus stop.'
+              },
+              full_name: {
+                type: 'string',
+                description: 'The full name of the bus stop, providing descriptive information about its location or nearby landmarks.'
+              },
+              short_name: {
+                type: 'string',
+                description: 'A shorter, commonly used name for the bus stop, often used for quick reference or announcements.'
+              },
+              latitude: {
+                type: 'number',
+                description: 'The latitude coordinate of the bus stop\'s location, facilitating precise mapping and navigation.'
+              },
+              longitude: {
+                type: 'number',
+                description: 'The longitude coordinate of the bus stop\'s location, essential for accurate geolocation and routing.'
+              },
+              image_path: {
+                type: 'string',
+                description: 'A URL pointing to the image or picture of the actual bus stop, allowing users to visually identify the stop and its surroundings.'
               }
             }
           }
         }
       }
+    }
   },
   async function () {
       try {
