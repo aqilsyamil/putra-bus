@@ -20,8 +20,8 @@ server.register(fastifyCors, {
 server.register(fastifySwagger, {
   openapi: {
     info: {
-      title: 'Putra T API',
-      description: 'Putra T API Documentation',
+      title: 'PutraBus API',
+      description: 'PutraBus API Documentation',
       version: '1.0.0'
     },
     servers: [
@@ -52,8 +52,8 @@ server.register(fastifySwagger, {
     },
     tags: [
       {
-        name: 'Root',
-        description: 'Root endpoints'
+        name: 'Bus Stop',
+        description: 'Bus Stop endpoints'
       }
     ]
   }
@@ -76,7 +76,6 @@ server.register(fastifySwaggerUi, {
   transformSpecificationClone: true
 });
 
-
 // Register your application as a normal plugin.
 server.register(app);
 
@@ -98,6 +97,7 @@ async function start() {
 
   server.swagger;
 }
+
 // hello
 start().catch((err) => {
   server.log.error(err);
