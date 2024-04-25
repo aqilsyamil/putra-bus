@@ -21,7 +21,7 @@ server.register(fastifySwagger, {
   openapi: {
     info: {
       title: 'PutraBus API',
-      description: "The PutraBus API is crucial for the PutraBus app in prodiving data giving near real-time information of buses in UPM. It offers data on bus stops, drivers, bus stop informations and routes, improving operational efficiency and user experience.",
+      description: "The PutraBus API is crucial for the PutraBus app in prodiving data giving near real-time information of buses in UPM. It offers data on buses, drivers, bus stops and routes, improving operational efficiency and user experience.",
       version: '1.0.0'
     },
     servers: [
