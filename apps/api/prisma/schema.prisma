@@ -74,7 +74,7 @@ model link_waylink {
 
 model route {
   id         String       @id @db.VarChar(255)
-  route_name String?      @db.VarChar(255)
+  name       String?      @db.VarChar(255)
   route_link route_link[]
 }
 
