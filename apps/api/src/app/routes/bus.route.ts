@@ -111,7 +111,7 @@ export default async function routes(fastify: FastifyInstance) {
   '/bus',
   {
     schema: {
-      description: "This endpoint allows you to add a new bus. This endpoint requires request body of bus information with the following properties in order to add a new bus: id, full_name, short_name, latitude, longitude, image_path.",
+      description: "This endpoint allows you to add a new bus. This endpoint requires request body of bus information with the following properties in order to add a new bus: id and plate number",
       tags: ["Bus"],
       summary: "Add a new bus",
       body: {
@@ -173,13 +173,13 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * UPDATE / REPLACE/ CREATE a bus information by id
+   * UPDATE / REPLACE / CREATE a bus information by id
    */
   fastify.put(
   '/bus/:id',
   {
     schema: {
-      description: "This endpoint allows you to replace, update or create a bus by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus: plate number. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one.",
+      description: "This endpoint allows you to replace, update or create a bus by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus: plate number. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the bus ID as a parameter.",
       tags: ["Bus"],
       summary: "Replace, update or create bus by id",
       body: {
@@ -246,7 +246,7 @@ export default async function routes(fastify: FastifyInstance) {
     '/bus/:id',
     {
       schema: {
-        description: "This endpoint allows you to replace or update a bus information partially by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus: plate number. Essentially, this endpoints allows you to update or replace only parts of the existing bus information.",
+        description: "This endpoint allows you to replace or update a bus information partially by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus: plate number. Essentially, this endpoints allows you to update or replace only parts of the existing bus information. This endpoint requires the bus ID as a parameter.",
         tags: ["Bus"],
         summary: "Replace or update bus partially by id",
         body: {
@@ -312,7 +312,7 @@ export default async function routes(fastify: FastifyInstance) {
   '/bus/:id',
   {
     schema: {
-      description: "This endpoint delete existing bus by id.",
+      description: "This endpoint delete existing bus by id. This endpoint requires the bus ID as a parameter.",
       tags: ["Bus"],
       summary: "Delete bus by id",
       response: {
