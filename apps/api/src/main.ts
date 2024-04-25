@@ -21,7 +21,7 @@ server.register(fastifySwagger, {
   openapi: {
     info: {
       title: 'PutraBus API',
-      description: 'PutraBus API Documentation',
+      description: "The PutraBus API is crucial for the PutraBus app in prodiving data giving near real-time information of buses in UPM. It offers data on bus stops, drivers, bus stop informations and routes, improving operational efficiency and user experience.",
       version: '1.0.0'
     },
     servers: [
@@ -53,8 +53,24 @@ server.register(fastifySwagger, {
     tags: [
       {
         name: 'Bus Stop',
-        description: 'Bus Stop endpoints'
-      }
+        description: 'Bus Stop Endpoints'
+      },
+      {
+        name: 'Bus',
+        description: 'Bus Endpoints'
+      },
+      {
+        name: 'Driver',
+        description: 'Driver Endpoints'
+      },
+      {
+        name: 'Active Bus',
+        description: 'Active Bus Endpoints'
+      },
+      {
+        name: 'Route',
+        description: 'Route Endpoints'
+      },
     ]
   }
 });
