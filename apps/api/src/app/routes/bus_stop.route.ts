@@ -349,9 +349,9 @@ export default async function routes(fastify: FastifyInstance) {
     '/bus-stop/:id',
     {
       schema: {
-        description: "This endpoint allows you to replace or update a bus stop information partially by id. This endpoint requires request body of bus stop information with the following properties in order to update the specific bus stop: full_name, short_name, latitude, longitude, image_path. Essentially, this endpoints allows you to update or replace only parts of the existing bus information. This endpoint requires the bus stop ID as a parameter.",
+        description: "This endpoint allows you to replace or update a bus stop information partially by id. This endpoint requires request body of bus stop information with the following properties in order to update the specific bus stop: full_name, short_name, latitude, longitude, image_path. Essentially, this endpoints allows you to update or replace only parts of the existing bus stop information. This endpoint requires the bus stop ID as a parameter.",
         tags: ['Bus Stop'],
-        summary: "Replace, update or create bus stop by id",
+        summary: "Replace or update bus stop partially by id",
         body: {
           type: 'object',
             properties: {
