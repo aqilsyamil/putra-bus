@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export default async function routes(fastify: FastifyInstance) {
 
   /**
-   * GET all bus stops
+   * GET all available bus stops
    */
   fastify.get(
   '/bus-stops',
@@ -69,7 +69,7 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * GET one bus stop by id
+   * GET specific bus stop by id
    */
   fastify.get(
   '/bus-stop/:id',

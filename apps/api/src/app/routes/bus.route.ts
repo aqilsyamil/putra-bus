@@ -1,13 +1,13 @@
 import type { FastifyRequest, FastifyInstance } from "fastify";
 import { IParams } from "../interfaces/interface";
-import { PrismaClient, bus_stop } from "@prisma/client";
+import { PrismaClient, bus } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 export default async function routes(fastify: FastifyInstance) {
 
   /**
-   * GET all bus stops
+   * GET all available bus
    */
   fastify.get(
   '/buses',
@@ -53,7 +53,7 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * GET one bus stop by id
+   * GET specific bus by id
    */
   fastify.get(
   '/bus/:id',
@@ -104,155 +104,140 @@ export default async function routes(fastify: FastifyInstance) {
     }
   );
 
-  // /**
-  //  * ADD new bus stop
-  //  */
-  // fastify.post(
-  // '/bus-stop',
-  // {
-  //     schema: {
-  //     description: 'post some data',
-  //     tags: ['Bus Stop'],
-  //     summary: 'qwerty',
-  //     body: {
-  //         type: 'object',
-  //         properties: {
-  //         id: { type: 'string' },
-  //         driver_id: { type: 'string' },
-  //         bus_id: { type: 'string' },
-  //         occupancy_status: { type: 'string' },
-  //         bus_lat: { type: 'number' },
-  //         bus_lng: { type: 'number' },
-  //         }
-  //     },
-  //     // response: {
-  //     //   201: {
-  //     //     description: 'Successful response',
-  //     //     type: 'object',
-  //     //     properties: {
-  //     //       hello: { type: 'string' }
-  //     //     }
-  //     //   },
-  //     //   default: {
-  //     //     description: 'Default response',
-  //     //     type: 'object',
-  //     //     properties: {
-  //     //       foo: { type: 'string' }
-  //     //     }
-  //     //   }
-  //     // }
-  //     }
-  // },
-  // async function (
-  //     request: FastifyRequest<{
-  //         Body: bus_stop;
-  //     }>,
-  // ) {
+  /**
+   * ADD a new bus
+   */
+  fastify.post(
+  '/bus',
+  {
+    schema: {
+      description: "This endpoint allows you to add a new bus. This endpoint requires request body of bus information with the following properties in order to add a new bus: id, full_name, short_name, latitude, longitude, image_path.",
+      tags: ["Bus"],
+      summary: "Add a new bus",
+      body: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+            description: "A unique identifier for the bus."
+          },
+          plate_no: {
+            type: "string",
+            description: "The plate number of the bus, providing identification for the vehicle."
+          }
+        }
+      },
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the bus."
+            },
+            plate_no: {
+              type: "string",
+              description: "The plate number of the bus, providing identification for the vehicle."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+      request: FastifyRequest<{
+          Body: bus;
+      }>,
+  ) {
 
-  //     const { id, full_name, short_name, latitude, longitude, image_path } = request.body;
+      const { id, plate_no } = request.body;
 
-  //     try {
+      try {
 
-  //       const addedBusStop = await prisma.bus_stop.create({
-  //         data: {
-  //           id: id,
-  //           full_name: full_name,
-  //           short_name: short_name,
-  //           latitude: latitude,
-  //           longitude: longitude,
-  //           image_path: image_path
-  //         },
-  //       })
+        const addedBus = await prisma.bus.create({
+          data: {
+            id: id,
+            plate_no: plate_no
+          }
+        })
 
-  //       return addedBusStop;
+        return addedBus;
 
-  //     } catch (error) {
+      } catch (error) {
 
-  //       console.error(error);
+        console.error(error);
 
-  //     }
-  // }
-  // );
+      }
+  }
+  );
 
-  // /**
-  //  * UPDATE ALL bus stop by id
-  //  */
-  // fastify.put(
-  // '/bus-stop/:id',
-  // {
-  // schema: {
-  //     description: 'post some data',
-  //     tags: ['Bus Stop'],
-  //     summary: 'qwerty',
-  //     params: {
-  //     type: 'object',
-  //     properties: {
-  //         id: {
-  //         type: 'string',
-  //         description: 'id'
-  //         }
-  //     }
-  //     },
-  //     body: {
-  //     type: 'object',
-  //     properties: {
-  //         driver_id: { type: 'string' },
-  //         bus_id: { type: 'string' },
-  //         occupancy_status: { type: 'string' },
-  //         bus_lat: { type: 'number' },
-  //         bus_lng: { type: 'number' },
-  //     }
-  //     },
-  //     // response: {
-  //     //   201: {
-  //     //     description: 'Successful response',
-  //     //     type: 'object',
-  //     //     properties: {
-  //     //       hello: { type: 'string' }
-  //     //     }
-  //     //   },
-  //     //   default: {
-  //     //     description: 'Default response',
-  //     //     type: 'object',
-  //     //     properties: {
-  //     //       foo: { type: 'string' }
-  //     //     }
-  //     //   }
-  //     // }
-  // }
-  // },
-  // async function (
-  //   request: FastifyRequest<{
-  //       Params: IParams;
-  //       Body: bus_stop;
-  //   }>
-  // ) {
+  /**
+   * UPDATE / REPLACE/ CREATE a bus information by id
+   */
+  fastify.put(
+  '/bus/:id',
+  {
+    schema: {
+      description: "This endpoint allows you to replace, update or create a bus by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus: id and plate number. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one.",
+      tags: ["Bus"],
+      summary: "Replace, update or create bus by id",
+      body: {
+        type: "object",
+        properties: {
+          plate_no: {
+            type: "string",
+            description: "The plate number of the bus, providing identification for the vehicle."
+          }
+        }
+      },
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the bus."
+            },
+            plate_no: {
+              type: "string",
+              description: "The plate number of the bus, providing identification for the vehicle."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+    request: FastifyRequest<{
+        Params: IParams;
+        Body: bus;
+    }>
+  ) {
 
-  //   const { id } = request.params;
-  //   const { full_name, short_name, latitude, longitude, image_path } = request.body;
+    const { id } = request.params;
+    const { plate_no } = request.body;
 
-  //   try {
 
-  //       const updatedBusStop = await prisma.bus_stop.update({
-  //         where: { id: id },
-  //         data: {
-  //           full_name: full_name,
-  //           short_name: short_name,
-  //           latitude: latitude,
-  //           longitude: longitude,
-  //           image_path: image_path
-  //         },
-  //       })
+    try {
 
-  //       return updatedBusStop;
+        const updatedBus = await prisma.bus.update({
+          where: { id: id },
+          data: {
+            plate_no: plate_no
+          },
+        })
 
-  //   } catch (error) {
+        return updatedBus;
 
-  //     console.error(error);
+    } catch (error) {
 
-  //   }
-  // }
-  // );
+      console.error(error);
+
+    }
+  }
+  );
 
   // /**
   //  * UPDATE PARTIAL bus stop by id
