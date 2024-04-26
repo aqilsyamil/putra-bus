@@ -244,7 +244,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE / REPLACE / CREATE an active bus information by id
    */
   fastify.put(
-  '/active bus/:id',
+  '/active-bus/:id',
   {
     schema: {
       description: "This endpoint allows you to replace, update or create an active bus by id. This endpoint requires request body of active bus information with the following properties in order to update the specific active bus: driver_id, bus_id, bus_latitude, bus_longitude, occupancy_status. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the active bus ID as a parameter.",
@@ -347,7 +347,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE active bus information partially by id
    */
   fastify.patch(
-    '/active bus/:id',
+    '/active-bus/:id',
     {
       schema: {
         description: "This endpoint allows you to replace or update an active bus information partially by id. This endpoint requires request body of active bus information with the following properties in order to update the specific active bus: full name, phone number, password and photo URL path. Essentially, this endpoints allows you to update or replace only parts of the existing active bus information. This endpoint requires the active bus ID as a parameter.",
@@ -449,7 +449,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE active bus by id
    */
   fastify.delete(
-  '/active bus/:id',
+  '/active-bus/:id',
   {
     schema: {
       description: "This endpoint delete existing active bus by id. This endpoint requires the active bus ID as a parameter.",

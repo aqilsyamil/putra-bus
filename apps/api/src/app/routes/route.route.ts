@@ -671,70 +671,70 @@ export default async function routes(fastify: FastifyInstance) {
   //   }
   // );
 
-  // /**
-  //  * DELETE route by id
-  //  */
-  // fastify.delete(
-  // '/route/:id',
-  // {
-  //   schema: {
-  //     description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
-  //     tags: ["route"],
-  //     summary: "Delete route by id",
-  //     response: {
-  //       200: {
-  //         description: "Successful response",
-  //         type: "object",
-  //         properties: {
-  //           id: {
-  //             type: "string",
-  //             description: "A unique identifier for the route."
-  //           },
-  //           full_name: {
-  //             type: "string",
-  //             description: "The full name of the route, providing descriptive information about their identity."
-  //           },
-  //           phone_no: {
-  //             type: "string",
-  //             description: "The phone number of the route, providing contact information."
-  //           },
-  //           password: {
-  //             type: "string",
-  //             description: "The password of the route, providing authentication for user to login to the app."
-  //           },
-  //           photo_path: {
-  //             type: "string",
-  //             description: "The URL path of the route's photo, providing a visual representation of their identity."
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // },
-  // async function (
-  // request: FastifyRequest<{
-  //     Params: IParams;
-  //   }>
-  // ) {
+  /**
+   * DELETE route by id
+   */
+  fastify.delete(
+  '/route/:id',
+  {
+    schema: {
+      description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
+      tags: ["Route"],
+      summary: "Delete route by id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the route."
+            },
+            full_name: {
+              type: "string",
+              description: "The full name of the route, providing descriptive information about their identity."
+            },
+            phone_no: {
+              type: "string",
+              description: "The phone number of the route, providing contact information."
+            },
+            password: {
+              type: "string",
+              description: "The password of the route, providing authentication for user to login to the app."
+            },
+            photo_path: {
+              type: "string",
+              description: "The URL path of the route's photo, providing a visual representation of their identity."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+  request: FastifyRequest<{
+      Params: IParams;
+    }>
+  ) {
 
-  //   const { id } = request.params;
+    const { id } = request.params;
 
-  //   try {
+    try {
 
-  //     const deletedroute = await prisma.route.delete({
-  //       where: {
-  //           id: id,
-  //       },
-  //     })
+      const deletedroute = await prisma.route.delete({
+        where: {
+            id: id,
+        },
+      })
 
-  //     return deletedroute;
+      return deletedroute;
 
-  //   } catch (error) {
+    } catch (error) {
 
-  //       console.error(error);
+        console.error(error);
 
-  //   }
+    }
 
-  // }
-  // )
+  }
+  )
 }
