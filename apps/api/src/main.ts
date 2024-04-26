@@ -71,6 +71,14 @@ server.register(fastifySwagger, {
         name: 'Route',
         description: 'Route Endpoints'
       },
+      {
+        name: 'Link',
+        description: 'Link Endpoints'
+      },
+      {
+        name: 'Waylink',
+        description: 'Waylink Endpoints'
+      }
     ]
   }
 });

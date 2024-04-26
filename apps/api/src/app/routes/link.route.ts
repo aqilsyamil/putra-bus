@@ -187,7 +187,7 @@ export default async function routes(fastify: FastifyInstance) {
 
       try {
 
-        const addedlink = await prisma.link.create({
+        const addedLink = await prisma.link.create({
           data: {
             id: id,
             name: name,
@@ -196,7 +196,7 @@ export default async function routes(fastify: FastifyInstance) {
           }
         })
 
-        return addedlink;
+        return addedLink;
 
       } catch (error) {
 
@@ -272,7 +272,7 @@ export default async function routes(fastify: FastifyInstance) {
 
     try {
 
-      const updatedlink = await prisma.link.update({
+      const updatedLink = await prisma.link.update({
         where: { id: id },
         data: {
           name: name,
@@ -281,7 +281,7 @@ export default async function routes(fastify: FastifyInstance) {
         },
       })
 
-        return updatedlink;
+      return updatedLink;
 
     } catch (error) {
 
@@ -353,7 +353,7 @@ export default async function routes(fastify: FastifyInstance) {
 
       try {
 
-        const updatedlink = await prisma.link.update({
+        const updatedLink = await prisma.link.update({
           where: { id: id },
           data: {
             name: name,
@@ -362,7 +362,7 @@ export default async function routes(fastify: FastifyInstance) {
           },
         })
 
-        return updatedlink;
+        return updatedLink;
 
       } catch (error) {
 
@@ -418,17 +418,17 @@ export default async function routes(fastify: FastifyInstance) {
 
     try {
 
-      const deletedlink = await prisma.link.delete({
+      const deletedLink = await prisma.link.delete({
         where: {
             id: id,
         },
       })
 
-      return deletedlink;
+      return deletedLink;
 
     } catch (error) {
 
-        console.error(error);
+      console.error(error);
 
     }
 
