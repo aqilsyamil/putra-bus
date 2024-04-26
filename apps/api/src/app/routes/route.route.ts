@@ -1,21 +1,21 @@
 import type { FastifyRequest, FastifyInstance } from "fastify";
 import { IParams } from "../interfaces/interface";
-import { PrismaClient, link } from "@prisma/client";
+import { PrismaClient, route } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 export default async function routes(fastify: FastifyInstance) {
 
   /**
-   * GET all available link
+   * GET all available route
    */
   fastify.get(
-  '/links',
+  '/routes',
   {
     schema: {
-      description: "This endpoint provides information on all of the available links, including unique IDs, names, start and end bus stop IDs.",
-      tags: ["Link"],
-      summary: "Get all available links",
+      description: "This endpoint provides information on all of the available routes, including unique IDs, and names.",
+      tags: ["Route"],
+      summary: "Get all available routes",
       response: {
         200: {
           description: "Successful response",
@@ -25,19 +25,11 @@ export default async function routes(fastify: FastifyInstance) {
             properties: {
               id: {
                 type: "string",
-                description: "A unique identifier for the link."
+                description: "A unique identifier for the route."
               },
               name: {
                 type: "string",
-                description: "The full name of the link, providing descriptive information for the link."
-              },
-              start_bus_stop_id: {
-                type: "string",
-                description: "A unique identifier for the start bus stop."
-              },
-              end_bus_stop_id: {
-                type: "string",
-                description: "A unique identifier for the end bus stop."
+                description: "The full name of the route, providing descriptive information for the route."
               },
             }
           }
@@ -48,9 +40,9 @@ export default async function routes(fastify: FastifyInstance) {
   async function () {
       try {
 
-        const links = await prisma.link.findMany()
+        const routes = await prisma.route.findMany()
 
-        return links;
+        return routes;
 
       } catch (error) {
 
@@ -61,15 +53,15 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * GET specific link by id
+   * GET specific route by id
    */
   fastify.get(
-  '/link/:id',
+  '/route/:id',
   {
     schema: {
-      description: "This endpoint provides information on specific link, including unique IDs, names, start and end bus stop IDs.",
-      tags: ["link"],
-      summary: "Get specific link by id",
+      description: "This endpoint provides information on specific route, including unique IDs, and names.",
+      tags: ["Route"],
+      summary: "Get specific route by id",
       response: {
         200: {
           description: "Successful response",
@@ -77,19 +69,11 @@ export default async function routes(fastify: FastifyInstance) {
           properties: {
             id: {
               type: "string",
-              description: "A unique identifier for the link."
+              description: "A unique identifier for the route."
             },
             name: {
               type: "string",
-              description: "The full name of the link, providing descriptive information for the link."
-            },
-            start_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the start bus stop."
-            },
-            end_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the end bus stop."
+              description: "The full name of the route, providing descriptive information for the route."
             },
           }
         }
@@ -104,13 +88,13 @@ export default async function routes(fastify: FastifyInstance) {
 
         try {
 
-          const link = await prisma.link.findUnique({
+          const route = await prisma.route.findUnique({
             where: {
               id: id,
             },
           })
 
-          return link;
+          return route;
 
         } catch (error) {
 
@@ -121,33 +105,25 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * ADD a new link
+   * ADD a new route
    */
   fastify.post(
-  '/link',
+  '/route',
   {
     schema: {
-      description: "This endpoint allows you to add a new link. This endpoint requires request body of link information with the following properties in order to add a new link: id, name, start_bus_stop_id, end_bus_stop_id.",
-      tags: ["Link"],
-      summary: "Add a new link",
+      description: "This endpoint allows you to add a new route. This endpoint requires request body of route information with the following properties in order to add a new route: id and name",
+      tags: ["Route"],
+      summary: "Add a new route",
       body: {
         type: "object",
         properties: {
           id: {
             type: "string",
-            description: "A unique identifier for the link."
+            description: "A unique identifier for the route."
           },
           name: {
             type: "string",
-            description: "The full name of the link, providing descriptive information for the link."
-          },
-          start_bus_stop_id: {
-            type: "string",
-            description: "A unique identifier for the start bus stop."
-          },
-          end_bus_stop_id: {
-            type: "string",
-            description: "A unique identifier for the end bus stop."
+            description: "The full name of the route, providing descriptive information for the route."
           },
         }
       },
@@ -158,19 +134,11 @@ export default async function routes(fastify: FastifyInstance) {
           properties: {
             id: {
               type: "string",
-              description: "A unique identifier for the link."
+              description: "A unique identifier for the route."
             },
             name: {
               type: "string",
-              description: "The full name of the link, providing descriptive information for the link."
-            },
-            start_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the start bus stop."
-            },
-            end_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the end bus stop."
+              description: "The full name of the route, providing descriptive information for the route."
             },
           }
         }
@@ -179,24 +147,22 @@ export default async function routes(fastify: FastifyInstance) {
   },
   async function (
       request: FastifyRequest<{
-          Body: link;
+          Body: route;
       }>,
   ) {
 
-      const { id, name, start_bus_stop_id, end_bus_stop_id } = request.body;
+      const { id, name } = request.body;
 
       try {
 
-        const addedlink = await prisma.link.create({
+        const addedRoute = await prisma.route.create({
           data: {
             id: id,
-            name: name,
-            start_bus_stop_id: start_bus_stop_id,
-            end_bus_stop_id: end_bus_stop_id,
+            name: name
           }
         })
 
-        return addedlink;
+        return addedRoute;
 
       } catch (error) {
 
@@ -207,29 +173,21 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * UPDATE / REPLACE / CREATE a link information by id
+   * UPDATE / REPLACE / CREATE a route information by id
    */
   fastify.put(
-  '/link/:id',
+  '/route/:id',
   {
     schema: {
-      description: "This endpoint allows you to replace, update or create a link by id. This endpoint requires request body of link information with the following properties in order to update the specific link: name, start_bus_stop_id, end_bus_stop_id. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the link ID as a parameter.",
-      tags: ["Link"],
-      summary: "Replace, update or create link by id",
+      description: "This endpoint allows you to replace, update or create a route by id. This endpoint requires request body of route information with the following properties in order to update the specific route: name. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the route ID as a parameter.",
+      tags: ["Route"],
+      summary: "Replace, update or create route by id",
       body: {
         type: "object",
         properties: {
           name: {
             type: "string",
-            description: "The full name of the link, providing descriptive information for the link."
-          },
-          start_bus_stop_id: {
-            type: "string",
-            description: "A unique identifier for the start bus stop."
-          },
-          end_bus_stop_id: {
-            type: "string",
-            description: "A unique identifier for the end bus stop."
+            description: "The full name of the route, providing descriptive information for the route."
           },
         }
       },
@@ -240,19 +198,11 @@ export default async function routes(fastify: FastifyInstance) {
           properties: {
             id: {
               type: "string",
-              description: "A unique identifier for the link."
+              description: "A unique identifier for the route."
             },
             name: {
               type: "string",
-              description: "The full name of the link, providing descriptive information for the link."
-            },
-            start_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the start bus stop."
-            },
-            end_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the end bus stop."
+              description: "The full name of the route, providing descriptive information for the route."
             },
           }
         }
@@ -262,26 +212,24 @@ export default async function routes(fastify: FastifyInstance) {
   async function (
     request: FastifyRequest<{
         Params: IParams;
-        Body: link;
+        Body: route;
     }>
   ) {
 
     const { id } = request.params;
-    const { name, start_bus_stop_id, end_bus_stop_id } = request.body;
+    const { name } = request.body;
 
 
     try {
 
-      const updatedlink = await prisma.link.update({
+      const updatedRoute = await prisma.route.update({
         where: { id: id },
         data: {
-          name: name,
-          start_bus_stop_id: start_bus_stop_id,
-          end_bus_stop_id: end_bus_stop_id
+          name: name
         },
       })
 
-        return updatedlink;
+      return updatedRoute;
 
     } catch (error) {
 
@@ -292,29 +240,21 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * UPDATE link information partially by id
+   * UPDATE route information partially by id
    */
   fastify.patch(
-    '/link/:id',
+    '/route/:id',
     {
       schema: {
-        description: "This endpoint allows you to replace or update a link information partially by id. This endpoint requires request body of link information with the following properties in order to update the specific link: name, start_bus_stop_id, end_bus_stop_id. Essentially, this endpoints allows you to update or replace only parts of the existing link information. This endpoint requires the link ID as a parameter.",
-        tags: ["Link"],
-        summary: "Replace or update link partially by id",
+        description: "This endpoint allows you to replace or update a route information partially by id. This endpoint requires request body of route information with the following properties in order to update the specific route: name. Essentially, this endpoints allows you to update or replace only parts of the existing route information. This endpoint requires the route ID as a parameter.",
+        tags: ["Route"],
+        summary: "Replace or update route partially by id",
         body: {
           type: "object",
           properties: {
             name: {
               type: "string",
-              description: "The full name of the link, providing descriptive information for the link."
-            },
-            start_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the start bus stop."
-            },
-            end_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the end bus stop."
+              description: "The full name of the route, providing descriptive information for the route."
             },
           }
         },
@@ -323,20 +263,15 @@ export default async function routes(fastify: FastifyInstance) {
             description: "Successful response",
             type: "object",
             properties: {
+              id: {
+                type: "string",
+                description: "A unique identifier for the route."
+              },
               name: {
                 type: "string",
-                description: "The full name of the link, providing descriptive information for the link."
-              },
-              start_bus_stop_id: {
-                type: "string",
-                description: "A unique identifier for the start bus stop."
-              },
-              end_bus_stop_id: {
-                type: "string",
-                description: "A unique identifier for the end bus stop."
+                description: "The full name of the route, providing descriptive information for the route."
               },
             }
-
           }
         }
       }
@@ -344,25 +279,23 @@ export default async function routes(fastify: FastifyInstance) {
     async function (
       request: FastifyRequest<{
           Params: IParams;
-          Body: link;
+          Body: route;
       }>
     ) {
 
       const { id } = request.params;
-      const { name, start_bus_stop_id, end_bus_stop_id } = request.body;
+      const { name } = request.body;
 
       try {
 
-        const updatedlink = await prisma.link.update({
+        const updatedRoute = await prisma.route.update({
           where: { id: id },
           data: {
-            name: name,
-            start_bus_stop_id: start_bus_stop_id,
-            end_bus_stop_id: end_bus_stop_id
+            name: name
           },
         })
 
-        return updatedlink;
+        return updatedRoute;
 
       } catch (error) {
 
@@ -373,15 +306,15 @@ export default async function routes(fastify: FastifyInstance) {
   );
 
   /**
-   * DELETE link by id
+   * DELETE route by id
    */
   fastify.delete(
-  '/link/:id',
+  '/route/:id',
   {
     schema: {
-      description: "This endpoint delete existing link by id. This endpoint requires the link ID as a parameter.",
-      tags: ["Link"],
-      summary: "Delete link by id",
+      description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
+      tags: ["Route"],
+      summary: "Delete route by id",
       response: {
         200: {
           description: "Successful response",
@@ -389,19 +322,11 @@ export default async function routes(fastify: FastifyInstance) {
           properties: {
             id: {
               type: "string",
-              description: "A unique identifier for the link."
+              description: "A unique identifier for the route."
             },
             name: {
               type: "string",
-              description: "The full name of the link, providing descriptive information for the link."
-            },
-            start_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the start bus stop."
-            },
-            end_bus_stop_id: {
-              type: "string",
-              description: "A unique identifier for the end bus stop."
+              description: "The full name of the route, providing descriptive information for the route."
             },
           }
         }
@@ -418,13 +343,13 @@ export default async function routes(fastify: FastifyInstance) {
 
     try {
 
-      const deletedlink = await prisma.link.delete({
+      const deletedRoute = await prisma.route.delete({
         where: {
             id: id,
         },
       })
 
-      return deletedlink;
+      return deletedRoute;
 
     } catch (error) {
 

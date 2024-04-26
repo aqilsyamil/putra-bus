@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyInstance } from "fastify";
 import { IParams, IBusRoute } from "../interfaces/interface";
-import { PrismaClient, link, waylink } from '@prisma/client';
+import { PrismaClient, route, link, waylink } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -15,7 +15,7 @@ export default async function routes(fastify: FastifyInstance) {
     schema: {
       description: "This endpoint provides information on all of the available routes, including unique IDs, names, and links between bus stops.",
       tags: ["Route"],
-      summary: "Get all available routes",
+      summary: "Get all available full routes",
       response: {
         200: {
           description: "Successful response",
@@ -286,7 +286,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD a new route
    */
   fastify.post(
-  '/route',
+  '/full-route',
   {
     schema: {
       description: "This endpoint allows you to add a new route. This endpoint requires request body of route information with the following properties in order to add a new route: id, name, and links.",
@@ -484,9 +484,9 @@ export default async function routes(fastify: FastifyInstance) {
   }
   );
 
-  // /**
-  //  * UPDATE / REPLACE / CREATE a route information by id
-  //  */
+  /**
+   * UPDATE / REPLACE / CREATE a route information by id
+   */
   // fastify.put(
   // '/route/:id',
   // {
@@ -658,9 +658,9 @@ export default async function routes(fastify: FastifyInstance) {
   // }
   // );
 
-  // /**
-  //  * UPDATE route information partially by id
-  //  */
+  /**
+   * UPDATE route information partially by id
+   */
   // fastify.patch(
   //   '/route/:id',
   //   {
@@ -755,7 +755,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE route by id
    */
   fastify.delete(
-  '/route/:id',
+  '/full-route/:id',
   {
     schema: {
       description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",

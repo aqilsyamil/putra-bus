@@ -68,7 +68,7 @@ export default async function routes(fastify: FastifyInstance) {
   {
     schema: {
       description: "This endpoint provides information on specific link, including unique IDs, names, start and end bus stop IDs.",
-      tags: ["link"],
+      tags: ["Link"],
       summary: "Get specific link by id",
       response: {
         200: {
