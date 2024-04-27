@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:app": "cd apps/app && flutter run",
-    "start:api": "nx serve api"
+    "start:app:dev": "cd apps/app && flutter run",
+    "start:api:prod": "nx run api:serve:production",
+    "start:api:dev": "nx serve api"
   },
   "private": true,
   "devDependencies": {

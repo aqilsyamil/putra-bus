@@ -17,7 +17,6 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "Y2MyM2YxMDgtYmNkZi00ZjdlLWFjZWYtY2UwNjFjMWI0N2MyfHJlYWQtd3JpdGU=",
   "plugins": [
     "@nxrocks/nx-flutter",
     {
@@ -44,5 +43,6 @@
         "^production"
       ]
     }
-  }
+  },
+  "neverConnectToCloud": true
 }
