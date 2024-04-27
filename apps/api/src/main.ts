@@ -1,8 +1,11 @@
 import Fastify from 'fastify';
+import dotenv from 'dotenv'
 import { app } from './app/app';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import fastifyCors from '@fastify/cors';
+
+dotenv.config();
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
