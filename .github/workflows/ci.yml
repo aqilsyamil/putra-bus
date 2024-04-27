@@ -35,5 +35,4 @@ jobs:
             ~/.cache/Cypress # needed for the Cypress binary
           key: npm-dependencies-${{ hashFiles('bun.lockb') }}
 
-      - run: cd apps/api && bunx prisma generate
-      - run: bunx nx build api
+      - run: bun run build:api
