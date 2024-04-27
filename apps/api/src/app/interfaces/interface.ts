@@ -2,6 +2,17 @@ interface IParams {
     id: string | undefined;
 }
 
+interface IParamsRouteLink {
+    routeId: string,
+    linkId: string | undefined
+}
+
+interface IParamsRouteLinkWaylink {
+    routeId: string | undefined,
+    linkId: string,
+    waylinkId: string | undefined
+}
+
 interface IBusRouteWayLink {
   id: string,
   start_waypoint_latitude: number,
@@ -24,4 +35,4 @@ interface IBusRoute {
   links: IBusRouteLink[]
 }
 
-export { IParams, IBusRoute };
+export { IParams, IParamsRouteLink, IParamsRouteLinkWaylink, IBusRoute };

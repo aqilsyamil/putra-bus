@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyInstance } from "fastify";
-import { IParams } from "../interfaces/interface";
-import { PrismaClient, route } from "@prisma/client";
+import { IParams, IParamsRouteLink, IParamsRouteLinkWaylink } from "../interfaces/interface";
+import { PrismaClient, route, link } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -56,7 +56,7 @@ export default async function routes(fastify: FastifyInstance) {
    * GET specific route by id
    */
   fastify.get(
-  '/route/:id',
+  '/routes/:id',
   {
     schema: {
       description: "This endpoint provides information on specific route, including unique IDs, and names.",
@@ -108,7 +108,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD a new route
    */
   fastify.post(
-  '/route',
+  '/routes',
   {
     schema: {
       description: "This endpoint allows you to add a new route. This endpoint requires request body of route information with the following properties in order to add a new route: id and name",
@@ -176,7 +176,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE / REPLACE / CREATE a route information by id
    */
   fastify.put(
-  '/route/:id',
+  '/routes/:id',
   {
     schema: {
       description: "This endpoint allows you to replace, update or create a route by id. This endpoint requires request body of route information with the following properties in order to update the specific route: name. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the route ID as a parameter.",
@@ -243,7 +243,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE route information partially by id
    */
   fastify.patch(
-    '/route/:id',
+    '/routes/:id',
     {
       schema: {
         description: "This endpoint allows you to replace or update a route information partially by id. This endpoint requires request body of route information with the following properties in order to update the specific route: name. Essentially, this endpoints allows you to update or replace only parts of the existing route information. This endpoint requires the route ID as a parameter.",
@@ -309,7 +309,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE route by id
    */
   fastify.delete(
-  '/route/:id',
+  '/routes/:id',
   {
     schema: {
       description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
@@ -357,6 +357,389 @@ export default async function routes(fastify: FastifyInstance) {
 
     }
 
+  }
+  )
+
+  /**
+   * GET all links for a specific route by route id
+   */
+  fastify.get(
+  '/routes/:id/links',
+  {
+    schema: {
+      description: "This endpoint provides information of links on a specific route by route id, including unique IDs, names, IDs of start and end bus stops. This endpoint requires the route ID as a parameter.",
+      tags: ["Route"],
+      summary: "Get all links for a specific route by route id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              id: {
+                type: "string",
+                description: "A unique identifier for the link."
+              },
+              name: {
+                type: "string",
+                description: "The full name of the link, providing descriptive information for the link."
+              },
+              start_bus_stop_id: {
+                type: "string",
+                description: "A unique identifier for the start bus stop."
+              },
+              end_bus_stop_id: {
+                type: "string",
+                description: "A unique identifier for the end bus stop."
+              },
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+    request: FastifyRequest<{ Params: IParams }>,
+  ) {
+
+    const { id } = request.params;
+
+    try {
+
+      const links = await prisma.link.findMany({
+        where: {
+          route_link: {
+            some: {
+              route_id: id
+            }
+          }
+        }
+      })
+
+      return links;
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
+  }
+  );
+
+  /**
+   * GET a link for a specific route by route id and link id
+   */
+  fastify.get(
+  '/routes/:routeId/links/:linkId',
+  {
+    schema: {
+      description: "This endpoint provides information on a specific link of a route by route id and link id, which includes unique ID, name, ID of start and end bus stop. This endpoint requires the route ID and link ID as parameters.",
+      tags: ["Route"],
+      summary: "Get specific link of a route by route id and link id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the link."
+            },
+            name: {
+              type: "string",
+              description: "The full name of the link, providing descriptive information for the link."
+            },
+            start_bus_stop_id: {
+              type: "string",
+              description: "A unique identifier for the start bus stop."
+            },
+            end_bus_stop_id: {
+              type: "string",
+              description: "A unique identifier for the end bus stop."
+            },
+          }
+        }
+      }
+    }
+  },
+  async function (
+    request: FastifyRequest<{ Params: IParamsRouteLink }>,
+  ) {
+
+    const { routeId, linkId } = request.params;
+
+    try {
+
+      const link = await prisma.link.findUnique({
+        where: {
+          id: linkId,
+          route_link: {
+            some: {
+              route_id: routeId
+            }
+          }
+        }
+      })
+
+      return link;
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
+  }
+  )
+
+  /**
+   * ADD a new link for a specific route by route id
+   */
+  fastify.post(
+  '/routes/:routeId/links',
+  {
+    schema: {
+      description: "This endpoint adds a new link for a specific route by route id, which includes unique ID, name, ID of start and end bus stop. This endpoint requires the route ID and link ID as parameters.",
+      tags: ["Route"],
+      summary: "Add a new link for a specific route by route id",
+      body: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+            description: "A unique identifier for the link."
+          },
+          name: {
+            type: "string",
+            description: "The full name of the link, providing descriptive information for the link."
+          },
+          start_bus_stop_id: {
+            type: "string",
+            description: "A unique identifier for the start bus stop."
+          },
+          end_bus_stop_id: {
+            type: "string",
+            description: "A unique identifier for the end bus stop."
+          },
+        }
+      },
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the link."
+            },
+            name: {
+              type: "string",
+              description: "The full name of the link, providing descriptive information for the link."
+            },
+            start_bus_stop_id: {
+              type: "string",
+              description: "A unique identifier for the start bus stop."
+            },
+            end_bus_stop_id: {
+              type: "string",
+              description: "A unique identifier for the end bus stop."
+            },
+          }
+        }
+      }
+    }
+  },
+  async function (
+      request: FastifyRequest<{
+          Params: IParamsRouteLink;
+          Body: link;
+      }>,
+  ) {
+
+      const { routeId  } = request.params;
+      const { id, name, start_bus_stop_id, end_bus_stop_id } = request.body;
+
+      try {
+
+        const addedLink = await prisma.link.create({
+          data: {
+            id: id,
+            name: name,
+            start_bus_stop_id: start_bus_stop_id,
+            end_bus_stop_id: end_bus_stop_id,
+            route_link: {
+              create: [
+                {
+                  id: id,
+                  route_id: routeId
+                }
+              ]
+            }
+          }
+        })
+
+        return addedLink;
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+  }
+  );
+
+  /**
+   * GET all waylinks for a specific route and link by route id and link id
+   */
+  fastify.get(
+    '/routes/:routeId/links/:linkId/waylinks',
+    {
+      schema: {
+        description: "This endpoint provides information of waylinks on a specific route and link by route id and link id. These includes unique IDs, start and end waypoint latitudes and longitudes. This endpoint requires the route ID and link ID as a parameter.",
+        tags: ["Route"],
+        summary: "Get all waylinks for a specific route and link by route id and link id",
+        response: {
+          200: {
+            description: "Successful response",
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: {
+                  type: "string",
+                  description: "A unique identifier for the waylink."
+                },
+                start_waypoint_latitude: {
+                  type: "number",
+                  description: "The latitude of the start waypoint."
+                },
+                start_waypoint_longitude: {
+                  type: "number",
+                  description: "The longitude of the start waypoint."
+                },
+                end_waypoint_latitude: {
+                  type: "number",
+                  description: "The latitude of the end waypoint."
+                },
+                end_waypoint_longitude: {
+                  type: "number",
+                  description: "The longitude of the end waypoint."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    async function (
+      request: FastifyRequest<{ Params: IParamsRouteLinkWaylink }>,
+    ) {
+
+      const { routeId, linkId } = request.params;
+
+      try {
+
+        const waylinks = await prisma.waylink.findMany({
+          where: {
+            link_waylink: {
+              some: {
+                link_id: linkId,
+                link: {
+                  route_link: {
+                    some: {
+                      route_id: routeId
+                    }
+                  }
+                }
+              }
+            }
+          }
+        })
+
+        return waylinks;
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+    }
+  );
+
+  /**
+   * GET a waylink for a specific route and link by route id, link id and waylink id
+   */
+  fastify.get(
+  '/routes/:routeId/links/:linkId/waylinks/:waylinkId',
+  {
+    schema: {
+      description: "This endpoint provides information on specific waylink. This includes unique IDs, start and end waypoint latitudes and longitudes. This endpoint requires the route ID, link ID and waylink ID as a parameter.",
+      tags: ["Route"],
+      summary: "Get a waylink for a specific route and link by route id, link id and waylink id",
+      response: {
+        200: {
+          description: "Successful response",
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "A unique identifier for the waylink."
+            },
+            start_waypoint_latitude: {
+              type: "number",
+              description: "The latitude of the start waypoint."
+            },
+            start_waypoint_longitude: {
+              type: "number",
+              description: "The longitude of the start waypoint."
+            },
+            end_waypoint_latitude: {
+              type: "number",
+              description: "The latitude of the end waypoint."
+            },
+            end_waypoint_longitude: {
+              type: "number",
+              description: "The longitude of the end waypoint."
+            }
+          }
+        }
+      }
+    }
+  },
+  async function (
+    request: FastifyRequest<{ Params: IParamsRouteLinkWaylink }>,
+  ) {
+
+    const { routeId, linkId, waylinkId } = request.params;
+
+    try {
+
+      const waylinks = await prisma.waylink.findUnique({
+        where: {
+          id: waylinkId,
+          link_waylink: {
+            some: {
+              link_id: linkId,
+              link: {
+                route_link: {
+                  some: {
+                    route_id: routeId
+                  }
+                }
+              }
+            }
+          }
+        }
+      })
+
+      return waylinks;
+
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
   }
   )
 }

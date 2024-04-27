@@ -68,7 +68,7 @@ export default async function routes(fastify: FastifyInstance) {
    * GET specific waylink by id
    */
   fastify.get(
-  '/waylink/:id',
+  '/waylinks/:id',
   {
     schema: {
       description: "This endpoint provides information on specific waylink, including unique IDs, start and end waypoint coordinates.",
@@ -132,7 +132,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD a new waylink
    */
   fastify.post(
-  '/waylink',
+  '/waylinks',
   {
     schema: {
       description: "This endpoint allows you to add a new waylink. This endpoint requires request body of waylink information with the following properties in order to add a new waylink: id, start_waypoint_latitude, start_waypoint_longitude, end_waypoint_latitude, end_waypoint_longitude.",
@@ -227,7 +227,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE / REPLACE / CREATE a waylink information by id
    */
   fastify.put(
-  '/waylink/:id',
+  '/waylinks/:id',
   {
     schema: {
       description: "This endpoint allows you to replace, update or create a waylink by id. This endpoint requires request body of waylink information with the following properties in order to update the specific waylink: id, start_waypoint_latitude, start_waypoint_longitude, end_waypoint_latitude, end_waypoint_longitude. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the waylink ID as a parameter.",
@@ -321,7 +321,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE waylink information partially by id
    */
   fastify.patch(
-    '/waylink/:id',
+    '/waylinks/:id',
     {
       schema: {
         description: "This endpoint allows you to replace or update a waylink information partially by id. This endpoint requires request body of waylink information with the following properties in order to update the specific waylink: start_waypoint_latitude, start_waypoint_longitude, end_waypoint_latitude, end_waypoint_longitude. Essentially, this endpoints allows you to update or replace only parts of the existing waylink information. This endpoint requires the waylink ID as a parameter.",
@@ -415,7 +415,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE waylink by id
    */
   fastify.delete(
-  '/waylink/:id',
+  '/waylinks/:id',
   {
     schema: {
       description: "This endpoint delete existing waylink by id. This endpoint requires the waylink ID as a parameter.",

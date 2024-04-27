@@ -68,7 +68,7 @@ export default async function routes(fastify: FastifyInstance) {
    * GET specific driver by id
    */
   fastify.get(
-  '/driver/:id',
+  '/drivers/:id',
   {
     schema: {
       description: "This endpoint provides information on specific driver, including unique IDs, full number, phone number, password and photo URL path. This endpoint requires the driver ID as a parameter.",
@@ -132,7 +132,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD a new driver
    */
   fastify.post(
-  '/driver',
+  '/drivers',
   {
     schema: {
       description: "This endpoint allows you to add a new driver. This endpoint requires request body of driver information with the following properties in order to add a new driver: id, full name, phone number, password and photo URL path.",
@@ -227,7 +227,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE / REPLACE / CREATE a driver information by id
    */
   fastify.put(
-  '/driver/:id',
+  '/drivers/:id',
   {
     schema: {
       description: "This endpoint allows you to replace, update or create a driver by id. This endpoint requires request body of driver information with the following properties in order to update the specific driver: full name, phone number, password and photo URL path. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the driver ID as a parameter.",
@@ -321,7 +321,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE driver information partially by id
    */
   fastify.patch(
-    '/driver/:id',
+    '/drivers/:id',
     {
       schema: {
         description: "This endpoint allows you to replace or update a driver information partially by id. This endpoint requires request body of driver information with the following properties in order to update the specific driver: full name, phone number, password and photo URL path. Essentially, this endpoints allows you to update or replace only parts of the existing driver information. This endpoint requires the driver ID as a parameter.",
@@ -414,7 +414,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE driver by id
    */
   fastify.delete(
-  '/driver/:id',
+  '/drivers/:id',
   {
     schema: {
       description: "This endpoint delete existing driver by id. This endpoint requires the driver ID as a parameter.",

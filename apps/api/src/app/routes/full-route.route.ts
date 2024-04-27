@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyInstance } from "fastify";
 import { IParams, IBusRoute } from "../interfaces/interface";
-import { PrismaClient, route, link, waylink } from '@prisma/client';
+import { PrismaClient, link, waylink } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -142,7 +142,7 @@ export default async function routes(fastify: FastifyInstance) {
    * GET specific route by id
    */
   fastify.get(
-  '/full-route/:id',
+  '/full-routes/:id',
   {
     schema: {
       description: "This endpoint provides information on specific route, including unique IDs, names, and links between bus stops. This endpoint requires the route ID as a parameter.",
@@ -286,7 +286,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD a new route
    */
   fastify.post(
-  '/full-route',
+  '/full-routes',
   {
     schema: {
       description: "This endpoint allows you to add a new route. This endpoint requires request body of route information with the following properties in order to add a new route: id, name, and links.",
@@ -491,7 +491,7 @@ export default async function routes(fastify: FastifyInstance) {
   // '/route/:id',
   // {
   //   schema: {
-  //     description: "This endpoint allows you to replace, update or create a route by id. This endpoint requires request body of route information with the following properties in order to update the specific route: full name, phone number, password and photo URL path. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the route ID as a parameter.",
+  //     description: "This endpoint allows you to replace, update or create a route by id. This endpoint requires request body of route information with the following properties in order to update the specific route: name, links. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the route ID as a parameter.",
   //     tags: ["Route"],
   //     summary: "Replace, update or create route by id",
   //     body: {
@@ -635,27 +635,12 @@ export default async function routes(fastify: FastifyInstance) {
   //   const { id } = request.params;
   //   const { name, links } = request.body;
 
-
   //   try {
 
-  //     const updatedroute = await prisma.route.update({
-  //       where: { id: id },
-  //       data: {
-  //         full_name: full_name,
-  //         phone_no: phone_no,
-  //         password: password,
-  //         photo_path: photo_path
-  //       },
-  //     })
+  //   } catch (e) {
 
-  //       return updatedroute;
-
-  //   } catch (error) {
-
-  //     console.error(error);
-
+  //     console.log(e);
   //   }
-  // }
   // );
 
   /**
@@ -754,57 +739,57 @@ export default async function routes(fastify: FastifyInstance) {
   /**
    * DELETE route by id
    */
-  fastify.delete(
-  '/full-route/:id',
-  {
-    schema: {
-      description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
-      tags: ["Route"],
-      summary: "Delete route by id",
-      response: {
-        200: {
-          description: "Successful response",
-          type: "object",
-          properties: {
-            id: {
-              type: "string",
-              description: "A unique identifier for the route."
-            },
-            name: {
-              type: "string",
-              description: "The full name of the route, providing descriptive information for the route."
-            },
-          }
-        }
-      }
-    }
-  },
-  async function (
-  request: FastifyRequest<{
-      Params: IParams;
-    }>
-  ) {
+  // fastify.delete(
+  // '/full-routes/:id',
+  // {
+  //   schema: {
+  //     description: "This endpoint delete existing route by id. This endpoint requires the route ID as a parameter.",
+  //     tags: ["Route"],
+  //     summary: "Delete route by id",
+  //     response: {
+  //       200: {
+  //         description: "Successful response",
+  //         type: "object",
+  //         properties: {
+  //           id: {
+  //             type: "string",
+  //             description: "A unique identifier for the route."
+  //           },
+  //           name: {
+  //             type: "string",
+  //             description: "The full name of the route, providing descriptive information for the route."
+  //           },
+  //         }
+  //       }
+  //     }
+  //   }
+  // },
+  // async function (
+  // request: FastifyRequest<{
+  //     Params: IParams;
+  //   }>
+  // ) {
 
-    const { id } = request.params;
+  //   const { id } = request.params;
 
-    try {
+  //   try {
 
-      const deletedroute = await prisma.route.delete({
-        where: {
-            id: id,
-        },
-        include: {
-            route_link: true
-        }
-      })
+  //     const deletedroute = await prisma.route.delete({
+  //       where: {
+  //           id: id,
+  //       },
+  //       include: {
+  //           route_link: true
+  //       }
+  //     })
 
-      return deletedroute;
+  //     return deletedroute;
 
-    } catch (error) {
-        console.error(error);
+  //   } catch (error) {
+  //       console.error(error);
 
-    }
+  //   }
 
-  }
-  )
+  // }
+  // )
 }

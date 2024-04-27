@@ -72,7 +72,7 @@ export default async function routes(fastify: FastifyInstance) {
    * GET specific bus stop by id
    */
   fastify.get(
-  '/bus-stop/:id',
+  '/bus-stops/:id',
   {
     schema: {
       description: "This endpoint provides information on specific bus stop, including unique IDs, it's full name, short name, latitude, longitude and image URL path. This endpoint requires the bus stop ID as a parameter.",
@@ -140,7 +140,7 @@ export default async function routes(fastify: FastifyInstance) {
    * ADD new bus stop
    */
   fastify.post(
-  '/bus-stop',
+  '/bus-stops',
   {
     schema: {
       description: "This endpoint allows you to add a new bus stop. This endpoint requires request body of bus information with the following properties in order to add a new bus stop: id, full_name, short_name, latitude, longitude, image_path.",
@@ -244,7 +244,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE / REPLACE / CREATE a bus stop information by id
    */
   fastify.put(
-  '/bus-stop/:id',
+  '/bus-stops/:id',
   {
     schema: {
       description: "This endpoint allows you to replace, update or create a bus stop by id. This endpoint requires request body of bus information with the following properties in order to update the specific bus stop: full_name, short_name, latitude, longitude, image_path. Essentially, this endpoints allows you to replace with existing one, if it doesn't exist, it will create a new one. This endpoint requires the bus stop ID as a parameter.",
@@ -346,7 +346,7 @@ export default async function routes(fastify: FastifyInstance) {
    * UPDATE bus stop information partially by id
    */
   fastify.patch(
-    '/bus-stop/:id',
+    '/bus-stops/:id',
     {
       schema: {
         description: "This endpoint allows you to replace or update a bus stop information partially by id. This endpoint requires request body of bus stop information with the following properties in order to update the specific bus stop: full_name, short_name, latitude, longitude, image_path. Essentially, this endpoints allows you to update or replace only parts of the existing bus stop information. This endpoint requires the bus stop ID as a parameter.",
@@ -448,7 +448,7 @@ export default async function routes(fastify: FastifyInstance) {
    * DELETE bus stop by id
    */
   fastify.delete(
-  '/bus-stop/:id',
+  '/bus-stops/:id',
   {
     schema: {
       description: "This endpoint delete existing bus stop by id. This endpoint requires the bus stop ID as a parameter.",
