@@ -2,7 +2,10 @@
   "name": "@putra-bus/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:app": "cd apps/app && flutter run",
+    "start:api": "nx serve api"
+  },
   "private": true,
   "devDependencies": {
     "@nx/esbuild": "17.2.8",
