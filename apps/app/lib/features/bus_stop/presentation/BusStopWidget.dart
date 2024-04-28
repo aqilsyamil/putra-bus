@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:app/features/bus_stop/domain/BusStop.dart';
 import 'package:app/features/bus_stop/presentation/BusStopController.dart';
-import 'package:app/dialogs/ImageDialog.dart'; 
+import 'package:app/components/dialogs/ImageDialog.dart';
+import 'package:app/components/bars/AppBar.dart';
+import 'package:app/components/bars/NavBar.dart';
 
 class BusStopWidget extends StatefulWidget {
   const BusStopWidget({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _BusStopWidgetState extends State<BusStopWidget> {
   final BusStopController _busStopController = BusStopController();
   bool _isLoading = true; // Track loading state
   String _error = ''; // Track error message if any
-
+  int _selectedIndex = 0; // Track the selected index for the bottom navigation bar
 
   @override
   void initState() {
@@ -25,7 +27,8 @@ class _BusStopWidgetState extends State<BusStopWidget> {
 
   Future<void> _loadBusStops() async {
     try {
-      final List<BusStop> fetchedBusStops = await _busStopController.getBusStops();
+      final List<BusStop> fetchedBusStops =
+          await _busStopController.getBusStops();
       setState(() {
         busStops.addAll(fetchedBusStops);
         _isLoading = false; // Update loading state
@@ -38,6 +41,30 @@ class _BusStopWidgetState extends State<BusStopWidget> {
     }
   }
 
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+  });
+
+  switch (index) {
+    case 0:
+      // Navigate to Bus Stops page (current page)
+      break;
+    case 1:
+      Navigator.pushNamed(context, '/busRoutes');
+      break;
+    case 2:
+      Navigator.pushNamed(context, '/navigation');
+      break;
+    case 3:
+      Navigator.pushNamed(context, '/messages');
+      break;
+    default:
+      break;
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,21 +72,10 @@ class _BusStopWidgetState extends State<BusStopWidget> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.red[800], // Change app bar color to maroon
-        ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Bus Stops',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold, // Change app bar text color to white
-            ),
-          ),
-        ),
-        body: busStops.isEmpty
+        appBar: CustomAppBar(title: 'Bus Stops'), // Use CustomAppBar here
+        body: _isLoading
             ? Center(child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: busStops.length,
@@ -70,7 +86,8 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                     subtitle: Text(busStop.short_name),
                     leading: GestureDetector(
                       onTap: () {
-                        showImageDialog(context, busStop.image_path); // Call the function from ImageDialog.dart
+                        showImageDialog(context,
+                            busStop.image_path); // Call the function from ImageDialog.dart
                       },
                       child: Icon(Icons.info),
                     ),
@@ -80,6 +97,10 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                   );
                 },
               ),
+        bottomNavigationBar: CustomNavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
+        ),
       ),
     );
   }

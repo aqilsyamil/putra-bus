@@ -7,7 +7,7 @@ class BusStopRepository {
   static Future<List<BusStop>> getBusStops() async {
     List<BusStop> busStops = [];
 
-    await rootBundle.loadString("assets/bus_stop.csv").then((rawData) {
+    await rootBundle.loadString("assets/dummy_data/bus_stop.csv").then((rawData) {
       List<List<dynamic>> listData =
           const CsvToListConverter(eol: '\n', fieldDelimiter: ',').convert(rawData).toList();
       for (var row in listData.sublist(1)) {
