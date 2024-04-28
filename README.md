@@ -60,7 +60,7 @@ For installing Node.js and npm, utilize a Node version manager like nvm for mana
 
 After installing the dependecies manager, we need to install the dependencies. Here I'm using bun but you may also use npm.
 
-```arduino
+```bash
 bun install
 ```
 
@@ -68,7 +68,7 @@ You also need to install [Flutter](https://docs.flutter.dev/get-started/install)
 
 After all mobile app environments has been install, you need to install all dependencies for the Flutter mobile application.
 
-```arduino
+```bash
 flutter pub get
 ```
 
@@ -76,7 +76,7 @@ flutter pub get
 
 Everytime you open this project, make sure to install and update your dependencies. Make sure you are in root project and not in any app folder.
 
-```arduino
+```bash
 bun run update:project
 ```
 
@@ -84,7 +84,7 @@ bun run update:project
 
 To start PutraBus app, you first need to [run an emulator through Android studio](https://developer.android.com/studio/run/emulator). After you successfully run an emulator, run this script in root project.
 
-```arduino
+```bash
 bun run start:app:dev
 ```
 
@@ -92,24 +92,45 @@ bun run start:app:dev
 
 To start an API, make sure you have .env file in root project. Ask me (Rayhan) to get this file. After that, you can start the API in development by running the below script.
 
-```arduino
+```bash
 bun run start:api:dev
 ```
 
 To build an API for production, run the below script.
 
-```arduino
+```bash
 bun run build:api
 ```
 
 You then can run the API in production by running this script.
 
-```arduino
+```bash
 bun run start:api:prod
 ```
 
-## Contributors
+## Updating repository
 
+Any commit changes that has been push to main or dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
+
+```bash
+git branch
+```
+
+Run the below to merge. Merge with caution.
+
+```bash
+git merge main
+```
+
+or  
+
+```bash
+git merge main
+```
+
+Please make a pull request first before pushing your commit changes of feature branch to main or dev branch.
+
+## Contributors
 
 
 ## License
