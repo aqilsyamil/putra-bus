@@ -82,7 +82,10 @@ server.register(fastifySwaggerUi, {
   staticCSP: true,
   transformStaticCSP: (header) => header,
   transformSpecification: (swaggerObject) => { return swaggerObject },
-  transformSpecificationClone: true
+  transformSpecificationClone: true,
+  theme: {
+    title: 'PutraBus API'
+  }
 });
 
 // Register your application as a normal plugin.
