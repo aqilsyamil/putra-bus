@@ -1,8 +1,11 @@
 import Fastify from 'fastify';
+import dotenv from 'dotenv'
 import { app } from './app/app';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import fastifyCors from '@fastify/cors';
+
+dotenv.config();
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
@@ -20,28 +23,10 @@ server.register(fastifyCors, {
 server.register(fastifySwagger, {
   openapi: {
     info: {
-      title: 'Putra T API',
-      description: 'Putra T API Documentation',
+      title: 'PutraBus API',
+      description: "The PutraBus API is crucial for the PutraBus app in prodiving data giving near real-time information of buses in UPM. It offers data on buses, drivers, bus stops and routes, improving operational efficiency and user experience.",
       version: '1.0.0'
     },
-    servers: [
-      {
-        url: `http://${host}:${port}`,
-        description: "Development server"
-      },
-      {
-        url: `http://127.0.0.1:3000`,
-        description: "PreProd server"
-      },
-      {
-        url: `http://localhost:3000`,
-        description: "Docker server"
-      },
-      {
-        url: `https://putratapi-production.up.railway.app`,
-        description: "Production server"
-      }
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -52,8 +37,32 @@ server.register(fastifySwagger, {
     },
     tags: [
       {
-        name: 'Root',
-        description: 'Root endpoints'
+        name: 'Bus Stop',
+        description: 'Bus Stop Endpoints'
+      },
+      {
+        name: 'Bus',
+        description: 'Bus Endpoints'
+      },
+      {
+        name: 'Driver',
+        description: 'Driver Endpoints'
+      },
+      {
+        name: 'Active Bus',
+        description: 'Active Bus Endpoints'
+      },
+      {
+        name: 'Route',
+        description: 'Route Endpoints'
+      },
+      {
+        name: 'Link',
+        description: 'Link Endpoints'
+      },
+      {
+        name: 'Waylink',
+        description: 'Waylink Endpoints'
       }
     ]
   }
@@ -73,9 +82,11 @@ server.register(fastifySwaggerUi, {
   staticCSP: true,
   transformStaticCSP: (header) => header,
   transformSpecification: (swaggerObject) => { return swaggerObject },
-  transformSpecificationClone: true
+  transformSpecificationClone: true,
+  theme: {
+    title: 'PutraBus API'
+  }
 });
-
 
 // Register your application as a normal plugin.
 server.register(app);
@@ -98,6 +109,7 @@ async function start() {
 
   server.swagger;
 }
+
 // hello
 start().catch((err) => {
   server.log.error(err);

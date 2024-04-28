@@ -1,14 +1,9 @@
 name: CI
-
 on:
   push:
     branches:
       - main
   pull_request:
-
-permissions:
-  actions: read
-  contents: read
 
 jobs:
   main:
@@ -18,17 +13,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Connect your workspace on nx.app and uncomment this to enable task distribution.
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
-
-      # Cache node_modules
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v4
+          bun-version: latest
 
-      - run: npx nx-cloud record -- nx format:check
-      - run: npx nx affected -t lint test build
+      - name: Restore cached npm dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress # needed for the Cypress binary
+          key: npm-dependencies-${{ hashFiles('bun.lockb') }}
+
+      - run: bun install --frozen-lockfile
+
+      - name: Cache npm dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress # needed for the Cypress binary
+          key: npm-dependencies-${{ hashFiles('bun.lockb') }}
+
+      - run: bun run build:api
