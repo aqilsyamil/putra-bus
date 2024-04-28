@@ -14,7 +14,6 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing rea
   </a>
 </p>
 
-
 ## Table of Contents
 
 - [Overview](#putrabus)
@@ -23,6 +22,7 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing rea
 - [Usage](#usage)
   - [Flutter App](#flutter-app)
   - [API](#api)
+- [Updating Repository](#updating-repository)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -108,7 +108,7 @@ You then can run the API in production by running this script.
 bun run start:api:prod
 ```
 
-## Updating repository
+## Updating Repository
 
 Any commit changes that has been push to main or dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
 
