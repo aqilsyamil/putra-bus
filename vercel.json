@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+      {
+          "source": "/(.*)",
+          "destination": "./dist/apps/api/main.js"
+      }
+  ]
+}

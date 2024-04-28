@@ -27,24 +27,6 @@ server.register(fastifySwagger, {
       description: "The PutraBus API is crucial for the PutraBus app in prodiving data giving near real-time information of buses in UPM. It offers data on buses, drivers, bus stops and routes, improving operational efficiency and user experience.",
       version: '1.0.0'
     },
-    // servers: [
-    //   // {
-    //   //   url: `http://${host}:${port}`,
-    //   //   description: "Development server"
-    //   // },
-    //   {
-    //     url: `http://127.0.0.1:3000`,
-    //     description: "PreProd server"
-    //   },
-    //   // {
-    //   //   url: `http://localhost:3000`,
-    //   //   description: "Docker server"
-    //   // },
-    //   // {
-    //   //   url: `https://putratapi-production.up.railway.app`,
-    //   //   description: "Production server"
-    //   // }
-    // ],
     components: {
       securitySchemes: {
         bearerAuth: {
