@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/features/bus_stop/domain/BusStop.dart';
 import 'package:app/features/bus_stop/presentation/BusStopController.dart';
-import 'package:app/dialogs/ImageDialog.dart'; 
+import 'package:app/dialogs/ImageDialog.dart';
 
 class BusStopWidget extends StatefulWidget {
   const BusStopWidget({Key? key}) : super(key: key);
@@ -16,7 +16,6 @@ class _BusStopWidgetState extends State<BusStopWidget> {
   bool _isLoading = true; // Track loading state
   String _error = ''; // Track error message if any
 
-
   @override
   void initState() {
     super.initState();
@@ -25,7 +24,9 @@ class _BusStopWidgetState extends State<BusStopWidget> {
 
   Future<void> _loadBusStops() async {
     try {
-      final List<BusStop> fetchedBusStops = await _busStopController.getBusStops();
+      final List<BusStop> fetchedBusStops =
+          await _busStopController.getBusStops();
+
       setState(() {
         busStops.addAll(fetchedBusStops);
         _isLoading = false; // Update loading state
@@ -70,7 +71,10 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                     subtitle: Text(busStop.short_name),
                     leading: GestureDetector(
                       onTap: () {
-                        showImageDialog(context, busStop.image_path); // Call the function from ImageDialog.dart
+                        showImageDialog(
+                            context,
+                            busStop
+                                .image_path); // Call the function from ImageDialog.dart
                       },
                       child: Icon(Icons.info),
                     ),

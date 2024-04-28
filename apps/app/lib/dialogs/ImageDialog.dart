@@ -5,7 +5,22 @@ void showImageDialog(BuildContext context, String imagePath) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        content: Image.asset(imagePath),
+        content: Image.network(
+          imagePath,
+          fit: BoxFit.fitWidth,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent? loadingProgress) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            );
+          },
+        ),
       );
     },
   );
