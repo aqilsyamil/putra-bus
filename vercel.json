@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-      {
-          "source": "/(.*)",
-          "destination": "/apps/api/src/main.ts"
-      }
-  ]
-}

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start:app:dev": "cd apps/app && flutter run",
-    "build:api": "bunx prisma generate --schema apps/api/prisma/schema.prisma && nx build api",
+    "build:api": "bunx prisma generate --schema apps/api/prisma/schema.prisma && nx build api --prod",
     "start:api:prod": "bun run build:api && nx run api:serve:production",
     "start:api:dev": "nx serve api"
   },
