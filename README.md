@@ -8,8 +8,12 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing rea
 - PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
 - PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
 
-<iframe width="774" height="435" src="https://www.youtube.com/watch?feature=shared&v=u61cDZzBcUg">
-</iframe>
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=u61cDZzBcUg">
+    <img src="https://img.youtube.com/vi/u61cDZzBcUg/0.jpg" />
+  </a>
+</p>
+
 
 ## Table of Contents
 
