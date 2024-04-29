@@ -13,7 +13,7 @@ void showImageDialog(BuildContext context, String imagePath) {
             Center(
               child: InteractiveViewer(
                   panEnabled: false, // Disable panning
-                  boundaryMargin: EdgeInsets.all(20),
+                  boundaryMargin: const EdgeInsets.all(20),
                   minScale: 0.5,
                   maxScale: 4,
                   child: Image.network(
@@ -37,7 +37,7 @@ void showImageDialog(BuildContext context, String imagePath) {
               right: 10,
               top: 10,
               child: IconButton(
-                icon: Icon(Icons.close, color: Colors.white),
+                icon: const Icon(Icons.close, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
