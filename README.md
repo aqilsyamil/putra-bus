@@ -87,7 +87,7 @@ For installing Node.js and npm, utilize a Node version manager like `nvm` for ma
 
 ## Quick Start
 
-Everytime you open this project, you need to install and update your project. To do that, make sure to get create a `.env` file containing all required environment variables needed for this project. Put the file the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to update the project.
+Everytime you open this project, you need to install and update your project. To do that, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to update the project.
 
 ```bash
 bun run update:project:all
