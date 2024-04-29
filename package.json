@@ -7,7 +7,7 @@
     "build:api": "bunx prisma generate --schema apps/api/prisma/schema.prisma && nx build api --prod",
     "start:api:prod": "nx run api:serve:production",
     "start:api:dev": "nx serve api",
-    "install:project": "bun install && npm install && cd apps/app && flutter pub get && cd ../..",
+    "install:project": "bun install && npm install && cd apps/app && flutter pub get && cd ../app_v1 && flutter pub get",
     "update:project": "bun run install:project && bun run update:db",
     "update:db": "bunx prisma db pull --schema apps/api/prisma/schema.prisma && prisma generate --schema apps/api/prisma/schema.prisma"
   },
