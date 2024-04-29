@@ -9,7 +9,7 @@
     "start:api:dev": "nx serve api",
     "install:project": "bun install && npm install && cd apps/app && flutter pub get && cd ../app_v1 && flutter pub get",
     "update:api:db": "bunx prisma db pull --schema apps/api/prisma/schema.prisma && prisma generate --schema apps/api/prisma/schema.prisma",
-    "update:project:dependecies": "bun run install:project && bun update && cd apps/app && flutter pub upgrade --major-versions && flutter pub outdated && cd ../app_v1 && flutter pub upgrade --major-versions && flutter pub outdated",
+    "update:project:dependencies": "bun run install:project && bun update && cd apps/app && flutter pub upgrade --major-versions && flutter pub outdated && cd ../app_v1 && flutter pub upgrade --major-versions && flutter pub outdated",
     "update:project:all": "bun run update:project:dependecies && bun run update:api:db"
   },
   "private": true,
