@@ -17,7 +17,8 @@ class _BusStopWidgetState extends State<BusStopWidget> {
   final BusStopController _busStopController = BusStopController();
   bool _isLoading = true; // Track loading state
   String _error = ''; // Track error message if any
-  int _selectedIndex = 0; // Track the selected index for the bottom navigation bar
+  int _selectedIndex =
+      0; // Track the selected index for the bottom navigation bar
 
   @override
   void initState() {
@@ -41,29 +42,28 @@ class _BusStopWidgetState extends State<BusStopWidget> {
     }
   }
 
-void _onItemTapped(int index) {
-  setState(() {
-    _selectedIndex = index;
-  });
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
 
-  switch (index) {
-    case 0:
-      // Navigate to Bus Stops page (current page)
-      break;
-    case 1:
-      Navigator.pushNamed(context, '/busRoutes');
-      break;
-    case 2:
-      Navigator.pushNamed(context, '/navigation');
-      break;
-    case 3:
-      Navigator.pushNamed(context, '/messages');
-      break;
-    default:
-      break;
+    switch (index) {
+      case 0:
+        // Navigate to Bus Stops page (current page)
+        break;
+      case 1:
+        Navigator.pushNamed(context, '/busRoutes');
+        break;
+      case 2:
+        Navigator.pushNamed(context, '/navigation');
+        break;
+      case 3:
+        Navigator.pushNamed(context, '/messages');
+        break;
+      default:
+        break;
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +86,10 @@ void _onItemTapped(int index) {
                     subtitle: Text(busStop.short_name),
                     leading: GestureDetector(
                       onTap: () {
-                        showImageDialog(context,
-                            busStop.image_path); // Call the function from ImageDialog.dart
+                        showImageDialog(
+                            context,
+                            busStop
+                                .image_path); // Call the function from ImageDialog.dart
                       },
                       child: Icon(Icons.info),
                     ),
