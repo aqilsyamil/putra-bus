@@ -7,15 +7,14 @@ import 'package:http/http.dart' as http;
 
 class BusStopRepository {
   static Future<List<BusStop>> fetchBusStops() async {
-    final response = await http.get(
-        Uri.parse('https://putra-bus-production.up.railway.app/bus-stops'));
+    final response = await http
+        .get(Uri.parse('https://putrabus-api.up.railway.app/bus-stops'));
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
 
       final List body = jsonDecode(response.body);
-
       // body.map((jsonBusStop) => print(jsonBusStop));
       return body.map((jsonBusStop) => BusStop.fromJson(jsonBusStop)).toList();
     } else {
