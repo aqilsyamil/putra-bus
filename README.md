@@ -7,8 +7,8 @@
 
 PutraBus App is designed to enhance the UPM shuttle bus service by providing near real-time updates on bus location, estimated time of arrivals (ETA), and occupancy status. This monorepo, built using the NX framework, contains both the PutraBus mobile application and the PutraBus API.
 
- PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
- PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
+- PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
+- PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=u61cDZzBcUg">
