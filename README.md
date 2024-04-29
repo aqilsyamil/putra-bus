@@ -18,18 +18,18 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing nea
 
 ## Table of Contents
 
- [Overview](#putrabus)
- [Table of Contents](#table-of-contents)
- [Installation](#installation)
+- [Overview](#putrabus)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
   - [Installing Package Manager](#installing-package-manager)
     - [Bun](#bun)
     - [Node & `npm`](#node--npm)
- [Quick Start](#quick-start)
+- [Quick Start](#quick-start)
   - [Flutter App](#flutter-app)
   - [API](#api)
- [Updating Repository](#updating-repository)
- [Contributors](#contributors)
- [License](#license)
+- [Updating Repository](#updating-repository)
+- [Contributors](#contributors)
+- [License](#license)
 
 ## Installation
 
