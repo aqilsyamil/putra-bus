@@ -22,12 +22,20 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
             labelType: NavigationRailLabelType.all,
             destinations: const <NavigationRailDestination>[
               NavigationRailDestination(
-                label: Text('Section A'),
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.location_on),
+                label: Text('Bus Stops'),
               ),
               NavigationRailDestination(
-                label: Text('Section B'),
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.directions_bus),
+                label: Text('Routes'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.navigation),
+                label: Text('Navigation'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.message),
+                label: Text('Messages'),
               ),
             ],
           ),

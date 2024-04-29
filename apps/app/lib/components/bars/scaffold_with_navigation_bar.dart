@@ -14,15 +14,30 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: body,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        destinations: const [
-          NavigationDestination(label: 'Section A', icon: Icon(Icons.home)),
-          NavigationDestination(label: 'Section B', icon: Icon(Icons.settings)),
-        ],
-        onDestinationSelected: onDestinationSelected,
-      ),
-    );
+        body: body,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: onDestinationSelected,
+          selectedItemColor: Colors.red,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on),
+              label: 'Bus Stops',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.directions_bus),
+              label: 'Routes',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.navigation),
+              label: 'Navigation',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              label: 'Messages',
+            ),
+          ],
+        ));
   }
 }

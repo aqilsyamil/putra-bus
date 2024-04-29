@@ -31,7 +31,7 @@ class PutraBusApp extends StatelessWidget {
         title: 'Putra Bus App',
         debugShowCheckedModeBanner: false,
         routerConfig: GoRouter(
-            initialLocation: '/',
+            initialLocation: '/bus-stop',
             navigatorKey: _rootNavigatorKey,
             debugLogDiagnostics: true,
             routes: [

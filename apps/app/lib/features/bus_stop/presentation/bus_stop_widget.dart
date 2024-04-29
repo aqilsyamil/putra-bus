@@ -3,12 +3,12 @@ import 'package:app/features/bus_stop/domain/bus_stop.dart';
 import 'package:app/features/bus_stop/presentation/bus_stop_controller.dart';
 import 'package:app/components/dialogs/image_dialog.dart';
 import 'package:app/components/bars/appbar.dart';
-import 'package:app/components/bars/navbar.dart';
 
 class BusStopWidget extends StatefulWidget {
   const BusStopWidget({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BusStopWidgetState createState() => _BusStopWidgetState();
 }
 
@@ -16,9 +16,6 @@ class _BusStopWidgetState extends State<BusStopWidget> {
   final List<BusStop> busStops = [];
   final BusStopController _busStopController = BusStopController();
   bool _isLoading = true; // Track loading state
-  String _error = ''; // Track error message if any
-  int _selectedIndex =
-      0; // Track the selected index for the bottom navigation bar
 
   @override
   void initState() {
@@ -37,31 +34,8 @@ class _BusStopWidgetState extends State<BusStopWidget> {
     } catch (error) {
       setState(() {
         _isLoading = false; // Update loading state
-        _error = 'Failed to load bus stops: $error'; // Set error message
+// Set error message
       });
-    }
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        // Navigate to Bus Stops page (current page)
-        break;
-      case 1:
-        Navigator.pushNamed(context, '/busRoutes');
-        break;
-      case 2:
-        Navigator.pushNamed(context, '/navigation');
-        break;
-      case 3:
-        Navigator.pushNamed(context, '/messages');
-        break;
-      default:
-        break;
     }
   }
 
@@ -99,10 +73,6 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                   );
                 },
               ),
-        bottomNavigationBar: Navbar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
-        ),
       ),
     );
   }

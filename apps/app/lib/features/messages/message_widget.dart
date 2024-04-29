@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:app/components/bars/appbar.dart';
-import 'package:app/components/bars/navbar.dart';
 
 class MessagesWidget extends StatelessWidget {
-  const MessagesWidget({Key? key}) : super(key: key);
+  const MessagesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Messages'), // Custom app bar
-      body: Container(), // Empty body
-      bottomNavigationBar: Navbar(
-        selectedIndex: 3, // Adjust the selected index if needed
-        onItemTapped: (index) {}, // Placeholder function for item tap
-      ),
+      appBar: const CustomAppBar(title: 'Messages'), // Custom app bar
+      body: Container(
+        alignment: Alignment.center,
+        child:
+            const Text('Messages', style: TextStyle(height: 5, fontSize: 45)),
+      ), // Empty body
     );
   }
 }
