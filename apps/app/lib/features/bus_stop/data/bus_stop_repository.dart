@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:csv/csv.dart';
-import 'package:app/features/bus_stop/domain/BusStop.dart';
+import 'package:app/features/bus_stop/domain/bus_stop.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;

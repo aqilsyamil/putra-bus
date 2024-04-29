@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/components/bars/AppBar.dart';
-import 'package:app/components/bars/NavBar.dart';
+import 'package:app/components/bars/appbar.dart';
+import 'package:app/components/bars/navbar.dart';
 
 class NavigationWidget extends StatelessWidget {
   const NavigationWidget({Key? key}) : super(key: key);
@@ -8,10 +8,10 @@ class NavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Navigation'), 
+      appBar: CustomAppBar(title: 'Navigation'),
       body: Container(),
-      bottomNavigationBar: CustomNavBar(
-        selectedIndex: 2, 
+      bottomNavigationBar: Navbar(
+        selectedIndex: 2,
         onItemTapped: (index) {},
       ),
     );

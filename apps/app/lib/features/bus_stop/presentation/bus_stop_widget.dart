@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:app/features/bus_stop/domain/BusStop.dart';
-import 'package:app/features/bus_stop/presentation/BusStopController.dart';
-import 'package:app/components/dialogs/ImageDialog.dart';
-import 'package:app/components/bars/AppBar.dart';
-import 'package:app/components/bars/NavBar.dart';
+import 'package:app/features/bus_stop/domain/bus_stop.dart';
+import 'package:app/features/bus_stop/presentation/bus_stop_controller.dart';
+import 'package:app/components/dialogs/image_dialog.dart';
+import 'package:app/components/bars/appbar.dart';
+import 'package:app/components/bars/navbar.dart';
 
 class BusStopWidget extends StatefulWidget {
-  const BusStopWidget({Key? key}) : super(key: key);
+  const BusStopWidget({super.key});
 
   @override
   _BusStopWidgetState createState() => _BusStopWidgetState();
@@ -74,9 +74,9 @@ class _BusStopWidgetState extends State<BusStopWidget> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: CustomAppBar(title: 'Bus Stops'), // Use CustomAppBar here
+        appBar: const CustomAppBar(title: 'Bus Stops'), // Use CustomAppBar here
         body: _isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: busStops.length,
                 itemBuilder: (context, index) {
@@ -91,7 +91,7 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                             busStop
                                 .image_path); // Call the function from ImageDialog.dart
                       },
-                      child: Icon(Icons.info),
+                      child: const Icon(Icons.info),
                     ),
                     onTap: () {
                       // You can perform actions when a bus stop is tapped
@@ -99,7 +99,7 @@ class _BusStopWidgetState extends State<BusStopWidget> {
                   );
                 },
               ),
-        bottomNavigationBar: CustomNavBar(
+        bottomNavigationBar: Navbar(
           selectedIndex: _selectedIndex,
           onItemTapped: _onItemTapped,
         ),

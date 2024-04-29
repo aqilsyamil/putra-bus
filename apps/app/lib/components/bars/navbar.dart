@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomNavBar extends StatelessWidget {
+class Navbar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemTapped;
 
-  const CustomNavBar({
+  const Navbar({
     Key? key,
     required this.selectedIndex,
     required this.onItemTapped,
@@ -14,8 +14,8 @@ class CustomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
-       selectedItemColor: Colors.red,
-     onTap: (index) {
+      selectedItemColor: Colors.red,
+      onTap: (index) {
         // Check if the index corresponds to "Routes"
         if (index == 0) {
           // Navigate to the BusRoutesWidget
@@ -26,7 +26,7 @@ class CustomNavBar extends StatelessWidget {
         }
       },
       type: BottomNavigationBarType.fixed,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.location_on),
           label: 'Bus Stops',

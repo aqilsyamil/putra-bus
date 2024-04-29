@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/components/bars/AppBar.dart';
-import 'package:app/components/bars/NavBar.dart';
+import 'package:app/components/bars/appbar.dart';
+import 'package:app/components/bars/navbar.dart';
 
 class BusRouteWidget extends StatelessWidget {
   const BusRouteWidget({Key? key}) : super(key: key);
@@ -9,9 +9,9 @@ class BusRouteWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Bus Routes'),
-      body: Container(), 
-      bottomNavigationBar: CustomNavBar(
-        selectedIndex: 1, 
+      body: Container(),
+      bottomNavigationBar: Navbar(
+        selectedIndex: 1,
         onItemTapped: (index) {},
       ),
     );
