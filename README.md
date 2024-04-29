@@ -110,28 +110,25 @@ bun run start:api:prod
 
 ## Updating Repository
 
-Any commit changes that has been push to main or dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
+Any commit changes in dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
 
 ```bash
 git branch
 ```
 
-Run the below to merge. Merge with caution.
+If you're in the feature branch, run the below to merge with dev branch. Merge with caution.
 
 ```bash
-git merge main
-```
-
-or  
-
-```bash
-git merge main
+git merge dev
 ```
 
 Please make a pull request first before pushing your commit changes of feature branch to main or dev branch.
 
 ## Contributors
 
+<a href="https://github.com/aqilsyamil/putra-bus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=aqilsyamil/putra-bus" />
+</a>
 
 ## License
 
