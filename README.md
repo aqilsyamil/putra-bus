@@ -7,8 +7,8 @@
 
 PutraBus App is designed to enhance the UPM shuttle bus service by providing near real-time updates on bus location, estimated time of arrivals (ETA), and occupancy status. This monorepo, built using the NX framework, contains both the PutraBus mobile application and the PutraBus API.
 
-- PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
-- PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
+ PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
+ PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=u61cDZzBcUg">
@@ -18,18 +18,18 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing nea
 
 ## Table of Contents
 
-- [Overview](#putrabus)
-- [Table of Contents](#table-of-contents)
-- [Installation](#installation)
+ [Overview](#putrabus)
+ [Table of Contents](#table-of-contents)
+ [Installation](#installation)
   - [Installing Package Manager](#installing-package-manager)
     - [Bun](#bun)
     - [Node & `npm`](#node--npm)
-- [Quick Start](#quick-start)
+ [Quick Start](#quick-start)
   - [Flutter App](#flutter-app)
   - [API](#api)
-- [Updating Repository](#updating-repository)
-- [Contributors](#contributors)
-- [License](#license)
+ [Updating Repository](#updating-repository)
+ [Contributors](#contributors)
+ [License](#license)
 
 ## Installation
 
@@ -83,7 +83,7 @@ Bun can also be installed via npm, Homebrew, Docker, or Scoop package managers. 
 
 #### Node & `npm`
 
-For installing Node.js and npm, utilize a Node version manager like nvm for managing multiple Node.js versions or use a Node installer if a version manager isn't feasible. To download the LTS version from the Node.js download page for macOS or Windows, and for Linux, consider using the NodeSource installer. For more instructions, refer to [this Node and `npm` installation guide](https://kinsta.com/blog/how-to-install-node-js/).
+For installing Node.js and npm, utilize a Node version manager like `nvm` for managing multiple Node.js versions or use a Node installer if a version manager isn't feasible. To download the LTS version from the Node.js download page for macOS or Windows, and for Linux, consider using the NodeSource installer. For more instructions, refer to [this Node and `npm` installation guide](https://kinsta.com/blog/how-to-install-node-js/).
 
 ## Quick Start
 
@@ -103,7 +103,7 @@ bun run start:app:dev
 
 ### API
 
-To start an API, make sure to get create a `.env` file containing all required environment variables needed for this project. Put the file the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to install all dependencies for this project.
+To start an API, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to install all dependencies for this project.
 
 ```bash
 bun run start:api:dev
@@ -148,3 +148,5 @@ Please make a pull request first before pushing your commit changes of feature b
 This project is licensed under UPM.
 
 Note: PutraBus App aims to improve transportation infrastructure for the UPM community.
+
+
