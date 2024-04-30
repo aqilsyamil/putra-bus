@@ -15,9 +15,21 @@ void showImageDialog(BuildContext context, String imagePath) {
                   boundaryMargin: EdgeInsets.all(20),
                   minScale: 0.5,
                   maxScale: 4,
-                  child: Image.asset(
+                  child: Image.network(
                     imagePath,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.fitWidth,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes !~= null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
