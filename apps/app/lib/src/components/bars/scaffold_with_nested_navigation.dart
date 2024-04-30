@@ -1,5 +1,5 @@
-import 'package:app/components/bars/scaffold_with_navigation_bar.dart';
-import 'package:app/components/bars/scaffold_with_navigation_rail.dart';
+import 'package:app/src/components/bars/scaffold_with_navigation_bar.dart';
+import 'package:app/src/components/bars/scaffold_with_navigation_rail.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app/features/bus_stop/domain/bus_stop.dart';
-import 'package:app/features/bus_stop/presentation/bus_stop_controller.dart';
-import 'package:app/components/dialogs/image_dialog.dart';
-import 'package:app/components/bars/appbar.dart';
+import 'package:app/src/features/bus_stop/domain/bus_stop.dart';
+import 'package:app/src/features/bus_stop/presentation/bus_stop_controller.dart';
+import 'package:app/src/components/dialogs/image_dialog.dart';
+import 'package:app/src/components/bars/appbar.dart';
 
 class BusStopWidget extends StatefulWidget {
   const BusStopWidget({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/components/bars/appbar.dart';
+import 'package:app/src/components/bars/appbar.dart';
 
 class BusRouteWidget extends StatelessWidget {
   const BusRouteWidget({super.key});

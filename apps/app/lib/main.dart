@@ -1,9 +1,11 @@
-import 'package:app/components/bars/scaffold_with_nested_navigation.dart';
+import 'dart:ui';
+
+import 'package:app/src/components/bars/scaffold_with_nested_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:app/features/bus_stop/presentation/bus_stop_widget.dart';
-import 'package:app/features/bus_route/presentation/bus_route_widget.dart';
-import 'package:app/features/navigation/navigation_widget.dart';
-import 'package:app/features/messages/message_widget.dart';
+import 'package:app/src/features/bus_stop/presentation/bus_stop_widget.dart';
+import 'package:app/src/features/bus_route/presentation/bus_route_widget.dart';
+import 'package:app/src/features/navigation/navigation_widget.dart';
+import 'package:app/src/features/messages/message_widget.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,6 +22,29 @@ final _shellNavigatorMessagesKey =
 void main() {
   usePathUrlStrategy();
   runApp(const PutraBusApp());
+}
+
+void registerErrorHandlers() {
+  // * Show some error UI if any uncaught exception happens
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    debugPrint(details.toString());
+  };
+  // * Handle errors from the underlying platform/OS
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    debugPrint(error.toString());
+    return true;
+  };
+  // * Show some error UI when any widget in the app fails to build
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: Text('An error occurred'.hardcoded),
+      ),
+      body: Center(child: Text(details.toString())),
+    );
+  };
 }
 
 class PutraBusApp extends StatelessWidget {
