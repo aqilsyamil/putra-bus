@@ -4,6 +4,6 @@ import 'package:app/features/bus_stop/domain/BusStop.dart';
 
 class BusStopController {
   Future<List<BusStop>> getBusStops() {
-    return BusStopRepository.getBusStops();
+    return BusStopRepository.fetchBusStops();
   }
 }
