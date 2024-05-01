@@ -12,20 +12,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       home: Scaffold(
         backgroundColor: Colors.red[800],
         appBar: AppBar(
-          title: Text(title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              )),
-          backgroundColor: Colors.red[800],
-          leading: IconButton(
-            onPressed: () {},
-            icon: IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {},
-            ),
-          ),
-        ),
+            title: Text(title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                )),
+            backgroundColor: Colors.red[800],
+            actions: <Widget>[
+              IconButton(
+                onPressed: () {},
+                icon: IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ]),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:app/src/features/bus_route/presentation/bus_route_screen.dart';
 import 'package:app/src/features/bus_stop/presentation/bus_stop_screen.dart';
-import 'package:app/src/features/messages/message_screen.dart';
+import 'package:app/src/features/messages/presentation/message_screen.dart';
 import 'package:app/src/features/navigation/navigation_screen.dart';
 import 'package:app/src/routing/scaffold_with_nested_navigation.dart';
 import 'package:app/src/routing/app_startup.dart';
