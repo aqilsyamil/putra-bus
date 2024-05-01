@@ -1,8 +1,8 @@
+import 'package:app/src/features/bus_route/presentation/bus_route_screen.dart';
+import 'package:app/src/features/bus_stop/presentation/bus_stop_screen.dart';
+import 'package:app/src/features/messages/message_screen.dart';
+import 'package:app/src/features/navigation/navigation_screen.dart';
 import 'package:app/src/routing/scaffold_with_nested_navigation.dart';
-import 'package:app/src/features/bus_route/presentation/bus_route_widget.dart';
-import 'package:app/src/features/bus_stop/presentation/bus_stop_widget.dart';
-import 'package:app/src/features/messages/message_widget.dart';
-import 'package:app/src/features/navigation/navigation_widget.dart';
 import 'package:app/src/routing/app_startup.dart';
 import 'package:app/src/routing/not_found_screen.dart';
 import 'package:flutter/material.dart';
@@ -71,26 +71,26 @@ GoRouter goRouter(GoRouterRef ref) {
                 routes: [
                   GoRoute(
                       path: '/bus-stop',
-                      builder: (context, state) => const BusStopWidget())
+                      builder: (context, state) => const BusStopScreen())
                 ]),
             StatefulShellBranch(navigatorKey: _shellNavigatorRouteKey, routes: [
               GoRoute(
                   path: '/route',
-                  builder: (context, state) => const BusRouteWidget())
+                  builder: (context, state) => const BusRouteScreen())
             ]),
             StatefulShellBranch(
                 navigatorKey: _shellNavigatorNavigationKey,
                 routes: [
                   GoRoute(
                       path: '/navigation',
-                      builder: (context, state) => const NavigationWidget())
+                      builder: (context, state) => const NavigationScreen())
                 ]),
             StatefulShellBranch(
                 navigatorKey: _shellNavigatorMessagesKey,
                 routes: [
                   GoRoute(
                       path: '/messages',
-                      builder: (context, state) => const MessagesWidget())
+                      builder: (context, state) => const MessagesScreen())
                 ]),
           ]),
     ],
