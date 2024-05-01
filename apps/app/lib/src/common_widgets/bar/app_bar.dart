@@ -7,15 +7,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.red[800],
+        appBar: AppBar(
+          title: Text(title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
+          backgroundColor: Colors.red[800],
+          leading: IconButton(
+            onPressed: () {},
+            icon: IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {},
+            ),
+          ),
         ),
       ),
-      backgroundColor: Colors.red[800], // Change app bar color to maroon
     );
   }
 
