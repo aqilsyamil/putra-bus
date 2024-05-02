@@ -147,4 +147,4 @@ Please make a pull request first before pushing your commit changes of feature b
 
 This project is licensed under UPM.
 
-Note: PutraBus App aims to improve transportation infrastructure for the UPM community.
+Note: PutraBus app aims to improve transportation infrastructure for the UPM community.
