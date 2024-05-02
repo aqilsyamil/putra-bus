@@ -52,4 +52,5 @@ flutter:
   assets:
     - assets/dummy_data/
     - assets/images/bus_stop/
+    - assets/images/
     - assets/
