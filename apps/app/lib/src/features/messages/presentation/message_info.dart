@@ -2,6 +2,7 @@ import 'package:app/src/utils/space.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 
 class MessageInfo extends HookConsumerWidget {
   const MessageInfo({super.key});
@@ -19,17 +20,8 @@ class MessageInfo extends HookConsumerWidget {
             style: TextStyle(color: Colors.grey),
           ),
           InkWell(
-            onTap: () async {
-              final Uri url = Uri(path: 'https://hep.upm.edu.my/');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Could not launch $url'),
-                  ),
-                );
-              }
+            onTap: () {
+              _launchHEPWebsite(context);
             },
             child: const Text(
               'https://hep.upm.edu.my/',
@@ -56,12 +48,12 @@ class MessageInfo extends HookConsumerWidget {
                 title: "UPM Transit Map"),
             MessageButton(
                 onPressed: () {
-                  _launchBusScheduleURL();
+                  _launchBusScheduleURL(context);
                 },
                 title: "Bus Schedule"),
             MessageButton(
                 onPressed: () {
-                  _launchFeedbackEmail();
+                  _launchFeedbackEmail(context);
                 },
                 title: "Send Feedback")
           ], gap: 10.0)
@@ -108,18 +100,42 @@ class MessageInfo extends HookConsumerWidget {
   }
 
 // Method to launch Bus.dart Schedule URL
-  Future<void> _launchBusScheduleURL() async {
-    final Uri url = Uri(
-        path:
-            'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
+  Future<void> _launchBusScheduleURL(BuildContext context) async {
+    // final Uri url = Uri(
+    //     path:
+    //         'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
+    const String url =
+        'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf';
+    if (await UrlLauncherPlatform.instance.canLaunch(url)) {
+      await UrlLauncherPlatform.instance.launchUrl(url, const LaunchOptions());
     } else {
-      print('Could not launch $url');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Could not launch $url'),
+          ),
+        );
+      }
     }
   }
 
-  Future<void> _launchFeedbackEmail() async {
+  Future<void> _launchHEPWebsite(BuildContext context) async {
+    // final Uri url = Uri(path: 'https://flutter.dev');
+    const String url = 'https://hep.upm.edu.my/';
+    if (await UrlLauncherPlatform.instance.canLaunch(url)) {
+      await UrlLauncherPlatform.instance.launchUrl(url, const LaunchOptions());
+    } else {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Could not launch $url'),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchFeedbackEmail(BuildContext context) async {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
       path: 'bhep@upm.edu.my',
@@ -135,7 +151,13 @@ class MessageInfo extends HookConsumerWidget {
     if (await canLaunchUrl(emailLaunchUri)) {
       await launchUrl(emailLaunchUri);
     } else {
-      print('Could not launch $emailLaunchUri');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Could not launch $emailLaunchUri'),
+          ),
+        );
+      }
     }
   }
 }

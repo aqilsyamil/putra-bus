@@ -1022,7 +1022,7 @@ packages:
     source: hosted
     version: "6.2.5"
   url_launcher_linux:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher_linux
       sha256: ab360eb661f8879369acac07b6bb3ff09d9471155357da8443fd5d3cf7363811
@@ -1038,7 +1038,7 @@ packages:
     source: hosted
     version: "3.1.0"
   url_launcher_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher_platform_interface
       sha256: "552f8a1e663569be95a8190206a38187b531910283c3e982193e4f2733f01029"
