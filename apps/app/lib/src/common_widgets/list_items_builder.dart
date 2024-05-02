@@ -17,9 +17,8 @@ class ListItemsBuilder<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return data.when(
       data: (items) => items.isNotEmpty
-          ? ListView.separated(
+          ? ListView.builder(
               itemCount: items.length + 2,
-              separatorBuilder: (context, index) => const Divider(height: 0.5),
               itemBuilder: (context, index) {
                 if (index == 0 || index == items.length + 1) {
                   return const SizedBox.shrink();
