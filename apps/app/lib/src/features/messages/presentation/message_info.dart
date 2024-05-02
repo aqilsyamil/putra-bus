@@ -101,36 +101,48 @@ class MessageInfo extends HookConsumerWidget {
 
 // Method to launch Bus.dart Schedule URL
   Future<void> _launchBusScheduleURL(BuildContext context) async {
-    // final Uri url = Uri(
-    //     path:
-    //         'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
-    const String url =
+    const String urlPath =
         'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf';
-    if (await UrlLauncherPlatform.instance.canLaunch(url)) {
-      await UrlLauncherPlatform.instance.launchUrl(url, const LaunchOptions());
+
+    if (await UrlLauncherPlatform.instance.canLaunch(urlPath)) {
+      await UrlLauncherPlatform.instance
+          .launchUrl(urlPath, const LaunchOptions());
     } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Could not launch $url'),
-          ),
-        );
+      final Uri url = Uri(path: urlPath);
+
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      } else {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Could not launch $urlPath'),
+            ),
+          );
+        }
       }
     }
   }
 
   Future<void> _launchHEPWebsite(BuildContext context) async {
-    // final Uri url = Uri(path: 'https://flutter.dev');
-    const String url = 'https://hep.upm.edu.my/';
-    if (await UrlLauncherPlatform.instance.canLaunch(url)) {
-      await UrlLauncherPlatform.instance.launchUrl(url, const LaunchOptions());
+    const String urlPath = 'https://hep.upm.edu.my/';
+
+    if (await UrlLauncherPlatform.instance.canLaunch(urlPath)) {
+      await UrlLauncherPlatform.instance
+          .launchUrl(urlPath, const LaunchOptions());
     } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Could not launch $url'),
-          ),
-        );
+      final Uri url = Uri(path: urlPath);
+
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      } else {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Could not launch $urlPath'),
+            ),
+          );
+        }
       }
     }
   }
