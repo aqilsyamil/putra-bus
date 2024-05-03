@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
+import 'package:url_launcher_android/url_launcher_android.dart';
 
 class MessageInfo extends HookConsumerWidget {
   const MessageInfo({super.key});
@@ -108,17 +109,23 @@ class MessageInfo extends HookConsumerWidget {
       await UrlLauncherPlatform.instance
           .launchUrl(urlPath, const LaunchOptions());
     } else {
-      final Uri url = Uri(path: urlPath);
+      UrlLauncherAndroid launcher = UrlLauncherAndroid();
 
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.externalApplication);
+      if (await launcher.canLaunch(urlPath)) {
+        await launcher.launchUrl(urlPath, const LaunchOptions());
       } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Could not launch $urlPath'),
-            ),
-          );
+        final Uri url = Uri(path: urlPath);
+
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Could not launch $urlPath'),
+              ),
+            );
+          }
         }
       }
     }
@@ -131,17 +138,23 @@ class MessageInfo extends HookConsumerWidget {
       await UrlLauncherPlatform.instance
           .launchUrl(urlPath, const LaunchOptions());
     } else {
-      final Uri url = Uri(path: urlPath);
+      UrlLauncherAndroid launcher = UrlLauncherAndroid();
 
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.externalApplication);
+      if (await launcher.canLaunch(urlPath)) {
+        await launcher.launchUrl(urlPath, const LaunchOptions());
       } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Could not launch $urlPath'),
-            ),
-          );
+        final Uri url = Uri(path: urlPath);
+
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Could not launch $urlPath'),
+              ),
+            );
+          }
         }
       }
     }
