@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.3"
+  ansicolor:
+    dependency: transitive
+    description:
+      name: ansicolor
+      sha256: "8bf17a8ff6ea17499e40a2d2542c2f481cd7615760c6d34065cb22bfd22e6880"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   args:
     dependency: transitive
     description:
@@ -448,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  group_button:
+    dependency: transitive
+    description:
+      name: group_button
+      sha256: "0610fcf28ed122bfb4b410fce161a390f7f2531d55d1d65c5375982001415940"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.4"
   hooks_riverpod:
     dependency: "direct main"
     description:
@@ -816,6 +832,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  share_plus:
+    dependency: transitive
+    description:
+      name: share_plus
+      sha256: ef3489a969683c4f3d0239010cc8b7a2a46543a8d139e111c06c558875083544
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.0.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      sha256: "0f9e4418835d1b2c3ae78fdb918251959106cefdbc4dd43526e182f80e82f6d4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -965,6 +997,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  talker:
+    dependency: transitive
+    description:
+      name: talker
+      sha256: "7fd2118fbdd35ee9004d1ed326d101cdbabe5fed3575e9e9aa050535e019e885"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.5"
+  talker_flutter:
+    dependency: "direct main"
+    description:
+      name: talker_flutter
+      sha256: "981da0bb1501a9937f914574b5987f839e363a8402f613addbbf9ebe7e8393c1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.5"
+  talker_logger:
+    dependency: transitive
+    description:
+      name: talker_logger
+      sha256: d09f459ff09ab510f74f4384d674dccce0a85ecf8b5733258ffdc9869d082505
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.5"
   term_glyph:
     dependency: transitive
     description:

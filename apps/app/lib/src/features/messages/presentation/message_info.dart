@@ -1,9 +1,9 @@
+import 'package:app/src/common_widgets/url/link_text.dart';
+import 'package:app/src/common_widgets/url/url_launcher.dart';
 import 'package:app/src/utils/space.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
-import 'package:url_launcher_android/url_launcher_android.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class MessageInfo extends HookConsumerWidget {
   const MessageInfo({super.key});
@@ -11,56 +11,64 @@ class MessageInfo extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Divider(),
-          const Text(
-            'For more information, visit our website',
-            style: TextStyle(color: Colors.grey),
-          ),
-          InkWell(
-            onTap: () {
-              _launchHEPWebsite(context);
-            },
-            child: const Text(
-              'https://hep.upm.edu.my/',
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.w600,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TalkerListener(
+          talker: Talker(),
+          listener: (data) {},
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Divider(),
+              const Text(
+                'For more information, visit our website',
+                style: TextStyle(color: Colors.grey),
               ),
-            ),
+              const LinkText(
+                text: 'https://hep.upm.edu.my/',
+                urlPath: 'https://hep.upm.edu.my/',
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Transport Management Section\nStudent Affairs Division\nUniversiti Putra Malaysia\nCancellory Putra\'s Building\n43400 UPM Serdang\nSelangor Darul Ehsan',
+                style: TextStyle(
+                  fontSize: 12,
+                  height: 1.2,
+                ),
+              ),
+              const SizedBox(height: 20),
+              MessageButtons(buttons: [
+                MessageButton(
+                    onPressed: () {
+                      _showTransitMap(context);
+                    },
+                    title: "UPM Transit Map"),
+                MessageButton(
+                    onPressed: () {
+                      UrlLauncher(Uri.parse(
+                              'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf'))
+                          .launch(context);
+                    },
+                    title: "Bus Schedule"),
+                MessageButton(
+                    onPressed: () {
+                      UrlLauncher(Uri(
+                        scheme: 'mailto',
+                        path: 'bhep@upm.edu.my',
+                        query: Uri.encodeFull(
+                            'subject=UPM Bus Feedback&body=Name of Informant:\n'
+                            'Incident Date:\n'
+                            'Incident Time:\n'
+                            'Bus Route:\n'
+                            'Bus Plate No.:\n'
+                            'Bus Stop:\n'
+                            'Details:\n'),
+                      )).launch(context);
+                    },
+                    title: "Send Feedback")
+              ], gap: 10.0)
+            ],
           ),
-          const SizedBox(height: 20),
-          const Text(
-            'Transport Management Section\nStudent Affairs Division\nUniversiti Putra Malaysia\nCancellory Putra\'s Building\n43400 UPM Serdang\nSelangor Darul Ehsan',
-            style: TextStyle(
-              fontSize: 12,
-              height: 1.2,
-            ),
-          ),
-          const SizedBox(height: 20),
-          MessageButtons(buttons: [
-            MessageButton(
-                onPressed: () {
-                  _showTransitMap(context);
-                },
-                title: "UPM Transit Map"),
-            MessageButton(
-                onPressed: () {
-                  _launchBusScheduleURL(context);
-                },
-                title: "Bus Schedule"),
-            MessageButton(
-                onPressed: () {
-                  _launchFeedbackEmail(context);
-                },
-                title: "Send Feedback")
-          ], gap: 10.0)
-        ],
-      ),
-    );
+        ));
   }
 
   void _showTransitMap(BuildContext context) {
@@ -98,92 +106,6 @@ class MessageInfo extends HookConsumerWidget {
         );
       },
     );
-  }
-
-// Method to launch Bus.dart Schedule URL
-  Future<void> _launchBusScheduleURL(BuildContext context) async {
-    const String urlPath =
-        'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf';
-
-    if (await UrlLauncherPlatform.instance.canLaunch(urlPath)) {
-      await UrlLauncherPlatform.instance
-          .launchUrl(urlPath, const LaunchOptions());
-    } else {
-      UrlLauncherAndroid launcher = UrlLauncherAndroid();
-
-      if (await launcher.canLaunch(urlPath)) {
-        await launcher.launchUrl(urlPath, const LaunchOptions());
-      } else {
-        final Uri url = Uri(path: urlPath);
-
-        if (await canLaunchUrl(url)) {
-          await launchUrl(url, mode: LaunchMode.externalApplication);
-        } else {
-          if (context.mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Could not launch $urlPath'),
-              ),
-            );
-          }
-        }
-      }
-    }
-  }
-
-  Future<void> _launchHEPWebsite(BuildContext context) async {
-    const String urlPath = 'https://hep.upm.edu.my/';
-
-    if (await UrlLauncherPlatform.instance.canLaunch(urlPath)) {
-      await UrlLauncherPlatform.instance
-          .launchUrl(urlPath, const LaunchOptions());
-    } else {
-      UrlLauncherAndroid launcher = UrlLauncherAndroid();
-
-      if (await launcher.canLaunch(urlPath)) {
-        await launcher.launchUrl(urlPath, const LaunchOptions());
-      } else {
-        final Uri url = Uri(path: urlPath);
-
-        if (await canLaunchUrl(url)) {
-          await launchUrl(url, mode: LaunchMode.externalApplication);
-        } else {
-          if (context.mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Could not launch $urlPath'),
-              ),
-            );
-          }
-        }
-      }
-    }
-  }
-
-  Future<void> _launchFeedbackEmail(BuildContext context) async {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'bhep@upm.edu.my',
-      query: Uri.encodeFull('subject=UPM Bus Feedback&body=Name of Informant:\n'
-          'Incident Date:\n'
-          'Incident Time:\n'
-          'Bus Route:\n'
-          'Bus Plate No.:\n'
-          'Bus Stop:\n'
-          'Details:\n'),
-    );
-
-    if (await canLaunchUrl(emailLaunchUri)) {
-      await launchUrl(emailLaunchUri);
-    } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Could not launch $emailLaunchUri'),
-          ),
-        );
-      }
-    }
   }
 }
 
