@@ -60,10 +60,8 @@ class _BusStopScreenState extends State<BusStopScreen> {
                     subtitle: Text(busStop.short_name),
                     leading: GestureDetector(
                       onTap: () {
-                        showImageDialog(
-                            context,
-                            busStop
-                                .image_path); // Call the function from ImageDialog.dart
+                        ImageDialog.of(context)
+                            .showImageNetworkDialog(busStop.image_path);
                       },
                       child: const Icon(Icons.info),
                     ),
