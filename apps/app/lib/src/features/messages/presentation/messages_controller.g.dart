@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'messages_service.dart';
+part of 'messages_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$messagesServiceHash() => r'50663f6a1ad1c78dee7ee1d75bc4d75822fc4776';
+String _$messagesServiceHash() => r'c2c3361e85d89faee2976aaff27de51da1702953';
 
 /// See also [messagesService].
 @ProviderFor(messagesService)
