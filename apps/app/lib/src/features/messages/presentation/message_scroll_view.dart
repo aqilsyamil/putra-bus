@@ -1,4 +1,4 @@
-import 'package:app/src/common_widgets/list_items_builder.dart';
+import 'package:app/src/common_widgets/list_items/list_items_builder.dart';
 import 'package:app/src/features/messages/application/messages_service.dart';
 import 'package:app/src/features/messages/domain/message.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +18,12 @@ class MessageScrollView extends HookConsumerWidget {
 
         return ListItemsBuilder<Message>(
           data: messages,
+          gap: 5.0,
           itemBuilder: (context, model) => MessageListTile(
             title: model.title,
             message: model.message,
             dateTime: model.dateTime,
           ),
-          showDivider: false,
         );
       }),
     );

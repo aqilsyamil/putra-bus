@@ -1,7 +1,7 @@
 import 'package:app/src/common_widgets/dialog/image_dialog.dart';
+import 'package:app/src/common_widgets/list_items/column_items.dart';
 import 'package:app/src/common_widgets/url/link_text.dart';
 import 'package:app/src/common_widgets/url/url_launcher.dart';
-import 'package:app/src/utils/space.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -33,7 +33,7 @@ class MessageInfo extends HookConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            MessageButtons(buttons: [
+            ColumnItems(gap: 10.0, children: [
               MessageButton(
                   onPressed: () {
                     ImageDialog.of(context)
@@ -62,28 +62,9 @@ class MessageInfo extends HookConsumerWidget {
                     ));
                   },
                   title: "Send Feedback")
-            ], gap: 10.0)
+            ])
           ],
         ));
-  }
-}
-
-class MessageButtons extends HookConsumerWidget {
-  const MessageButtons({super.key, required this.gap, required this.buttons});
-
-  final List<MessageButton> buttons;
-  final double gap;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: space(height: gap, width: 0, children: buttons),
-      ),
-    );
   }
 }
 
