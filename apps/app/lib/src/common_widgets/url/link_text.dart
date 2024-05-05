@@ -16,8 +16,7 @@ class LinkText extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () {
-        UrlLauncher url = UrlLauncher(Uri.parse(urlPath));
-        url.launch(context);
+        UrlLauncher.of(context).launch(urlPath);
       },
       child: Text(
         text,

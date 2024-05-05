@@ -1,13 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class UrlLauncher {
-  UrlLauncher(this.url);
+  UrlLauncher();
 
-  final Uri url;
+  static UrlLauncherState of(BuildContext context) {
+    return UrlLauncherState(context);
+  }
+}
 
-  Future<void> launch(BuildContext context) async {
-    if (!await launchUrl(url)) {
+class UrlLauncherState {
+  UrlLauncherState(this.context);
+
+  final BuildContext context;
+
+  Future<void> launch(String path) async {
+    Uri url = Uri.parse(path);
+
+    if (!await url_launcher.launchUrl(url)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Could not launch ${url.toString()}'),
+          ),
+        );
+      }
+      throw 'Could not launch ${url.toString}';
+    }
+  }
+
+  Future<void> launchUrl(Uri url) async {
+    if (!await url_launcher.launchUrl(url)) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

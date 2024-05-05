@@ -44,14 +44,13 @@ class MessageInfo extends HookConsumerWidget {
                     title: "UPM Transit Map"),
                 MessageButton(
                     onPressed: () {
-                      UrlLauncher(Uri.parse(
-                              'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf'))
-                          .launch(context);
+                      UrlLauncher.of(context).launch(
+                          'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
                     },
                     title: "Bus Schedule"),
                 MessageButton(
                     onPressed: () {
-                      UrlLauncher(Uri(
+                      UrlLauncher.of(context).launchUrl(Uri(
                         scheme: 'mailto',
                         path: 'bhep@upm.edu.my',
                         query: Uri.encodeFull(
@@ -62,7 +61,7 @@ class MessageInfo extends HookConsumerWidget {
                             'Bus Plate No.:\n'
                             'Bus Stop:\n'
                             'Details:\n'),
-                      )).launch(context);
+                      ));
                     },
                     title: "Send Feedback")
               ], gap: 10.0)
