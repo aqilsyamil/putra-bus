@@ -23,6 +23,7 @@ class MessageScrollView extends HookConsumerWidget {
             message: model.message,
             dateTime: model.dateTime,
           ),
+          showDivider: false,
         );
       }),
     );

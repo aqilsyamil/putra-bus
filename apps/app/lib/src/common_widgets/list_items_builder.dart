@@ -9,15 +9,19 @@ class ListItemsBuilder<T> extends StatelessWidget {
     super.key,
     required this.data,
     required this.itemBuilder,
+    this.showDivider = true,
   });
   final AsyncValue<List<T>> data;
   final ItemWidgetBuilder<T> itemBuilder;
+  final bool showDivider;
 
   @override
   Widget build(BuildContext context) {
     return data.when(
-      data: (items) => items.isNotEmpty
-          ? ListView.builder(
+      data: (items) {
+        if (items.isNotEmpty) {
+          if (showDivider) {
+            return ListView.separated(
               itemCount: items.length + 2,
               itemBuilder: (context, index) {
                 if (index == 0 || index == items.length + 1) {
@@ -25,8 +29,23 @@ class ListItemsBuilder<T> extends StatelessWidget {
                 }
                 return itemBuilder(context, items[index - 1]);
               },
-            )
-          : const EmptyContent(),
+              separatorBuilder: (context, index) => const Divider(),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: items.length + 2,
+              itemBuilder: (context, index) {
+                if (index == 0 || index == items.length + 1) {
+                  return const SizedBox.shrink();
+                }
+                return itemBuilder(context, items[index - 1]);
+              },
+            );
+          }
+        }
+
+        return const EmptyContent();
+      },
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, __) {
         print(_);
