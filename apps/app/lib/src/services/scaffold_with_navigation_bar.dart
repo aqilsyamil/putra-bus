@@ -1,4 +1,4 @@
-import 'package:app/src/common_widgets/bar/nav_bar.dart';
+import 'package:app/src/widgets/bar/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class ScaffoldWithNavigationBar extends StatelessWidget {

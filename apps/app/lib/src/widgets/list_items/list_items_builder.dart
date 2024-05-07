@@ -1,5 +1,5 @@
-import 'package:app/src/common_widgets/empty_content.dart';
-import 'package:app/src/common_widgets/list_items/keep_alive_item.dart';
+import 'package:app/src/widgets/empty_content.dart';
+import 'package:app/src/widgets/list_items/keep_alive_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

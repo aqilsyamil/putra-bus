@@ -1,4 +1,4 @@
-import 'package:app/src/common_widgets/bar/app_bar.dart';
+import 'package:app/src/widgets/bar/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BusRouteScreen extends StatelessWidget {

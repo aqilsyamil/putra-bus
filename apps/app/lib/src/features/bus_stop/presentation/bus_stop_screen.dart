@@ -1,8 +1,8 @@
-import 'package:app/src/common_widgets/bar/app_bar.dart';
-import 'package:app/src/common_widgets/list_items/list_items_builder.dart';
+import 'package:app/src/widgets/bar/app_bar.dart';
+import 'package:app/src/widgets/list_items/list_items_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:app/src/features/bus_stop/presentation/bus_stop_controller.dart';
-import 'package:app/src/common_widgets/dialog/image_dialog.dart';
+import 'package:app/src/widgets/dialog/image_dialog.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BusStopScreen extends HookConsumerWidget {

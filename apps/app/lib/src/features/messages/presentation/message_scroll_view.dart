@@ -1,6 +1,6 @@
-import 'package:app/src/common_widgets/list_items/list_items_builder.dart';
+import 'package:app/src/features/messages/data/messages_repository.dart';
+import 'package:app/src/widgets/list_items/list_items_builder.dart';
 import 'package:app/src/features/messages/domain/message.dart';
-import 'package:app/src/features/messages/presentation/messages_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -11,12 +11,12 @@ class MessageScrollView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: 300.0,
-      child: Consumer(builder: (context, ref, child) {
-        final messages = ref.watch(messagesServiceProvider);
+    final messages = ref.watch(fetchMessagesProvider);
+    print(messages.value?.first.message);
 
-        return ListItemsBuilder<Message>(
+    return SizedBox(
+        height: 300.0,
+        child: ListItemsBuilder<Message>(
           data: messages,
           gap: 5.0,
           itemBuilder: (context, message) => MessageListTile(
@@ -24,9 +24,7 @@ class MessageScrollView extends HookConsumerWidget {
             message: message.message,
             dateTime: message.dateTime,
           ),
-        );
-      }),
-    );
+        ));
   }
 }
 

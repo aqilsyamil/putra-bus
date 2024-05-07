@@ -1,4 +1,4 @@
-import 'package:app/src/routing/app_router.dart';
+import 'package:app/src/services/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

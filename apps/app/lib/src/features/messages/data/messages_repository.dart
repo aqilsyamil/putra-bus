@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:app/src/features/messages/domain/message.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'messages_repository.g.dart';
@@ -13,91 +10,92 @@ class MessagesRepository {
 
   final String messagesFileName;
 
-  Future<void> addEntry(
-      {required String id,
-      required String title,
-      required String message,
-      required String date,
-      required String time}) async {
-    List<Message> messages = await readMessages();
-    List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
+  // Future<void> addEntry(
+  //     {required String id,
+  //     required String title,
+  //     required String message,
+  //     required String date,
+  //     required String time}) async {
+  //   List<Message> messages = await readMessages();
+  //   List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
 
-    messages.add(Message(
-        id: id,
-        title: title,
-        message: message,
-        dateTime: DateTime.parse('$date $time')));
+  //   messages.add(Message(
+  //       id: id,
+  //       title: title,
+  //       message: message,
+  //       dateTime: DateTime.parse('$date $time')));
 
-    List<List<dynamic>> csvData = [
-      rowHeader,
-      ...<dynamic>[messages]
-    ];
-    String csv = const ListToCsvConverter().convert(csvData);
-    final String dir = (await getApplicationDocumentsDirectory()).path;
-    // create file
-    final File file = File('$dir/$messagesFileName');
-    // Save csv string using default configuration
-    // , as field separator
-    // " as text delimiter and
-    // \r\n as eol.
-    await file.writeAsString(csv);
-  }
+  //   List<List<dynamic>> csvData = [
+  //     rowHeader,
+  //     ...<dynamic>[messages]
+  //   ];
+  //   String csv = const ListToCsvConverter().convert(csvData);
+  //   final String dir = (await getApplicationDocumentsDirectory()).path;
+  //   // create file
+  //   final File file = File('$dir/$messagesFileName');
+  //   // Save csv string using default configuration
+  //   // , as field separator
+  //   // " as text delimiter and
+  //   // \r\n as eol.
+  //   await file.writeAsString(csv);
+  // }
 
-  Future<void> updateMessage(
-      {required String id,
-      required String title,
-      required String message,
-      required String date,
-      required String time}) async {
-    List<Message> messages = await readMessages();
-    List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
+  // Future<void> updateMessage(
+  //     {required String id,
+  //     required String title,
+  //     required String message,
+  //     required String date,
+  //     required String time}) async {
+  //   List<Message> messages = await readMessages();
+  //   List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
 
-    List<dynamic> messagesCsv = [
-      ...<dynamic>[messages]
-    ];
+  //   List<dynamic> messagesCsv = [
+  //     ...<dynamic>[messages]
+  //   ];
 
-    messagesCsv.map((message) {
-      if (message) {
-        message['id'] = id;
-        message['title'] = title;
-        message['message'] = message;
-        message['date'] = date;
-        message['time'] = time;
-      }
-    });
+  //   messagesCsv.map((message) {
+  //     if (message) {
+  //       message['id'] = id;
+  //       message['title'] = title;
+  //       message['message'] = message;
+  //       message['date'] = date;
+  //       message['time'] = time;
+  //     }
+  //   });
 
-    List<List<dynamic>> csvData = [rowHeader, ...messagesCsv];
-    String csv = const ListToCsvConverter().convert(csvData);
-    final String dir = (await getApplicationDocumentsDirectory()).path;
-    // create file
-    final File file = File('$dir/$messagesFileName');
-    // Save csv string using default configuration
-    // , as field separator
-    // " as text delimiter and
-    // \r\n as eol.
-    await file.writeAsString(csv);
-  }
+  //   List<List<dynamic>> csvData = [rowHeader, ...messagesCsv];
+  //   String csv = const ListToCsvConverter().convert(csvData);
+  //   final String dir = (await getApplicationDocumentsDirectory()).path;
+  //   // create file
+  //   final File file = File('$dir/$messagesFileName');
+  //   // Save csv string using default configuration
+  //   // , as field separator
+  //   // " as text delimiter and
+  //   // \r\n as eol.
+  //   await file.writeAsString(csv);
+  // }
 
-  Future<void> deleteMessage({required String id}) async {
-    List<Message> messages = await readMessages();
-    List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
+  // Future<void> deleteMessage({required String id}) async {
 
-    messages.removeWhere((message) => message.id == id);
+  //   List<Message> messages = await readMessages();
+  //   List<String> rowHeader = ['id', 'title', 'message', 'date', 'time'];
 
-    List<List<dynamic>> csvData = [
-      rowHeader,
-      ...<dynamic>[messages]
-    ];
-    String csv = const ListToCsvConverter().convert(csvData);
-    final String dir = (await getApplicationDocumentsDirectory()).path;
-    // create file
-    final File file = File('$dir/$messagesFileName');
-    // Save csv string using default configuration
-    // , as field separator
-    // " as text delimiter and
-    // \r\n as eol.
-    await file.writeAsString(csv);
-  }
+  //   messages.removeWhere((message) => message.id == id);
+
+  //   List<List<dynamic>> csvData = [
+  //     rowHeader,
+  //     ...<dynamic>[messages]
+  //   ];
+  //   String csv = const ListToCsvConverter().convert(csvData);
+  //   final String dir = (await getApplicationDocumentsDirectory()).path;
+  //   // create file
+  //   final File file = File('$dir/$messagesFileName');
+  //   // Save csv string using default configuration
+  //   // , as field separator
+  //   // " as text delimiter and
+  //   // \r\n as eol.
+  //   await file.writeAsString(csv);
+  // }
 
   Future<List<Message>> readMessages() async {
     var result = await rootBundle.loadString(messagesFileName);
@@ -124,4 +122,9 @@ class MessagesRepository {
 @riverpod
 MessagesRepository messagesRepository(MessagesRepositoryRef ref) {
   return const MessagesRepository('assets/messages.csv');
+}
+
+@Riverpod(keepAlive: true)
+Stream<List<Message>> fetchMessages(FetchMessagesRef ref) async* {
+  yield await ref.watch(messagesRepositoryProvider).readMessages();
 }

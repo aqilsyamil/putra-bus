@@ -1,4 +1,5 @@
-import 'package:app/src/common_widgets/bar/app_bar.dart';
+import 'package:app/src/features/messages/data/messages_repository.dart';
+import 'package:app/src/widgets/bar/app_bar.dart';
 import 'package:app/src/features/messages/presentation/message_info.dart';
 import 'package:app/src/features/messages/presentation/message_scroll_view.dart';
 import 'package:flutter/material.dart';

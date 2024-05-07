@@ -50,6 +50,7 @@ dev_dependencies:
   riverpod_lint: ^2.3.10
   custom_lint: ^0.6.4
   riverpod_generator: ^2.4.0
+  husky: ^0.1.7
 
 flutter:
   uses-material-design: true
