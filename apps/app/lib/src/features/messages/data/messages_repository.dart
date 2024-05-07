@@ -124,7 +124,7 @@ MessagesRepository messagesRepository(MessagesRepositoryRef ref) {
   return const MessagesRepository('assets/messages.csv');
 }
 
-@Riverpod(keepAlive: true)
+@riverpod
 Stream<List<Message>> fetchMessages(FetchMessagesRef ref) async* {
   yield await ref.watch(messagesRepositoryProvider).readMessages();
 }

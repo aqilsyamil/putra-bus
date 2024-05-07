@@ -7,11 +7,12 @@ part of 'messages_repository.dart';
 // **************************************************************************
 
 String _$messagesRepositoryHash() =>
-    r'c2e307c3444ce7e25917209df902e94faead4a05';
+    r'f2cec7ca0d968350e72047b8d48cb8db8bc6b25c';
 
 /// See also [messagesRepository].
 @ProviderFor(messagesRepository)
-final messagesRepositoryProvider = Provider<MessagesRepository>.internal(
+final messagesRepositoryProvider =
+    AutoDisposeProvider<MessagesRepository>.internal(
   messagesRepository,
   name: r'messagesRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,12 +22,12 @@ final messagesRepositoryProvider = Provider<MessagesRepository>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef MessagesRepositoryRef = ProviderRef<MessagesRepository>;
-String _$fetchMessagesHash() => r'd23d71ba73eeb008a282abf2f17c9a7163cdf9a5';
+typedef MessagesRepositoryRef = AutoDisposeProviderRef<MessagesRepository>;
+String _$fetchMessagesHash() => r'1fd4e28be10b8f92995d026fcba594fedbeb142f';
 
 /// See also [fetchMessages].
 @ProviderFor(fetchMessages)
-final fetchMessagesProvider = StreamProvider<List<Message>>.internal(
+final fetchMessagesProvider = AutoDisposeStreamProvider<List<Message>>.internal(
   fetchMessages,
   name: r'fetchMessagesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -36,6 +37,6 @@ final fetchMessagesProvider = StreamProvider<List<Message>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef FetchMessagesRef = StreamProviderRef<List<Message>>;
+typedef FetchMessagesRef = AutoDisposeStreamProviderRef<List<Message>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

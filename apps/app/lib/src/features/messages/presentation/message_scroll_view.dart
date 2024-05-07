@@ -12,6 +12,7 @@ class MessageScrollView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final messages = ref.watch(fetchMessagesProvider);
+
     print(messages.value?.first.message);
 
     return SizedBox(
