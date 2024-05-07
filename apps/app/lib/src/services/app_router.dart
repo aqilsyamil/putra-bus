@@ -1,8 +1,8 @@
-import 'package:app/src/features/bus_route/presentation/bus_route_screen.dart';
-import 'package:app/src/features/bus_stop/presentation/bus_stop_screen.dart';
-import 'package:app/src/features/messages/presentation/message_screen.dart';
-import 'package:app/src/features/navigation/navigation_screen.dart';
-import 'package:app/src/services/scaffold_with_nested_navigation.dart';
+import 'package:app/src/features/bus_route/presentation/screen/bus_route_screen.dart';
+import 'package:app/src/features/bus_stop/presentation/screen/bus_stop_screen.dart';
+import 'package:app/src/features/messages/presentation/screen/message_screen.dart';
+import 'package:app/src/features/navigation/presentation/screen/navigation_screen.dart';
+import 'package:app/src/widgets/navigation/scaffold_with_nested_navigation.dart';
 import 'package:app/src/services/app_startup.dart';
 import 'package:app/src/services/not_found_screen.dart';
 import 'package:flutter/material.dart';

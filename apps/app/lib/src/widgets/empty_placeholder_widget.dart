@@ -1,4 +1,4 @@
-import 'package:app/src/widgets/primary_button.dart';
+import 'package:app/src/widgets/button/primary_button.dart';
 import 'package:app/src/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
