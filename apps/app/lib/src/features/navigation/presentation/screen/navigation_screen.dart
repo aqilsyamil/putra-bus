@@ -1,3 +1,4 @@
+import 'package:app/src/features/navigation/presentation/widget/navigation_search_fields.dart';
 import 'package:app/src/widgets/bar/app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -6,12 +7,14 @@ class NavigationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'Navigation'),
-      body: Container(
-        alignment: Alignment.center,
-        child:
-            const Text('Navigation', style: TextStyle(height: 5, fontSize: 45)),
+    return const Scaffold(
+      appBar: CustomAppBar(title: 'Navigation'),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          NavigationSearchFields(),
+        ],
       ),
     );
   }
