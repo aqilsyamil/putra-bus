@@ -33,36 +33,40 @@ class MessageInfo extends HookConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ColumnItems(gap: 10.0, children: [
-              MessageButton(
-                  onPressed: () {
-                    ImageDialog.of(context)
-                        .showImageAssetDialog('assets/images/transit_map.png');
-                  },
-                  title: "UPM Transit Map"),
-              MessageButton(
-                  onPressed: () {
-                    UrlLauncher.of(context).launch(
-                        'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
-                  },
-                  title: "Bus Schedule"),
-              MessageButton(
-                  onPressed: () {
-                    UrlLauncher.of(context).launchUrl(Uri(
-                      scheme: 'mailto',
-                      path: 'bhep@upm.edu.my',
-                      query: Uri.encodeFull(
-                          'subject=UPM Bus Feedback&body=Name of Informant:\n'
-                          'Incident Date:\n'
-                          'Incident Time:\n'
-                          'Bus Route:\n'
-                          'Bus Plate No.:\n'
-                          'Bus Stop:\n'
-                          'Details:\n'),
-                    ));
-                  },
-                  title: "Send Feedback")
-            ])
+            ColumnItems(
+                gap: 10.0,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  MessageButton(
+                      onPressed: () {
+                        ImageDialog.of(context).showImageAssetDialog(
+                            'assets/images/transit_map.png');
+                      },
+                      title: "UPM Transit Map"),
+                  MessageButton(
+                      onPressed: () {
+                        UrlLauncher.of(context).launch(
+                            'https://sgs.upm.edu.my/upload/dokumen/20221013173417JADUAL_MASA_PERKHIDMATAN_BAS_(2022).pdf');
+                      },
+                      title: "Bus Schedule"),
+                  MessageButton(
+                      onPressed: () {
+                        UrlLauncher.of(context).launchUrl(Uri(
+                          scheme: 'mailto',
+                          path: 'bhep@upm.edu.my',
+                          query: Uri.encodeFull(
+                              'subject=UPM Bus Feedback&body=Name of Informant:\n'
+                              'Incident Date:\n'
+                              'Incident Time:\n'
+                              'Bus Route:\n'
+                              'Bus Plate No.:\n'
+                              'Bus Stop:\n'
+                              'Details:\n'),
+                        ));
+                      },
+                      title: "Send Feedback")
+                ])
           ],
         ));
   }
