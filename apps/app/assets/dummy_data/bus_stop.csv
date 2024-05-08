@@ -1,0 +1,25 @@
+id,long_name,short_name,image_path
+1,Putra Foodcourt,PFC,assets/images/bus_stop/pfc.JPG
+2,Tan Sri Aishah Ghani College,KTAG,assets/images/bus_stop/ktag.JPG
+3,Serumpun Foodcourt,SFC,assets/images/bus_stop/sfc.JPG
+4,Central (Great Hall & Experimental Theatre),Central,assets/images/bus_stop/central.JPG
+5,Faculty of Modern Languages & Communication,FBMK,assets/images/bus_stop/fbmk.JPG
+6,Faculty of Biotechnology and Biomolecular Sciences,FBSB,assets/images/bus_stop/fbsb.JPG
+7,Faculty of Agriculture,FP,assets/images/bus_stop/fp.JPG
+8,Faculty of Agriculture Cafeteria,FPC,assets/images/bus_stop/fpc.JPG
+9,Faculty of Design & Architecture,FRSB,assets/images/bus_stop/frsb.JPG
+10,Faculty of Science,FS,assets/images/bus_stop/fs.JPG
+11,Faculty of Computer Science & Information Technology,FSKTM,assets/images/bus_stop/fsktm.JPG
+12,Faculty of Food Science & Technology,FSTM,assets/images/bus_stop/fstm.JPG
+13,Institute of Bioscience,IBS,assets/images/bus_stop/ibs.JPG
+14,Institute of Mathematical Research,INSPEM,assets/images/bus_stop/inspem.JPG
+15,Tenth College,K10,assets/images/bus_stop/k10.JPG
+16,Fourteenth College,K14,assets/images/bus_stop/k14.jpg
+17,Tan Sri Mustaffa Babjee,KMB,assets/images/bus_stop/kmb.JPG
+18,Sultan Abdul Samad Library,PSAS,assets/images/bus_stop/psas.JPG
+19,School of Graduate Studies,SGS,assets/images/bus_stop/sgs.JPG
+20,Banquet Hall,Banquet,assets/images/bus_stop/banquet.JPG
+21,Centre of Foundation Studies for Agricultural Science,ASPer,assets/images/bus_stop/asper.jpg
+22,Academic Complex A (Opp FBMK),KAA,assets/images/bus_stop/kaa.JPG
+23,Sports Academy,Academy,assets/images/bus_stop/academy.jpg
+24,Opp Institute for Mathematical Research,Opp INSPEM,assets/images/bus_stop/inspem.JPG

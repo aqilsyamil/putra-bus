@@ -40,9 +40,9 @@ dependencies:
   geocoding: ^3.0.0
   csv: ^6.0.0
   path_provider: ^2.1.1
-  file_picker: ^6.1.1
+  file_picker: ^8.0.3
   random_string: ^2.3.1
-  location: ^5.0.3
+  location: ^6.0.1
   flutter_svg: ^2.0.10+1
   sqflite: ^2.0.0+4 # Added sqflite for SQLite database operations
   mysql1: ^0.20.0

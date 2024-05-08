@@ -1,9 +1,11 @@
 # PutraBus
 
+[![Generic badge](https://img.shields.io/badge/api-red.svg)](https://putrabus-api.up.railway.app/)
 ![Generic badge](https://img.shields.io/badge/maintained-yes-green.svg)
-[![Generic badge](https://img.shields.io/badge/api-run-red.svg)](https://putra-bus-production.up.railway.app/)
+![Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Faqilsyamil%2Fputra-bus.json%3Fcolor%3Dyellow)
+![GitHub Repo stars](https://img.shields.io/github/stars/aqilsyamil/putra-bus)
 
-PutraBus App is designed to enhance the UPM shuttle bus service by providing real-time updates on bus location, estimated time of arrivals (ETA), and occupancy status. This monorepo, built using the NX framework, contains both the PutraBus mobile application and the PutraBus API.
+PutraBus app is designed to enhance the UPM shuttle bus service by providing near real-time updates on bus location, estimated time of arrivals (ETA), and occupancy status. This monorepo, built using the NX framework, contains both the PutraBus mobile application and the PutraBus API.
 
 - PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
 - PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
@@ -18,15 +20,18 @@ PutraBus App is designed to enhance the UPM shuttle bus service by providing rea
 
 - [Overview](#putrabus)
 - [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Installing Package Manager](#installing-package-manager)
+    - [Bun](#bun)
+    - [Node & `npm`](#node--npm)
 - [Quick Start](#quick-start)
-- [Usage](#usage)
   - [Flutter App](#flutter-app)
   - [API](#api)
 - [Updating Repository](#updating-repository)
 - [Contributors](#contributors)
 - [License](#license)
 
-## Quick Start
+## Installation
 
 Clone repository via HTTPs
 
@@ -34,7 +39,27 @@ Clone repository via HTTPs
 git clone https://github.com/aqilsyamil/putra-bus.git
 ```
 
-You need to install dependencies. Dependencies is install by using a dependencies manager such as bun and node. To install Bun on macOS, Linux, or Windows Subsystem for Linux (WSL), execute the following curl command:
+You need to install dependencies for the project. Dependencies is install by using a dependencies manager. We use bun and npm as our dependencies manager. You can install both bun and `npm` by refering to [our package manager installation section](#installing-package-manager).
+
+If you have installed both bun and `npm`, you also need to install [Flutter](https://docs.flutter.dev/get-started/install) to work with PutraBus app. After installing Flutter, you need to also install [Android Studio](https://developer.android.com/studio/install) to emulate the app in an emulator (for Android).
+
+After all mobile app environments has been install, open the repository or project in your local machine and run the following script in your CLI.
+
+```bash
+bun run install:project
+```
+
+To update existing dependencies, run the following.
+
+```bash
+bun run update:project:dependencies
+```
+
+### Installing Package Manager
+
+#### Bun
+
+To install Bun on macOS, Linux, or Windows Subsystem for Linux (WSL), execute the following curl command:
 
 ```bash
 curl -fsSL https://bun.sh/install | bash
@@ -54,30 +79,18 @@ For Windows installation, ensure you have at least Windows 10 version 1809 and r
 powershell -c "irm bun.sh/install.ps1|iex"
 ```
 
-Bun can also be installed via npm, Homebrew, Docker, or Scoop package managers.
+Bun can also be installed via npm, Homebrew, Docker, or Scoop package managers. For further installation refer to [Bun official documentation](https://bun.sh/docs/installation).
 
-For installing Node.js and npm, utilize a Node version manager like nvm for managing multiple Node.js versions or use a Node installer if a version manager isn't feasible. To download the LTS version from the Node.js download page for macOS or Windows, and for Linux, consider using the NodeSource installer.
+#### Node & `npm`
 
-After installing the dependecies manager, we need to install the dependencies. Here I'm using bun but you may also use npm.
+For installing Node.js and npm, utilize a Node version manager like `nvm` for managing multiple Node.js versions or use a Node installer if a version manager isn't feasible. To download the LTS version from the Node.js download page for macOS or Windows, and for Linux, consider using the NodeSource installer. For more instructions, refer to [this Node and `npm` installation guide](https://kinsta.com/blog/how-to-install-node-js/).
 
-```bash
-bun install
-```
+## Quick Start
 
-You also need to install [Flutter](https://docs.flutter.dev/get-started/install) to work with PutraBus app. After installing Flutter, you need to also install [Android Studio](https://developer.android.com/studio/install) to emulate the app in an emulator (for Android).
-
-After all mobile app environments has been install, you need to install all dependencies for the Flutter mobile application.
+Everytime you open this project, you need to install and update your project. To do that, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file in the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to update the project.
 
 ```bash
-flutter pub get
-```
-
-## Usage
-
-Everytime you open this project, make sure to install and update your dependencies. Make sure you are in root project and not in any app folder.
-
-```bash
-bun run update:project
+bun run update:project:all
 ```
 
 ### Flutter App
@@ -90,7 +103,7 @@ bun run start:app:dev
 
 ### API
 
-To start an API, make sure you have .env file in root project. Ask me (Rayhan) to get this file. After that, you can start the API in development by running the below script.
+To start an API, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file in the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to install all dependencies for this project.
 
 ```bash
 bun run start:api:dev
@@ -110,31 +123,30 @@ bun run start:api:prod
 
 ## Updating Repository
 
-Any commit changes that has been push to main or dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
+Any commit changes in dev branch need to be refelected and merge in your feature branch. To do so, make sure you are in your feature branch.
 
 ```bash
 git branch
 ```
 
-Run the below to merge. Merge with caution.
+If you're in the feature branch, run the below to merge with dev branch. Merge with caution.
 
 ```bash
-git merge main
-```
-
-or  
-
-```bash
-git merge main
+git merge dev
 ```
 
 Please make a pull request first before pushing your commit changes of feature branch to main or dev branch.
 
 ## Contributors
 
+<a href="https://github.com/aqilsyamil/putra-bus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=aqilsyamil/putra-bus" />
+</a>
 
 ## License
 
 This project is licensed under UPM.
 
 Note: PutraBus App aims to improve transportation infrastructure for the UPM community.
+
+
