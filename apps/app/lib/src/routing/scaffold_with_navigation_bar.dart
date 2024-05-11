@@ -1,4 +1,5 @@
 import 'package:app/src/common_widgets/bar/nav_bar.dart';
+import 'package:app/src/features/drawer/presentation/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class ScaffoldWithNavigationBar extends StatelessWidget {
@@ -15,30 +16,32 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: body,
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: selectedIndex,
-          onTap: onDestinationSelected,
-          selectedItemColor: Colors.red,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.location_on),
-              label: 'Bus Stops',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.directions_bus),
-              label: 'Routes',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.navigation),
-              label: 'Navigation',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: 'Messages',
-            ),
-          ],
-        ));
+      body: body,
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: onDestinationSelected,
+        selectedItemColor: Colors.red,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on),
+            label: 'Bus Stops',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions_bus),
+            label: 'Routes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.navigation),
+            label: 'Navigation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Messages',
+          ),
+        ],
+      ),
+      drawer: DrawerWidget(),
+    );
   }
 }
