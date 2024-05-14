@@ -28,24 +28,12 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
             ),
           ),
         ),
-        Flexible(
-          child: ListView(
-            children: const [
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-              AvailableRouteTile(),
-            ],
-          ),
-        ),
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 100,
+          itemBuilder: (context, index) => const AvailableRouteTile(),
+        )
       ],
     );
   }
