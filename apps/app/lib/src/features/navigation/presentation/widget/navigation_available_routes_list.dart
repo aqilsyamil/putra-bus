@@ -2,6 +2,7 @@ import 'package:app/src/features/navigation/presentation/widget/navigation_bus_i
 import 'package:app/src/widgets/list_items/column_items.dart';
 import 'package:app/src/widgets/list_items/row_items.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class NavigationAvailableRoutesList extends HookConsumerWidget {
@@ -13,7 +14,7 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
       children: [
         Container(
           height: 25,
-          margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+          margin: const EdgeInsets.only(top: 20),
           padding: const EdgeInsets.symmetric(
               horizontal: 10, vertical: 2), // Adjusted padding
           alignment: Alignment.centerLeft,
@@ -27,11 +28,24 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
             ),
           ),
         ),
-        ListView(shrinkWrap: true, children: const [
-          AvailableRouteTile(),
-          AvailableRouteTile(),
-          AvailableRouteTile(),
-        ])
+        Flexible(
+          child: ListView(
+            children: const [
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+              AvailableRouteTile(),
+            ],
+          ),
+        ),
       ],
     );
   }
