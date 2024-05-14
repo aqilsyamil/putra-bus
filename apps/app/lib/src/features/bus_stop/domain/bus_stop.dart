@@ -1,40 +1,50 @@
-//import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:app/src/features/navigation/domain/coordinate.dart';
+import 'package:equatable/equatable.dart';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-class BusStop {
-  final String id;
-  // final String bus_stop_id;
-  final String long_name;
-  final String short_name;
-  final LatLng position;
-  final String image_path;
-
-  BusStop(
+class BusStop extends Equatable {
+  const BusStop(
       {required this.id,
-      // required this.bus_stop_id,
-      required this.long_name,
-      required this.short_name,
+      required this.fullName,
+      required this.shortName,
       required this.position,
-      required this.image_path});
+      required this.imagePath});
 
-  factory BusStop.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        "id": String id,
-        "full_name": String long_name,
-        "short_name": String short_name,
-        "latitude": double latitude,
-        "longitude": double longitude,
-        "image_path": String image_path
-      } =>
-        BusStop(
-            id: id,
-            long_name: long_name,
-            short_name: short_name,
-            position: LatLng(latitude, longitude),
-            image_path: image_path),
-      _ => throw const FormatException('Failed to load album.'),
+  final String id;
+  final String fullName;
+  final String shortName;
+  final Coordinate position;
+  final String imagePath;
+
+  @override
+  get props => [id, fullName, shortName, position, imagePath];
+
+  @override
+  bool get stringify => true;
+
+  factory BusStop.fromMap(Map<dynamic, dynamic> value) {
+    final String id = value['id'].toString();
+    final String fullName = value['full_name'] as String;
+    final String shortName = value['short_name'] as String;
+    final double latitude = value['latitude'] as double;
+    final double longitude = value['longitude'] as double;
+    final String imagePath = value['image_path'] as String;
+
+    return BusStop(
+        id: id,
+        fullName: fullName,
+        shortName: shortName,
+        position: Coordinate(latitude, longitude),
+        imagePath: imagePath);
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'full_name': fullName,
+      'short_name': shortName,
+      'latitude': position.latitude,
+      'longitude': position.longitude,
+      'image_path': imagePath
     };
   }
 }

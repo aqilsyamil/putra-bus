@@ -24,12 +24,12 @@ class BusStopScreen extends HookConsumerWidget {
           body: ListItemsBuilder(
               data: busStops,
               itemBuilder: (context, busStop) => ListTile(
-                    title: Text(busStop.long_name),
-                    subtitle: Text(busStop.short_name),
+                    title: Text(busStop.fullName),
+                    subtitle: Text(busStop.shortName),
                     leading: GestureDetector(
                       onTap: () {
                         ImageDialog.of(context)
-                            .showImageNetworkDialog(busStop.image_path);
+                            .showImageNetworkDialog(busStop.imagePath);
                       },
                       child: const Icon(Icons.info),
                     ),

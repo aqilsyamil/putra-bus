@@ -16,7 +16,7 @@ class BusStopRepository {
 
       final List body = jsonDecode(response.body);
       // body.map((jsonBusStop) => print(jsonBusStop));
-      return body.map((jsonBusStop) => BusStop.fromJson(jsonBusStop)).toList();
+      return body.map((jsonBusStop) => BusStop.fromMap(jsonBusStop)).toList();
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

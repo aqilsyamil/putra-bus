@@ -1,8 +1,8 @@
+import 'package:app/src/features/navigation/domain/route.dart';
 import 'package:app/src/features/navigation/presentation/widget/navigation_bus_information.dart';
 import 'package:app/src/widgets/list_items/column_items.dart';
 import 'package:app/src/widgets/list_items/row_items.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class NavigationAvailableRoutesList extends HookConsumerWidget {
@@ -28,11 +28,15 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
             ),
           ),
         ),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 100,
-          itemBuilder: (context, index) => const AvailableRouteTile(),
+        const ColumnItems(
+          gap: 25.0,
+          children: [
+            AvailableRouteTile(BusRoute(id: '1', name: 'Route 1', links: [])),
+            AvailableRouteTile(BusRoute(id: '2', name: 'Route 2', links: [])),
+            AvailableRouteTile(BusRoute(id: '3', name: 'Route 3', links: [])),
+            AvailableRouteTile(BusRoute(id: '4', name: 'Route 4', links: [])),
+            AvailableRouteTile(BusRoute(id: '5', name: 'Route 5', links: [])),
+          ],
         )
       ],
     );
@@ -40,40 +44,49 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
 }
 
 class AvailableRouteTile extends HookConsumerWidget {
-  const AvailableRouteTile({super.key});
+  const AvailableRouteTile(this.route, {super.key});
+
+  final BusRoute route;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const RowItems(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      gap: 10,
-      children: [
-        AvailableRouteNumberedIcon(
-          color: Colors.blueAccent,
-        ),
-        Text(
-          'Route 1',
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            height: 1.0,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: RowItems(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        gap: 10,
+        children: [
+          AvailableRouteNumberedIcon(
+            route.id,
+            color: Colors.blueAccent,
           ),
-        ),
-        ColumnItems(
-          gap: 10,
-          children: [NavigationBusInformation(), NavigationBusInformation()],
-        )
-      ],
+          Text(
+            route.name,
+            textAlign: TextAlign.left,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              height: 1.0,
+            ),
+          ),
+          const ColumnItems(
+            gap: 10,
+            children: [NavigationBusInformation(), NavigationBusInformation()],
+          )
+        ],
+      ),
     );
   }
 }
 
 class AvailableRouteNumberedIcon extends HookConsumerWidget {
-  const AvailableRouteNumberedIcon({super.key, required this.color});
+  const AvailableRouteNumberedIcon(this.routeId,
+      {super.key, required this.color});
 
   final Color color;
+  final String routeId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -87,7 +100,7 @@ class AvailableRouteNumberedIcon extends HookConsumerWidget {
         child: Container(
           alignment: Alignment.center,
           child: Text(
-            '1',
+            routeId,
             style: TextStyle(
               color: color,
               fontSize: 11,
