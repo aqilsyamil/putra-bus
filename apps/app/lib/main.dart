@@ -1,31 +1,36 @@
+import 'dart:ui';
+
+import 'package:app/src/app.dart';
+import 'package:app/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
-import 'package:app/features/bus_stop/presentation/BusStopWidget.dart';
-import 'package:app/features/bus_route/presentation/BusRouteWidget.dart';
-import 'package:app/features/navigation/NavigationWidget.dart';
-import 'package:app/features/messages/MessagesWidget.dart';
-
-
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(PutraBusApp());
+  usePathUrlStrategy();
+  registerErrorHandlers();
+  runApp(const ProviderScope(child: PutraBusApp()));
 }
 
-class PutraBusApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PutraBus',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-          routes: {
-          '/': (context) => BusStopWidget(), 
-          '/busRoutes': (context) => BusRouteWidget(), // Define the route for BusRoutesWidget
-          '/navigation': (context) => NavigationWidget(), // Define the route for NavigationWidget
-          '/messages': (context) => MessagesWidget(), // Define the route for MessagesWidget
-        },
+void registerErrorHandlers() {
+  // * Show some error UI if any uncaught exception happens
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    debugPrint(details.toString());
+  };
+  // * Handle errors from the underlying platform/OS
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    debugPrint(error.toString());
+    return true;
+  };
+  // * Show some error UI when any widget in the app fails to build
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: Text('An error occurred'.hardcoded),
+      ),
+      body: Center(child: Text(details.toString())),
     );
-  }
+  };
 }
-
-
-
