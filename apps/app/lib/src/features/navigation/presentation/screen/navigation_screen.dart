@@ -10,13 +10,10 @@ class NavigationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppBar(title: 'Navigation'),
-      body: SingleChildScrollView(
-        physics: ScrollPhysics(),
-        child: Column(children: [
-          NavigationSearchFields(),
-          NavigationAvailableRoutesList()
-        ]),
-      ),
+      body: Column(children: [
+        NavigationSearchFields(),
+        NavigationAvailableRoutesList()
+      ]),
     );
   }
 }

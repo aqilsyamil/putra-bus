@@ -10,11 +10,11 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
+    return Expanded(
+        child: Column(
       children: [
         Container(
           height: 25,
-          margin: const EdgeInsets.only(top: 20),
           padding: const EdgeInsets.symmetric(
               horizontal: 10, vertical: 2), // Adjusted padding
           alignment: Alignment.centerLeft,
@@ -28,18 +28,16 @@ class NavigationAvailableRoutesList extends HookConsumerWidget {
             ),
           ),
         ),
-        const ColumnItems(
-          gap: 25.0,
-          children: [
-            AvailableRouteTile(BusRoute(id: '1', name: 'Route 1', links: [])),
-            AvailableRouteTile(BusRoute(id: '2', name: 'Route 2', links: [])),
-            AvailableRouteTile(BusRoute(id: '3', name: 'Route 3', links: [])),
-            AvailableRouteTile(BusRoute(id: '4', name: 'Route 4', links: [])),
-            AvailableRouteTile(BusRoute(id: '5', name: 'Route 5', links: [])),
-          ],
-        )
+        Expanded(
+            child: ListView(children: const [
+          AvailableRouteTile(BusRoute(id: '1', name: 'Route 1', links: [])),
+          AvailableRouteTile(BusRoute(id: '2', name: 'Route 2', links: [])),
+          AvailableRouteTile(BusRoute(id: '3', name: 'Route 3', links: [])),
+          AvailableRouteTile(BusRoute(id: '4', name: 'Route 4', links: [])),
+          AvailableRouteTile(BusRoute(id: '5', name: 'Route 5', links: [])),
+        ]))
       ],
-    );
+    ));
   }
 }
 

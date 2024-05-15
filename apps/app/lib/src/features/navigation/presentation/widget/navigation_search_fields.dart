@@ -9,7 +9,7 @@ class NavigationSearchFields extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const Padding(
-        padding: EdgeInsets.only(top: 20, left: 20, right: 10),
+        padding: EdgeInsets.only(top: 20, left: 20, right: 10, bottom: 20),
         child: ColumnItems(
           gap: 10.0,
           children: [
