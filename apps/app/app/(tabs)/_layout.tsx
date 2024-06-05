@@ -14,21 +14,40 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}>
+      <Tabs.Screen redirect name="index" />
       <Tabs.Screen
-        name="index"
+        name="navigation"
         options={{
-          title: 'Home',
+          title: 'Navigation',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon color={color} name="navigation" />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="bus-routes"
         options={{
-          title: 'Explore',
+          title: 'Routes',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon color={color} name="bus-routes" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="bus-stops"
+        options={{
+          title: 'Stops',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon color={color} name="bus-stops" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="more"
+        options={{
+          title: 'More',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon color={color} name="more"/>
           ),
         }}
       />

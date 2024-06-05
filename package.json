@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:app:dev": "cd apps/app && npx expo  start --tunnel",
+    "start:app:dev": "cd apps/app && npx expo start --tunnel",
     "build:api": "bunx prisma generate --schema apps/api/prisma/schema.prisma && nx build api --prod",
     "start:api:prod": "nx run api:serve:production",
     "start:api:dev": "nx serve api",

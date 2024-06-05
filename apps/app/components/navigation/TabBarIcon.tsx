@@ -1,9 +1,17 @@
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+import BusRoutesIcon from "@/icons/BusRoutesIcon";
+import BusStopsIcon from "@/icons/BusStopsIcon";
+import MoreIcon from "@/icons/MoreIcon";
+import NavigationIcon from "@/icons/NavigationIcon";
+import { TabBarIconProps } from "@/types/icons";
 
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { type IconProps } from '@expo/vector-icons/build/createIconSet';
-import { type ComponentProps } from 'react';
-
-export function TabBarIcon({ style, ...rest }: IconProps<ComponentProps<typeof Ionicons>['name']>) {
-  return <Ionicons size={28} style={[{ marginBottom: -3 }, style]} {...rest} />;
+export function TabBarIcon({ color, name }: TabBarIconProps) {
+    if (name === 'navigation') {
+        return <NavigationIcon color={color} />;
+    } else if (name === 'bus-routes') {
+        return <BusRoutesIcon color={color} />;
+    } else if (name === 'bus-stops') {
+        return <BusStopsIcon color={color} />;
+    } else if (name === 'more') {
+        return <MoreIcon color={color} />;
+    }
 }
