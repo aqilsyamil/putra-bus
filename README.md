@@ -7,7 +7,7 @@
 
 PutraBus app is designed to enhance the UPM shuttle bus service by providing near real-time updates on bus location, estimated time of arrivals (ETA), and occupancy status. This monorepo, built using the NX framework, contains both the PutraBus mobile application and the PutraBus API.
 
-- PutraBus Mobile Application: Developed with Flutter, offering an intuitive user interface for commuters.
+- PutraBus Mobile Application: Developed with React Native, offering an intuitive user interface for commuters.
 - PutraBus API: Built using the Fastify framework, facilitating real-time data retrieval and updates for the mobile application.
 
 <p align="center">
@@ -25,7 +25,7 @@ PutraBus app is designed to enhance the UPM shuttle bus service by providing nea
     - [Bun](#bun)
     - [Node & `npm`](#node--npm)
 - [Quick Start](#quick-start)
-  - [Flutter App](#flutter-app)
+  - [React Native App](#react-native-app)
   - [API](#api)
 - [Updating Repository](#updating-repository)
 - [Contributors](#contributors)
@@ -40,8 +40,6 @@ git clone https://github.com/aqilsyamil/putra-bus.git
 ```
 
 You need to install dependencies for the project. Dependencies is install by using a dependencies manager. We use bun and npm as our dependencies manager. You can install both bun and `npm` by refering to [our package manager installation section](#installing-package-manager).
-
-If you have installed both bun and `npm`, you also need to install [Flutter](https://docs.flutter.dev/get-started/install) to work with PutraBus app. After installing Flutter, you need to also install [Android Studio](https://developer.android.com/studio/install) to emulate the app in an emulator (for Android).
 
 After all mobile app environments has been install, open the repository or project in your local machine and run the following script in your CLI.
 
@@ -93,13 +91,15 @@ Everytime you open this project, you need to install and update your project. To
 bun run update:project:all
 ```
 
-### Flutter App
+### React Native App
 
-To start PutraBus app, you first need to [run an emulator through Android studio](https://developer.android.com/studio/run/emulator). After you successfully run an emulator, run this script in root project.
+To start PutraBus app, you first need to install Expo Go in your mobile phone. After that, run the following script in your terminal.
 
 ```bash
 bun run start:app:dev
 ```
+
+Scan the QR code, wait for it to bundle and it will run in your app.
 
 ### API
 
