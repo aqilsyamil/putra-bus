@@ -1,4 +1,3 @@
-import BusStopItem from "@/components/bus-stop/BusStopItem";
 import { View } from "react-native";
 
 interface ListProps {
