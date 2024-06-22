@@ -28,7 +28,12 @@ export default function BusStopsPage() {
   return (
     <View className="flex-1 bg-white">
         <AppBar title="Bus Stops" /> 
+        <View className="items-center my-4">
       <SearchBar placeholder="Search bus stops" width={380} height={40} />
+       </View>
+       <View className="px-4">
+        <Text className="text-base text-gray-500 font-semibold">Bus Stops</Text>
+      </View>
       <ScrollView className="lex-1 w-full bg-white mt-4">
         <List items={busStopsQuery.data} sourceName="busStop" ItemComponent={BusStopItem} />
       </ScrollView>

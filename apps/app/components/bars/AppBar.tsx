@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     height: 80,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start', 
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     paddingHorizontal: 16,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'left', 
+     textAlign: 'left', 
   },
 });
 
