@@ -1,0 +1,53 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.3.0",
+  "deps": {
+    "@nx-go/nx-go": "3.1.0",
+    "@nx/workspace": "19.3.0",
+    "nx": "19.3.0"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx-go/nx-go",
+      "version": "3.1.0"
+    }
+  ],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17107242987988535020"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "3833545590435012078"
+      },
+      {
+        "file": "README.md",
+        "hash": "16291477123304658101"
+      },
+      {
+        "file": "bun.lockb",
+        "hash": "14692522392678894311"
+      },
+      {
+        "file": "go.work",
+        "hash": "15510274647848203547"
+      },
+      {
+        "file": "nx.json",
+        "hash": "15406257629686845623"
+      },
+      {
+        "file": "package.json",
+        "hash": "17581855330642846371"
+      }
+    ]
+  }
+}
