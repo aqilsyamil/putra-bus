@@ -26,3 +26,6 @@ export default function BusStopItem({ busStop }: BusStopItemProps): JSX.Element 
     </View>
   );
 }
+
+
+
