@@ -45,7 +45,7 @@ export default function BusStopItem({ busStop }: BusStopItemProps): JSX.Element 
           <RouteTwoIcon color="#FA9131" size={24} style={{ marginRight: 6 }} />
           <RouteThreeIcon color="#233ECC" size={24} style={{ marginRight: 6 }} />
           <RouteFourIcon color="#F13478"  size={24} style={{ marginRight: 6 }} />
-          <RouteFiveIcon color="#823EE1"  size={24} style={{ marginRight: 6 }} />
+          {/* <RouteFiveIcon color="#823EE1"  size={24} style={{ marginRight: 6 }} /> */}
           <ForwardIcon color="#333231" size={20} />
         </View>
         </View>
