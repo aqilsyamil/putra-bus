@@ -2,30 +2,14 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import {  useFonts, Poppins_500Medium } from '@expo-google-fonts/poppins';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  let [fontsLoaded] = useFonts({
-    Poppins_500Medium,
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <Tabs
       screenOptions={{
         tabBarStyle: {
           height: 55,
-        },
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontFamily: 'Poppins_500Medium',
         },
         tabBarActiveTintColor: "#CB234C",
         headerShown: false,

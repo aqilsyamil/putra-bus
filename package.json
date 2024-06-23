@@ -10,7 +10,9 @@
     "install:project": "bun install && npm install && cd apps/app && bun install && cd ../app_v1 && flutter pub get && cd ../app_v2 && flutter pub get",
     "update:api:db": "bunx prisma db pull --schema apps/api/prisma/schema.prisma && prisma generate --schema apps/api/prisma/schema.prisma",
     "update:project:dependencies": "bun run install:project && bun update && cd apps/app && bun update && cd ../app_v1 && flutter pub upgrade --major-versions && flutter pub outdated && cd ../app_v2 && flutter pub upgrade --major-versions && flutter pub outdated",
-    "update:project:all": "bun run update:project:dependencies && bun run update:api:db"
+    "update:project:all": "bun run update:project:dependencies && bun run update:api:db",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "private": true,
   "devDependencies": {
@@ -91,7 +93,7 @@
     "dotenv": "^16.4.5",
     "expo": "^51.0.8",
     "expo-constants": "~16.0.1",
-    "expo-font": "~12.0.5",
+    "expo-font": "^12.0.7",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.14",
     "expo-splash-screen": "^0.27.4",

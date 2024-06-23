@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "@putra-bus/source",
+    "slug": "@putra-bussource",
+    "version": "0.0.0",
+    "sdkVersion": "51.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.app"
+    },
+    "ios": {
+      "bundleIdentifier": "com.app"
+    }
+  }
+}
