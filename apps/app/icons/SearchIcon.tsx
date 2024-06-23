@@ -1,11 +1,6 @@
 import { IconProps } from "@/types/icons";
 import Svg, { Path } from "react-native-svg";
 
-interface SearchIcon extends IconProps {
-  filled?: boolean;
-}
-
-
 export default function SearchIcon({ color, size, style }: IconProps): JSX.Element {
   return (
     <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
