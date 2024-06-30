@@ -44,13 +44,13 @@ You need to install dependencies for the project. Dependencies is install by usi
 After all mobile app environments has been install, open the repository or project in your local machine and run the following script in your CLI.
 
 ```bash
-bun run install:project
+bun run install:dependencies:project
 ```
 
 To update existing dependencies, run the following.
 
 ```bash
-bun run update:project:dependencies
+bun run update:depencies:project
 ```
 
 ### Installing Package Manager
@@ -88,7 +88,7 @@ For installing Node.js and npm, utilize a Node version manager like `nvm` for ma
 Everytime you open this project, you need to install and update your project. To do that, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file in the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to update the project.
 
 ```bash
-bun run update:project:all
+bun run update:dependencies:project
 ```
 
 ### React Native App
@@ -101,7 +101,7 @@ bun run start:app:dev
 
 Scan the QR code, wait for it to bundle and it will run in your app.
 
-### API
+### API (Don't refer to this, Temporary Deprecated, WIP)
 
 To start an API, make sure to create a `.env` file containing all required environment variables needed for this project. Put the file in the root directory of the project. Contact and ask [Rayhan](https://github.com/rayhanasyraff) to get the environment variables or you can [open an issue](https://github.com/aqilsyamil/putra-bus/issues/new). After setting up your `.env` file in your project, run this script to install all dependencies for this project.
 

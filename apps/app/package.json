@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
+    "install:dependencies": "bun install && npm install",
+    "update:dependencies": "bun update && npm update",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
