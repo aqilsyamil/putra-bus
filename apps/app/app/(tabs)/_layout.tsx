@@ -1,10 +1,7 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { Tabs } from "expo-router";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-
-export default function TabLayout() {
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -14,7 +11,11 @@ export default function TabLayout() {
         tabBarActiveTintColor: "#CB234C",
         headerShown: false,
       }}>
-      <Tabs.Screen redirect name="index" />
+      <Tabs.Screen
+      name="index"
+      options={{
+        href: null,
+      }}/>
       <Tabs.Screen
         name="navigation"
         options={{

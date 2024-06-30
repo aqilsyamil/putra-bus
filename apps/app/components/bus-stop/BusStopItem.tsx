@@ -1,3 +1,4 @@
+import colors from "@/constants/colors";
 import { BusStop } from "@/types/data";
 import { View, Text } from "react-native";
 
@@ -11,7 +12,13 @@ export default function BusStopItem({ busStop }: BusStopItemProps): JSX.Element 
 
   return (
     <View className="m-5">
-      <Text className="font-poppins text-xl" style={{ fontFamily: 'Poppins-Regular' }}>{busStop.fullName}</Text>
+      <Text
+      className="font-poppins text-xl"
+      style={{
+        fontFamily: 'Poppins-Regular',
+        color: colors.warning[500]
+      }}
+      >{busStop.fullName}</Text>
       <View className="flex flex-row gap-1">
         <Text className="text-grey-500">{busStop.shortName}</Text>
         <Text className="text-grey-500">•</Text>

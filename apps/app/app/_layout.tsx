@@ -1,20 +1,33 @@
-import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import React from 'react';
-import 'react-native-reanimated';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { NativeWindStyleSheet } from "nativewind";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from "react";
+import { useFonts } from 'expo-font';
+import fonts from "@/constants/fonts";
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+// SplashScreen.preventAutoHideAsync();
+
 NativeWindStyleSheet.setOutput({
   default: "native",
 });
 
 export default function RootLayout() {
+
+  const [loaded, error] = useFonts(fonts);
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -27,13 +40,15 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      </ThemeProvider>
+      <Stack>
+        <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerShown: false
+        }} />
+      </Stack>
+
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }

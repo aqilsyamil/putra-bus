@@ -1,3 +1,6 @@
-export default function TabsIndex() {
-  return null;
-}
+import { Redirect } from "expo-router";
+
+export default function IndexPage() {
+  return <Redirect href="navigation" />;
+};
+
