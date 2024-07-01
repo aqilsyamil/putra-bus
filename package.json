@@ -9,7 +9,9 @@
     "install:dependencies:project": "bun run install:dependencies && bun run install:dependencies:apps",
     "update:dependencies": "bun update && npm update",
     "update:dependencies:apps": "cd apps/app && bun run update:dependencies",
-    "update:dependencies:project": "bun run update:dependencies:apps && bun run update:dependencies:apps"
+    "update:dependencies:project": "bun run update:dependencies:apps && bun run update:dependencies:apps",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "private": true,
   "devDependencies": {
@@ -104,12 +106,16 @@
     "react-dom": "18.2.0",
     "react-native": "^0.74.2",
     "react-native-bundle-splitter": "^2.2.3",
+    "react-native-gesture-bottom-sheet": "^1.1.0",
+    "react-native-gesture-handler": "^2.17.1",
     "react-native-paper": "^5.12.3",
+    "react-native-reanimated": "^3.12.1",
     "react-native-safe-area-context": "4.10.1",
     "react-native-screens": "^3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-svg-transformer": "1.0.0",
     "react-native-web": "~0.19.10",
+    "style-variants": "^0.1.0",
     "tslib": "^2.3.0",
     "zod": "^3.23.4",
     "zustand": "^4.5.2"

@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from "react";
 import { useFonts } from 'expo-font';
 import fonts from "@/constants/fonts";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // SplashScreen.preventAutoHideAsync();
@@ -40,14 +41,16 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack>
-        <Stack.Screen
-        name="(tabs)"
-        options={{
-          headerShown: false
-        }} />
-      </Stack>
-
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Stack>
+          <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false
+          }}
+          />
+        </Stack>
+      </GestureHandlerRootView>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );

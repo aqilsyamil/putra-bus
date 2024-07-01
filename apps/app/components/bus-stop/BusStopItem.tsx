@@ -8,15 +8,13 @@ interface BusStopItemProps {
 
 export default function BusStopItem({ busStop }: BusStopItemProps): JSX.Element {
 
-  console.log(busStop);
-
   return (
     <View className="m-5">
       <Text
       className="font-poppins text-xl"
       style={{
         fontFamily: 'Poppins-Regular',
-        color: colors.warning[500]
+        color: "black"
       }}
       >{busStop.fullName}</Text>
       <View className="flex flex-row gap-1">
