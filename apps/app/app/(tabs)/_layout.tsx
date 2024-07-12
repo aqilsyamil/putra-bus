@@ -21,17 +21,20 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          height: 55,
+          height: 75,
+          paddingTop: 10
+
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontFamily: 'Poppins_500Medium',
+          marginTop: 3
         },
         tabBarActiveTintColor: "#CB234C",
         headerShown: false,
       }}>
       <Tabs.Screen redirect name="index" />
-      <Tabs.Screen
+        <Tabs.Screen
         name="navigation"
         options={{
           title: 'Navigation',
@@ -63,7 +66,7 @@ export default function TabLayout() {
         options={{
           title: 'More',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon color={color} name="more"/>
+            <TabBarIcon color={color} name="more" />
           ),
         }}
       />
