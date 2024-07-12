@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.putrabus.app"
     },
     "web": {
       "bundler": "metro",
@@ -28,7 +29,13 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "pk.eyJ1IjoicmF5aGFuYXN5cmFmZiIsImEiOiJjbHliMHBtaTAwMHh4Mm9zZ3ZqMnRrYW52In0.r6VBpYeOtUtzK8fOBBEbZA"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

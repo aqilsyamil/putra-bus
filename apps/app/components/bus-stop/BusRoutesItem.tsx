@@ -12,7 +12,7 @@ export default function BusRoutesItem({ busStop }: BusStopRoutesProps): JSX.Elem
 
   return (
     <View style={styles.container}>
-      <View style={styles.container}>
+      <View style={styles.textContainer}>
         <BusRoutesItemNumberIcon number={1} />
         <Text style={styles.text}>Route 1</Text>
       </View>
@@ -25,9 +25,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    paddingHorizontal: 16,
+    gap: 8,
+    alignItems: 'center',
+  },
+  textContainer: {
+    flex: 1,
+    flexDirection: 'row',
     padding: 16,
     gap: 8,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     fontFamily: 'Poppins-SemiBold',
