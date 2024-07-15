@@ -4,6 +4,9 @@ import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import List from '@/components/List';
 import BusRoutesItem from '@/components/bus-stop/BusRoutesItem';
 import { ScrollView } from 'react-native-gesture-handler';
+import Mapbox from '@rnmapbox/maps';
+
+Mapbox.setAccessToken("sk.eyJ1IjoicmF5aGFuYXN5cmFmZiIsImEiOiJjbHlqemswdDgwNHZmMmxzNmUwMjcyaGR5In0.PvehmdnF3oSAvAgxfMaQlg");
 
 export default function BusRoutesPage() {
 
@@ -15,6 +18,18 @@ export default function BusRoutesPage() {
 
   return (
     <View style={styles.container}>
+      <Mapbox.MapView
+      projection='globe'
+      key='mainmap'
+      attributionPosition={{ bottom: 165, right: 5 }}
+      logoPosition={{ bottom: 165, left: 5 }}
+      scaleBarEnabled={false}
+      style={styles.map}
+      >
+        {/* <Mapbox.Camera
+        centerCoordinate={[2.9995, 101.7056]}
+        /> */}
+      </Mapbox.MapView>
 
       <BottomSheet
         snapPoints={[400]}
@@ -49,10 +64,13 @@ export default function BusRoutesPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
     backgroundColor: 'white',
   },
   contentContainer: {
     flex: 1,
   },
+  map: {
+    height: '70%',
+    width: '100%',
+  }
 });
