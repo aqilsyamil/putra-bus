@@ -6,7 +6,7 @@ import BusRoutesItem from '@/components/bus-stop/BusRoutesItem';
 import { ScrollView } from 'react-native-gesture-handler';
 import Mapbox from '@rnmapbox/maps';
 
-Mapbox.setAccessToken("sk.eyJ1IjoicmF5aGFuYXN5cmFmZiIsImEiOiJjbHlqemswdDgwNHZmMmxzNmUwMjcyaGR5In0.PvehmdnF3oSAvAgxfMaQlg");
+Mapbox.setAccessToken("sk.eyJ1IjoicmF5aGFuYXN5cmFmZiIsImEiOiJjbHpxeWtubXMxZHpsMmlyN21sOGJ0eHc0In0.LZz-V5Q4gtkF2JLmlcWF-A");
 
 export default function BusRoutesPage() {
 
