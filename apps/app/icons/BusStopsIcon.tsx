@@ -1,7 +1,7 @@
 import { IconProps } from "@/types/icons"
 import Svg, { Path } from "react-native-svg"
 
-export default function NavigationIcon({ color, size, style }: IconProps): JSX.Element {
+export default function BusStopsIcon({ color, size, style }: IconProps): JSX.Element {
   return (
     <Svg width="25" height="24" viewBox="0 0 25 24" fill="none">
       <Path d="M12.3333 13.43C14.0564 13.43 15.4533 12.0331 15.4533 10.31C15.4533 8.58687 14.0564 7.19 12.3333 7.19C10.6102 7.19 9.21332 8.58687 9.21332 10.31C9.21332 12.0331 10.6102 13.43 12.3333 13.43Z" stroke={color} strokeWidth="1.5"/>

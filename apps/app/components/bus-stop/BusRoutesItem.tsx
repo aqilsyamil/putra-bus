@@ -3,18 +3,21 @@ import { View, Text, StyleSheet } from "react-native";
 import BusRoutesItemNumberIcon from '../../icons/BusRoutesItemNumberIcon';
 import colors from "@/constants/colors";
 import ArrowRightIcon from "@/icons/ArrowRightIcon";
+import BellIcon from "@/icons/BellIcon";
 
 interface BusStopRoutesProps {
   busStop?: BusStop;
+  routeName: string;
+  routeNumber: number;
 }
 
-export default function BusRoutesItem({ busStop }: BusStopRoutesProps): JSX.Element {
+export default function BusRoutesItem({ busStop, routeName, routeNumber }: BusStopRoutesProps): JSX.Element {
 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <BusRoutesItemNumberIcon number={1} />
-        <Text style={styles.text}>Route 1</Text>
+        <BusRoutesItemNumberIcon number={routeNumber} />
+        <Text style={styles.text}>{routeName}</Text>
       </View>
       <ArrowRightIcon />
     </View>
