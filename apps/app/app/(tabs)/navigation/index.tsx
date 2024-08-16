@@ -5,7 +5,7 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 export default function NavigationPage() {
 
   // Added test comment
-
+  // Added test comment 2
   const { styles } = useStyles(stylesheet);
 
   return (
