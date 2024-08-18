@@ -1,0 +1,87 @@
+[
+    {
+        "id": "SJ161",
+        "name": "PKU",
+        "longitude": 101.7076865850052,
+        "latitude": 2.991385403577439
+    },
+    {
+        "id": "SJ825",
+        "name": "KTDI",
+        "longitude": 101.70727325766038,
+        "latitude": 2.9935627652652395
+    },
+    {
+        "id": "SJ824",
+        "name": "KC",
+        "longitude": 101.70886619987638,
+        "latitude": 2.995312111780624
+    },
+    {
+        "id": "SJ153",
+        "name": "Central",
+        "longitude": 101.70969564394254,
+        "latitude": 3.0012917167440483
+    },
+    {
+        "id": "SJ159",
+        "name": "FS",
+        "longitude": 101.7068627631204,
+        "latitude": 3.0007085010742323
+    },
+    {
+        "id": "SJ160",
+        "name": "Library",
+        "longitude": 101.70695294223508,
+        "latitude": 3.0026803506513735
+    },
+    {
+        "id": "SJ154",
+        "name": "DKAP",
+        "longitude": 101.71104889663759,
+        "latitude": 3.0002209275588725
+    },
+    {
+        "id": "SJ155",
+        "name": "FSKTM",
+        "longitude": 101.71106029602586,
+        "latitude": 2.9999691454681097
+    },
+    {
+        "id": "SJ163",
+        "name": "SFC",
+        "longitude": 101.71541414629283,
+        "latitude": 2.9921172880176776
+    },
+    {
+        "id": "SJ169",
+        "name": "Kompleks Akademik A",
+        "longitude": 101.71523843533775,
+        "latitude": 3.0002101548101865
+    },
+    {
+        "id": "SJ144",
+        "name": "FBMK",
+        "longitude": 101.71484887998834,
+        "latitude": 2.9999843428909356
+    },
+    {
+        "id": "SJ164",
+        "name": "Kolej 14",
+        "longitude": 101.71825515618721,
+        "latitude": 2.9928782265949017
+    },
+    {
+        "id": "SJ832",
+        "name": "Institut Biosains",
+        "longitude": 101.72157668311881,
+        "latitude": 2.999770318628526
+    },
+    {
+        "id": "SJ151",
+        "name": "FPAS",
+        "longitude": 101.70862908173052,
+        "latitude": 3.004266665826632
+    }
+  ]
+  
