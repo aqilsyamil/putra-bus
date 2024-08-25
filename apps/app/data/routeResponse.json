@@ -1,0 +1,268 @@
+{
+  "routes": [
+    {
+      "weight_name": "pedestrian",
+      "weight": 1455.688,
+      "duration": 1346.701,
+      "distance": 1783.126,
+      "legs": [
+        {
+          "via_waypoints": [],
+          "admins": [{"iso_3166_1_alpha3": "MYS", "iso_3166_1": "MY"}],
+          "weight": 1455.688,
+          "duration": 1346.701,
+          "steps": [
+            {
+              "intersections": [
+                {
+                  "entry": [true],
+                  "bearings": [78],
+                  "duration": 111.822,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 0,
+                  "weight": 111.822,
+                  "geometry_index": 0,
+                  "location": [101.714846, 3.000001]
+                },
+                {
+                  "entry": [true, true, false, true],
+                  "in": 2,
+                  "bearings": [79, 176, 258, 355],
+                  "duration": 190.593,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 0,
+                  "weight": 200.417,
+                  "geometry_index": 1,
+                  "location": [101.716166, 3.000269]
+                },
+                {
+                  "entry": [true, false, true],
+                  "in": 1,
+                  "bearings": [78, 259, 349],
+                  "duration": 7.025,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 0,
+                  "weight": 8.583,
+                  "geometry_index": 2,
+                  "location": [101.7183, 3.000682]
+                },
+                {
+                  "bearings": [79, 156, 258, 346],
+                  "entry": [true, true, false, true],
+                  "in": 2,
+                  "turn_weight": 1,
+                  "turn_duration": 1,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 0,
+                  "geometry_index": 5,
+                  "location": [101.718417, 3.000707]
+                }
+              ],
+              "maneuver": {
+                "type": "depart",
+                "instruction": "Walk east on Persiaran Universiti 1.",
+                "bearing_after": 78,
+                "bearing_before": 0,
+                "location": [101.714846, 3.000001]
+              },
+              "name": "Persiaran Universiti 1",
+              "duration": 567.283,
+              "distance": 748.818,
+              "driving_side": "left",
+              "weight": 578.61,
+              "mode": "walking",
+              "geometry": {
+                "coordinates": [
+                  [101.714846, 3.000001],
+                  [101.716166, 3.000269],
+                  [101.7183, 3.000682],
+                  [101.718343, 3.000691],
+                  [101.718356, 3.000694],
+                  [101.718417, 3.000707],
+                  [101.718436, 3.00071],
+                  [101.718529, 3.000728],
+                  [101.721452, 3.001313]
+                ],
+                "type": "LineString"
+              }
+            },
+            {
+              "intersections": [
+                {
+                  "entry": [true, true, false, true],
+                  "in": 2,
+                  "bearings": [80, 169, 259, 349],
+                  "duration": 47.642,
+                  "turn_weight": 5,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 1,
+                  "weight": 77.222,
+                  "geometry_index": 8,
+                  "location": [101.721452, 3.001313]
+                },
+                {
+                  "entry": [true, true, false],
+                  "in": 2,
+                  "bearings": [83, 169, 349],
+                  "duration": 20.202,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 1,
+                  "weight": 23.518,
+                  "geometry_index": 9,
+                  "location": [101.721526, 3.000938]
+                },
+                {
+                  "entry": [true, false],
+                  "in": 1,
+                  "bearings": [171, 349],
+                  "duration": 128.339,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 0,
+                  "weight": 193.151,
+                  "geometry_index": 10,
+                  "location": [101.721567, 3.000729]
+                },
+                {
+                  "entry": [false, true, true],
+                  "in": 0,
+                  "bearings": [3, 92, 186],
+                  "duration": 423.254,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 2,
+                  "weight": 423.239,
+                  "geometry_index": 13,
+                  "location": [101.721618, 2.999704]
+                },
+                {
+                  "bearings": [32, 118, 212],
+                  "entry": [false, true, true],
+                  "in": 0,
+                  "mapbox_streets_v8": {"class": "secondary"},
+                  "is_urban": true,
+                  "admin_index": 0,
+                  "out": 2,
+                  "geometry_index": 23,
+                  "location": [101.719459, 2.994805]
+                }
+              ],
+              "maneuver": {
+                "type": "turn",
+                "instruction": "Turn right onto Lebuh Silikon.",
+                "modifier": "right",
+                "bearing_after": 169,
+                "bearing_before": 79,
+                "location": [101.721452, 3.001313]
+              },
+              "name": "Lebuh Silikon",
+              "duration": 779.418,
+              "distance": 1034.309,
+              "driving_side": "left",
+              "weight": 877.077,
+              "mode": "walking",
+              "geometry": {
+                "coordinates": [
+                  [101.721452, 3.001313],
+                  [101.721526, 3.000938],
+                  [101.721567, 3.000729],
+                  [101.721616, 3.000407],
+                  [101.721635, 3.000017],
+                  [101.721618, 2.999704],
+                  [101.721589, 2.999425],
+                  [101.721569, 2.999309],
+                  [101.721538, 2.999176],
+                  [101.721491, 2.999006],
+                  [101.721373, 2.998625],
+                  [101.721105, 2.997861],
+                  [101.720806, 2.997098],
+                  [101.720537, 2.996562],
+                  [101.720175, 2.995951],
+                  [101.719459, 2.994805],
+                  [101.71911, 2.994242],
+                  [101.718479, 2.993194],
+                  [101.718353, 2.992958],
+                  [101.718302, 2.992855]
+                ],
+                "type": "LineString"
+              }
+            },
+            {
+              "intersections": [
+                {
+                  "bearings": [27],
+                  "entry": [true],
+                  "in": 0,
+                  "admin_index": 0,
+                  "geometry_index": 27,
+                  "location": [101.718302, 2.992855]
+                }
+              ],
+              "maneuver": {
+                "type": "arrive",
+                "instruction": "Your destination is on the right.",
+                "modifier": "right",
+                "bearing_after": 0,
+                "bearing_before": 207,
+                "location": [101.718302, 2.992855]
+              },
+              "name": "Lebuh Silikon",
+              "duration": 0,
+              "distance": 0,
+              "driving_side": "left",
+              "weight": 0,
+              "mode": "walking",
+              "geometry": {
+                "coordinates": [[101.718302, 2.992855], [101.718302, 2.992855]],
+                "type": "LineString"
+              }
+            }
+          ],
+          "distance": 1783.126,
+          "summary": "Persiaran Universiti 1, Lebuh Silikon"
+        }
+      ],
+      "geometry": {
+        "coordinates": [
+          [101.714846, 3.000001],
+          [101.721452, 3.001313],
+          [101.721616, 3.000407],
+          [101.721618, 2.999704],
+          [101.721491, 2.999006],
+          [101.721105, 2.997861],
+          [101.720537, 2.996562],
+          [101.718302, 2.992855]
+        ],
+        "type": "LineString"
+      }
+    }
+  ],
+  "waypoints": [
+    {
+      "distance": 1.856,
+      "name": "Persiaran Universiti 1",
+      "location": [101.714846, 3.000001]
+    },
+    {
+      "distance": 5.764,
+      "name": "Lebuh Silikon",
+      "location": [101.718302, 2.992855]
+    }
+  ],
+  "code": "Ok",
+  "uuid": "V5AiJzNUFL8iNTW-T6_VBaExXj_vX_PfPwtzDH12r_TksFicQDeEaQ=="
+}
